@@ -295,12 +295,12 @@ public class IdentityListTest extends TestCase
 		assertFalse(ls.contains(b1));
 		assertTrue(ls.isEmpty());
 		assertEquals(0, ls.size());
-		ls = new IdentityList<>(Arrays.asList(new Integer[]{a1}));
+		ls = new IdentityList<>(Arrays.asList(a1));
 		assertTrue(ls.contains(a1));
 		assertFalse(ls.contains(b1));
 		assertFalse(ls.isEmpty());
 		assertEquals(1, ls.size());
-		ls = new IdentityList<>(Arrays.asList(new Integer[]{a1, a1}));
+		ls = new IdentityList<>(Arrays.asList(a1, a1));
 		assertTrue(ls.contains(a1));
 		assertFalse(ls.contains(b1));
 		assertEquals(2, ls.size());

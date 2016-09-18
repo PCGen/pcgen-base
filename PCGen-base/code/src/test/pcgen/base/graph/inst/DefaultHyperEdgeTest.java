@@ -43,12 +43,12 @@ public class DefaultHyperEdgeTest extends TestCase
 		node4 = new Integer(4);
 		node5 = new Integer(5);
 		node6 = new Integer(6);
-		edge1 = new DefaultHyperEdge<>(Arrays.asList(new Integer[]{node4, node3, node6}));
-		edge2 = new DefaultHyperEdge<>(Arrays.asList(new Integer[]{node6, node5}));
-		edge3 = new DefaultHyperEdge<>(Arrays.asList(new Integer[]{node6, node4, node3}));
-		edge4 = new DefaultHyperEdge<>(Arrays.asList(new Integer[]{node6, node3}));
-		edge5 = new DefaultHyperEdge<>(Arrays.asList(new Integer[]{node6}));
-		edge6 = new DefaultHyperEdge<>(Arrays.asList(new Integer[]{node4, node6}));
+		edge1 = new DefaultHyperEdge<>(Arrays.asList(node4, node3, node6));
+		edge2 = new DefaultHyperEdge<>(Arrays.asList(node6, node5));
+		edge3 = new DefaultHyperEdge<>(Arrays.asList(node6, node4, node3));
+		edge4 = new DefaultHyperEdge<>(Arrays.asList(node6, node3));
+		edge5 = new DefaultHyperEdge<>(Arrays.asList(node6));
+		edge6 = new DefaultHyperEdge<>(Arrays.asList(node4, node6));
 	}
 
 	public void testDefaultHyperEdge()
@@ -73,7 +73,7 @@ public class DefaultHyperEdgeTest extends TestCase
 		}
 		try
 		{
-			new DefaultHyperEdge<>(Arrays.asList(new Integer[]{node4, null}));
+			new DefaultHyperEdge<>(Arrays.asList(node4, null));
 			fail();
 		}
 		catch (IllegalArgumentException iae)
@@ -158,7 +158,7 @@ public class DefaultHyperEdgeTest extends TestCase
 			//OK
 		}
 		DefaultHyperEdge<Integer> newEdge =
-				edge1.createReplacementEdge(Arrays.asList(new Integer[]{4, 5}));
+				edge1.createReplacementEdge(Arrays.asList(4, 5));
 		assertTrue(newEdge.getClass().equals(edge1.getClass()));
 		List<Integer> l = newEdge.getAdjacentNodes();
 		assertEquals(2, l.size());

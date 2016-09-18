@@ -263,22 +263,22 @@ public abstract class AbstractMapToListTest extends TestCase
 			Collections.singletonList(CONST_A)));
 		// Keys are .equals items, not instance
 		assertTrue(dkm.containsAnyInList(new Integer(1),
-			Arrays.asList(new Character[]{CONST_A, CONST_D})));
+			Arrays.asList(CONST_A, CONST_D)));
 		assertTrue(dkm.containsAnyInList(Integer.valueOf(1),
-			Arrays.asList(new Character[]{CONST_D, CONST_B})));
+			Arrays.asList(CONST_D, CONST_B)));
 		assertTrue(dkm.containsAnyInList(Integer.valueOf(1),
-			Arrays.asList(new Character[]{CONST_C, CONST_B})));
+			Arrays.asList(CONST_C, CONST_B)));
 		assertFalse(dkm.containsAnyInList(Integer.valueOf(1),
-			Arrays.asList(new Character[]{CONST_D, CONST_E, CONST_F})));
+			Arrays.asList(CONST_D, CONST_E, CONST_F)));
 
 		// add a second :)
 		dkm.addToListFor(Integer.valueOf(1), CONST_C);
 		assertTrue(dkm.containsAnyInList(Integer.valueOf(1),
-			Arrays.asList(new Character[]{CONST_C, CONST_F})));
+			Arrays.asList(CONST_C, CONST_F)));
 
 		// Test null stuff :)
 		assertTrue(dkm.containsAnyInList(Integer.valueOf(2),
-			Arrays.asList(new Character[]{CONST_F, null})));
+			Arrays.asList(CONST_F, null)));
 		try
 		{
 			assertFalse(dkm.containsAnyInList(Integer.valueOf(2), null));
@@ -291,9 +291,9 @@ public abstract class AbstractMapToListTest extends TestCase
 		assertFalse(dkm.containsAnyInList(Integer.valueOf(2), Collections.<Character>emptyList()));
 
 		assertTrue(dkm.containsAnyInList(null,
-			Arrays.asList(new Character[]{CONST_A, CONST_F})));
+			Arrays.asList(CONST_A, CONST_F)));
 		assertFalse(dkm.containsAnyInList(null,
-			Arrays.asList(new Character[]{CONST_A, CONST_D})));
+			Arrays.asList(CONST_A, CONST_D)));
 	}
 
 	@Test

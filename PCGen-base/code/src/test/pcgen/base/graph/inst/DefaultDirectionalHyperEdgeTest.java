@@ -44,15 +44,15 @@ public class DefaultDirectionalHyperEdgeTest extends TestCase
 		node5 = 5;
 		node6 = 6;
 		edge1 =
-				new DefaultDirectionalHyperEdge<>(Arrays.asList(new Integer[]{node1}), Arrays.asList(new Integer[]{node2,
+				new DefaultDirectionalHyperEdge<>(Arrays.asList(node1), Arrays.asList(node2,
 
-						node3}));
+						node3));
 		edge2 =
-				new DefaultDirectionalHyperEdge<>(Arrays.asList(new Integer[]{node3, node4, node1}), Arrays.asList(new Integer[]{node5, node6}));
-		edge3 = new DefaultDirectionalHyperEdge<>(null, Arrays.asList(new Integer[]{node5, node6}));
-		edge4 = new DefaultDirectionalHyperEdge<>(Arrays.asList(new Integer[]{node3, node4, node1}), null);
+				new DefaultDirectionalHyperEdge<>(Arrays.asList(node3, node4, node1), Arrays.asList(node5, node6));
+		edge3 = new DefaultDirectionalHyperEdge<>(null, Arrays.asList(node5, node6));
+		edge4 = new DefaultDirectionalHyperEdge<>(Arrays.asList(node3, node4, node1), null);
 		edge5 =
-				new DefaultDirectionalHyperEdge<>(Arrays.asList(new Integer[]{node3, node4, node1}), Arrays.asList(new Integer[]{node2, node3}));
+				new DefaultDirectionalHyperEdge<>(Arrays.asList(node3, node4, node1), Arrays.asList(node2, node3));
 	}
 
 	public void testDefaultDirectionalHyperEdge()
@@ -95,7 +95,7 @@ public class DefaultDirectionalHyperEdgeTest extends TestCase
 		}
 		try
 		{
-			new DefaultDirectionalHyperEdge<>(Arrays.asList(new Integer[]{3, 4, 5}), Arrays.asList(new Integer[]{6, null}));
+			new DefaultDirectionalHyperEdge<>(Arrays.asList(3, 4, 5), Arrays.asList(6, null));
 			fail();
 		}
 		catch (IllegalArgumentException iae)
@@ -104,7 +104,7 @@ public class DefaultDirectionalHyperEdgeTest extends TestCase
 		}
 		try
 		{
-			new DefaultDirectionalHyperEdge<>(Arrays.asList(new Integer[]{null, 4, 5}), Arrays.asList(new Integer[]{6}));
+			new DefaultDirectionalHyperEdge<>(Arrays.asList(null, 4, 5), Arrays.asList(6));
 			fail();
 		}
 		catch (IllegalArgumentException iae)
@@ -351,8 +351,8 @@ public class DefaultDirectionalHyperEdgeTest extends TestCase
 		}
 		try
 		{
-			edge1.createReplacementEdge(Arrays.asList(new Integer[]{3, 4, 5}),
-				Arrays.asList(new Integer[]{6, null}));
+			edge1.createReplacementEdge(Arrays.asList(3, 4, 5),
+				Arrays.asList(6, null));
 			fail();
 		}
 		catch (IllegalArgumentException iae)
@@ -362,8 +362,8 @@ public class DefaultDirectionalHyperEdgeTest extends TestCase
 		try
 		{
 			edge1.createReplacementEdge(
-				Arrays.asList(new Integer[]{null, 4, 5}),
-				Arrays.asList(new Integer[]{6}));
+				Arrays.asList(null, 4, 5),
+				Arrays.asList(6));
 			fail();
 		}
 		catch (IllegalArgumentException iae)
