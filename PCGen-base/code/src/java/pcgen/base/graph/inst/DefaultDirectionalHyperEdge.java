@@ -177,11 +177,7 @@ public class DefaultDirectionalHyperEdge<N> implements DirectionalHyperEdge<N>
 		{
 			return true;
 		}
-		if ((sinkNodes != null) && sinkNodes.contains(node))
-		{
-			return true;
-		}
-		return false;
+		return (sinkNodes != null) && sinkNodes.contains(node);
 	}
 
 	/*

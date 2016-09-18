@@ -446,15 +446,7 @@ public abstract class AbstractSetMapGraph<N, ET extends Edge<N>> implements
 		}
 		// (potentially wasteful, but defensive copy)
 		otherEdgeList = new ArrayList<ET>(otherEdgeList);
-		if (otherEdgeList.retainAll(edgeSet))
-		{
-			// Other Graph contains extra edges
-			//			System.err.println("not equal edge retain");
-			//			System.err.println(edgeSet);
-			//			System.err.println(otherEdgeList);
-			return false;
-		}
-		return true;
+		return !otherEdgeList.retainAll(edgeSet);
 	}
 
 	/**
