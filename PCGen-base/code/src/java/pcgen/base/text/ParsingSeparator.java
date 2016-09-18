@@ -245,7 +245,7 @@ public class ParsingSeparator implements Iterator<String>
 				{
 					throw new GroupingMismatchException(baseString
 						+ " did not have " + matchedOpening + "before "
-						+ currentToken + ": " + compilation.toString());
+						+ currentToken + ": " + compilation);
 				}
 				String closeWanted = expected.pop();
 				if (!currentToken.equals(closeWanted))
@@ -253,7 +253,7 @@ public class ParsingSeparator implements Iterator<String>
 					throw new GroupingMismatchException(
 						baseString + " did not have " + closeWanted
 							+ " but instead encountered " + currentToken
-							+ " in: " + compilation.toString());
+							+ " in: " + compilation);
 				}
 			}
 		}
