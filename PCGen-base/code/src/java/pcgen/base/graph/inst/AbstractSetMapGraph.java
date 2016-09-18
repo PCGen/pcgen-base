@@ -114,7 +114,7 @@ public abstract class AbstractSetMapGraph<N, ET extends Edge<N>> implements
 	/**
 	 * Creates a new, empty AbstractSetMapGraph.
 	 */
-	public AbstractSetMapGraph()
+	protected AbstractSetMapGraph()
 	{
 		super();
 		edgeSet = new HashSet<ET>();
