@@ -114,7 +114,7 @@ public abstract class AbstractListMapGraph<N, ET extends Edge<N>> implements
 	/**
 	 * Creates a new, empty AbstractListMapGraph.
 	 */
-	public AbstractListMapGraph()
+	protected AbstractListMapGraph()
 	{
 		edgeList = new ArrayList<ET>();
 		nodeList = new ArrayList<N>();
