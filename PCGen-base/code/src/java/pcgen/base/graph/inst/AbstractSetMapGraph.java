@@ -116,7 +116,6 @@ public abstract class AbstractSetMapGraph<N, ET extends Edge<N>> implements
 	 */
 	public AbstractSetMapGraph()
 	{
-		super();
 		edgeSet = new HashSet<ET>();
 		nodeMap = new HashMap<N, N>();
 		gcs = new GraphChangeSupport<N, ET>(this);

@@ -46,7 +46,6 @@ public class IdentityList<T> implements List<T>
 	 */
 	public IdentityList()
 	{
-		super();
 	}
 
 	/**

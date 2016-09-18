@@ -116,7 +116,6 @@ public abstract class AbstractListMapGraph<N, ET extends Edge<N>> implements
 	 */
 	public AbstractListMapGraph()
 	{
-		super();
 		edgeList = new ArrayList<ET>();
 		nodeList = new ArrayList<N>();
 		gcs = new GraphChangeSupport<N, ET>(this);

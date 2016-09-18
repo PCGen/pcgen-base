@@ -60,7 +60,6 @@ public class DefaultGraphEdge<N> implements GraphEdge<N>
 	 */
 	public DefaultGraphEdge(N node1, N node2)
 	{
-		super();
 		if (node1 == null)
 		{
 			throw new IllegalArgumentException(

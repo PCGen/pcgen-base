@@ -56,7 +56,6 @@ public class DefaultHyperEdge<N> implements NonDirectionalEdge<N>
 	 */
 	public DefaultHyperEdge(Collection<N> nodes)
 	{
-		super();
 		if (nodes == null)
 		{
 			throw new IllegalArgumentException(

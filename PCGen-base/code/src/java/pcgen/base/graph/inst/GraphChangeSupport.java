@@ -64,7 +64,6 @@ public class GraphChangeSupport<N, ET extends Edge<N>>
 	 */
 	public GraphChangeSupport(Graph<N, ET> sourceObject)
 	{
-		super();
 		if (sourceObject == null)
 		{
 			throw new IllegalArgumentException(

@@ -65,7 +65,6 @@ public abstract class AbstractMapToList<K, V> implements MapToList<K, V>
 	 */
 	protected AbstractMapToList(Map<K, List<V>> mtl)
 	{
-		super();
 		mapToList = mtl;
 	}
 

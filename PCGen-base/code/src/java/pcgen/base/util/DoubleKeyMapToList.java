@@ -88,7 +88,6 @@ public class DoubleKeyMapToList<K1, K2, V> implements Cloneable
 	@SuppressWarnings("PMD.LooseCoupling")
 	public DoubleKeyMapToList()
 	{
-		super();
 		firstClass = HashMap.class;
 		secondClass = firstClass;
 		mtmtl = new HashMap<K1, MapToList<K2, V>>();
@@ -110,7 +109,6 @@ public class DoubleKeyMapToList<K1, K2, V> implements Cloneable
 	@SuppressWarnings("rawtypes")
 	public DoubleKeyMapToList(Class<? extends Map> cl1, Class<? extends Map> cl2)
 	{
-		super();
 		if (cl1 == null)
 		{
 			throw new IllegalArgumentException(

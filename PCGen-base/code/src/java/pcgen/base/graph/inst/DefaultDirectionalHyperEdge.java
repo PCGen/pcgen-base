@@ -80,7 +80,6 @@ public class DefaultDirectionalHyperEdge<N> implements DirectionalHyperEdge<N>
 	public DefaultDirectionalHyperEdge(Collection<N> sourceNode,
 		Collection<N> sinkNode)
 	{
-		super();
 		if ((sourceNode == null) && (sinkNode == null))
 		{
 			throw new IllegalArgumentException(

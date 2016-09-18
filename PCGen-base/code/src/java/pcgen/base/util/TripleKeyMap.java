@@ -109,7 +109,6 @@ public class TripleKeyMap<K1, K2, K3, V> implements Cloneable
 	public TripleKeyMap(Class<? extends Map> cl1, Class<? extends Map> cl2,
 		Class<? extends Map> cl3)
 	{
-		super();
 		map = new DoubleKeyMap<K1, K2, Map<K3, V>>(cl1, cl2);
 		if (cl3 == null)
 		{

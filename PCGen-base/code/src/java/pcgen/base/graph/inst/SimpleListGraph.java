@@ -86,7 +86,6 @@ public class SimpleListGraph<N, ET extends Edge<N>> implements Graph<N, ET>
 	 */
 	public SimpleListGraph()
 	{
-		super();
 		edgeList = new ArrayList<ET>();
 		nodeList = new ArrayList<N>();
 		gcs = new GraphChangeSupport<N, ET>(this);
