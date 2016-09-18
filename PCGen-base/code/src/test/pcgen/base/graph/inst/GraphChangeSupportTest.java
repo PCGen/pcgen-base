@@ -107,7 +107,7 @@ public class GraphChangeSupportTest extends TestCase
 		assertEquals(a, listener.nAdded.get(0));
 	}
 
-	private final class TransparentGCL implements GraphChangeListener
+	private static final class TransparentGCL implements GraphChangeListener
 	{
 		public List nAdded = new ArrayList<>();
 		public List nRemoved = new ArrayList<>();

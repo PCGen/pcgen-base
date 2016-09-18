@@ -42,7 +42,7 @@ public class DirectionalSetMapGraphTest extends
 		strategy = new DirectionalSetMapGraph<>();
 	}
 
-	public class TestDirectionalGraphEdge extends DefaultGraphEdge<Integer>
+	public static class TestDirectionalGraphEdge extends DefaultGraphEdge<Integer>
 			implements DirectionalEdge<Integer>
 	{
 		public TestDirectionalGraphEdge(Integer v1, Integer v2)
