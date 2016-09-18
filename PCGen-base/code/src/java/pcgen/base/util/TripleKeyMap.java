@@ -419,8 +419,7 @@ public class TripleKeyMap<K1, K2, K3, V> implements Cloneable
 	@Override
 	public boolean equals(Object obj)
 	{
-		return obj instanceof TripleKeyMap
-			&& map.equals(((TripleKeyMap<?, ?, ?, ?>) obj).map);
+		return (obj instanceof TripleKeyMap) && map.equals(((TripleKeyMap<?, ?, ?, ?>) obj).map);
 	}
 
 	/**

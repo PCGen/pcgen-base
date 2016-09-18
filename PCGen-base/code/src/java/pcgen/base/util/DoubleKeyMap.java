@@ -531,8 +531,7 @@ public class DoubleKeyMap<K1, K2, V> implements Cloneable
 	@Override
 	public boolean equals(Object obj)
 	{
-		return obj instanceof DoubleKeyMap
-			&& map.equals(((DoubleKeyMap<?, ?, ?>) obj).map);
+		return (obj instanceof DoubleKeyMap) && map.equals(((DoubleKeyMap<?, ?, ?>) obj).map);
 	}
 
 	/**

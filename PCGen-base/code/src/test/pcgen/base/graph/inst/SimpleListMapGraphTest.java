@@ -85,7 +85,7 @@ public class SimpleListMapGraphTest extends
 		//But that an instance test will fail
 		for (Integer i : strategy.getNodeList())
 		{
-			assertTrue(i == node || i == node2);
+			assertTrue((i == node) || (i == node2));
 			assertTrue(i != falseNode1);
 		}
 		assertTrue(node == strategy.getInternalizedNode(node));

@@ -189,7 +189,7 @@ public abstract class AbstractMapToList<K, V> implements MapToList<K, V>
 	@Override
 	public void addAllToListFor(K key, Collection<? extends V> values)
 	{
-		if (values == null || values.isEmpty())
+		if ((values == null) || values.isEmpty())
 		{
 			return;
 		}
@@ -367,7 +367,7 @@ public abstract class AbstractMapToList<K, V> implements MapToList<K, V>
 	public List<V> getListFor(K key)
 	{
 		List<V> list = mapToList.get(key);
-		return list == null ? null : new ArrayList<V>(list);
+		return (list == null) ? null : new ArrayList<V>(list);
 	}
 
 	/**
