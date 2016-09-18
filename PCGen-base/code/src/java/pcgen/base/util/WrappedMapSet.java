@@ -168,13 +168,13 @@ public class WrappedMapSet<T> extends AbstractSet<T>
 	@Override
 	public boolean add(T item)
 	{
-		return map.put(item, PRESENCE) == null;
+		return map.put(item, WrappedMapSet.PRESENCE) == null;
 	}
 
 	@Override
 	public boolean remove(Object item)
 	{
-		return map.remove(item) == PRESENCE;
+		return map.remove(item) == WrappedMapSet.PRESENCE;
 	}
 
 	@Override
