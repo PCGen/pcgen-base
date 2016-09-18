@@ -210,7 +210,7 @@ public class TripleKeyMapToList<K1, K2, K3, V>
 	public List<V> getListFor(K1 key1, K2 key2, K3 key3)
 	{
 		MapToList<K3, V> localMap = map.get(key1, key2);
-		return localMap == null ? null : localMap.getListFor(key3);
+		return (localMap == null) ? null : localMap.getListFor(key3);
 	}
 
 	/**
@@ -233,7 +233,7 @@ public class TripleKeyMapToList<K1, K2, K3, V>
 	public boolean containsListFor(K1 key1, K2 key2, K3 key3)
 	{
 		MapToList<K3, V> localMap = map.get(key1, key2);
-		return localMap != null && localMap.containsListFor(key3);
+		return (localMap != null) && localMap.containsListFor(key3);
 	}
 
 	/**
@@ -255,7 +255,7 @@ public class TripleKeyMapToList<K1, K2, K3, V>
 	public List<V> removeListFor(K1 key1, K2 key2, K3 key3)
 	{
 		MapToList<K3, V> localMap = map.get(key1, key2);
-		return localMap == null ? null : localMap.removeListFor(key3);
+		return (localMap == null) ? null : localMap.removeListFor(key3);
 	}
 
 	/**
@@ -424,7 +424,6 @@ public class TripleKeyMapToList<K1, K2, K3, V>
 	@Override
 	public boolean equals(Object obj)
 	{
-		return obj instanceof TripleKeyMapToList
-			&& map.equals(((TripleKeyMapToList<?, ?, ?, ?>) obj).map);
+		return (obj instanceof TripleKeyMapToList) && map.equals(((TripleKeyMapToList<?, ?, ?, ?>) obj).map);
 	}
 }

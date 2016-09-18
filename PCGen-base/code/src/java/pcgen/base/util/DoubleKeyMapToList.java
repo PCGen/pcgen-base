@@ -528,7 +528,7 @@ public class DoubleKeyMapToList<K1, K2, V> implements Cloneable
 	public int sizeOfListFor(K1 key1, K2 key2)
 	{
 		MapToList<K2, V> localMap = mtmtl.get(key1);
-		return localMap == null ? 0 : localMap.sizeOfListFor(key2);
+		return (localMap == null) ? 0 : localMap.sizeOfListFor(key2);
 	}
 
 	/**
@@ -548,8 +548,7 @@ public class DoubleKeyMapToList<K1, K2, V> implements Cloneable
 	@Override
 	public boolean equals(Object obj)
 	{
-		return obj instanceof DoubleKeyMapToList
-			&& mtmtl.equals(((DoubleKeyMapToList<?, ?, ?>) obj).mtmtl);
+		return (obj instanceof DoubleKeyMapToList) && mtmtl.equals(((DoubleKeyMapToList<?, ?, ?>) obj).mtmtl);
 	}
 
 	/**

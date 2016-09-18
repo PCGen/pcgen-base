@@ -81,14 +81,14 @@ public class DefaultDirectionalHyperEdge<N> implements DirectionalHyperEdge<N>
 		Collection<N> sinkNode)
 	{
 		super();
-		if (sourceNode == null && sinkNode == null)
+		if ((sourceNode == null) && (sinkNode == null))
 		{
 			throw new IllegalArgumentException(
 				"Both Collections to DefaultDirectionalGraphEdge cannot be null");
 		}
 		sourceNodes = setNodes(sourceNode);
 		sinkNodes = setNodes(sinkNode);
-		if (sourceNodes == null && sinkNodes == null)
+		if ((sourceNodes == null) && (sinkNodes == null))
 		{
 			throw new IllegalArgumentException(
 				"GraphNode List of DefaultHyperEdge cannot be empty");
@@ -105,7 +105,7 @@ public class DefaultDirectionalHyperEdge<N> implements DirectionalHyperEdge<N>
 	 */
 	private List<N> setNodes(Collection<N> nodes)
 	{
-		if (nodes == null || nodes.isEmpty())
+		if ((nodes == null) || nodes.isEmpty())
 		{
 			return null;
 		}
@@ -130,14 +130,13 @@ public class DefaultDirectionalHyperEdge<N> implements DirectionalHyperEdge<N>
 	@Override
 	public N getNodeAt(int index)
 	{
-		if (sourceNodes != null && index < sourceNodes.size())
+		if ((sourceNodes != null) && (index < sourceNodes.size()))
 		{
 			return sourceNodes.get(index);
 		}
 		if (sinkNodes != null)
 		{
-			int sinkIndex =
-					sourceNodes == null ? index : index - sourceNodes.size();
+			int sinkIndex = (sourceNodes == null) ? index : (index - sourceNodes.size());
 			return sinkNodes.get(sinkIndex);
 		}
 		throw new IndexOutOfBoundsException();
@@ -175,11 +174,11 @@ public class DefaultDirectionalHyperEdge<N> implements DirectionalHyperEdge<N>
 	@Override
 	public boolean isAdjacentNode(N node)
 	{
-		if (sourceNodes != null && sourceNodes.contains(node))
+		if ((sourceNodes != null) && sourceNodes.contains(node))
 		{
 			return true;
 		}
-		if (sinkNodes != null && sinkNodes.contains(node))
+		if ((sinkNodes != null) && sinkNodes.contains(node))
 		{
 			return true;
 		}
@@ -231,11 +230,11 @@ public class DefaultDirectionalHyperEdge<N> implements DirectionalHyperEdge<N>
 	public int getNodeInterfaceType(N node)
 	{
 		int type = 0;
-		if (sourceNodes != null && sourceNodes.contains(node))
+		if ((sourceNodes != null) && sourceNodes.contains(node))
 		{
 			type |= DirectionalEdge.SOURCE;
 		}
-		if (sinkNodes != null && sinkNodes.contains(node))
+		if ((sinkNodes != null) && sinkNodes.contains(node))
 		{
 			type |= DirectionalEdge.SINK;
 		}
@@ -255,7 +254,7 @@ public class DefaultDirectionalHyperEdge<N> implements DirectionalHyperEdge<N>
 	@Override
 	public List<N> getSinkNodes()
 	{
-		return sinkNodes == null ? null : new ArrayList<N>(sinkNodes);
+		return (sinkNodes == null) ? null : new ArrayList<N>(sinkNodes);
 	}
 
 	/**
@@ -271,7 +270,7 @@ public class DefaultDirectionalHyperEdge<N> implements DirectionalHyperEdge<N>
 	@Override
 	public List<N> getSourceNodes()
 	{
-		return sourceNodes == null ? null : new ArrayList<N>(sourceNodes);
+		return (sourceNodes == null) ? null : new ArrayList<N>(sourceNodes);
 	}
 
 	/**

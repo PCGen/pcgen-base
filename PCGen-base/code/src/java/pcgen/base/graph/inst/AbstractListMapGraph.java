@@ -355,7 +355,7 @@ public abstract class AbstractListMapGraph<N, ET extends Edge<N>> implements
 	{
 		// implicitly returns null if gn is not in the nodeEdgeMap
 		Set<ET> adjacentEdges = nodeEdgeMap.get(node);
-		return adjacentEdges == null ? null : new HashSet<ET>(adjacentEdges);
+		return (adjacentEdges == null) ? null : new HashSet<ET>(adjacentEdges);
 	}
 
 	/**
@@ -459,7 +459,7 @@ public abstract class AbstractListMapGraph<N, ET extends Edge<N>> implements
 	public int hashCode()
 	{
 		// This is really simple, but it works... and prevents a deep hash
-		return nodeList.size() + edgeList.size() * 23;
+		return nodeList.size() + (edgeList.size() * 23);
 	}
 
 	/**
