@@ -39,10 +39,10 @@ public class DefaultHyperEdgeTest extends TestCase
 	@Override
 	protected void setUp() throws Exception
 	{
-		node3 = new Integer(3);
-		node4 = new Integer(4);
-		node5 = new Integer(5);
-		node6 = new Integer(6);
+		node3 = Integer.valueOf(3);
+		node4 = Integer.valueOf(4);
+		node5 = Integer.valueOf(5);
+		node6 = Integer.valueOf(6);
 		edge1 = new DefaultHyperEdge<>(Arrays.asList(node4, node3, node6));
 		edge2 = new DefaultHyperEdge<>(Arrays.asList(node6, node5));
 		edge3 = new DefaultHyperEdge<>(Arrays.asList(node6, node4, node3));

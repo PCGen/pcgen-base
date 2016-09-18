@@ -56,7 +56,7 @@ public class ObjectUtilTest extends TestCase
 
 	public void testEqualsMethod()
 	{
-		assertTrue(ObjectUtil.compareWithNull(new Integer(1), new Integer(1)));
+		assertTrue(ObjectUtil.compareWithNull(Integer.valueOf(1), Integer.valueOf(1)));
 	}
 
 }
