@@ -474,7 +474,6 @@ public class DoubleKeyMapToListTest extends TestCase
 		Character ca = Character.valueOf('a');
 		Character cb = Character.valueOf('b');
 		Character cc = Character.valueOf('c');
-		Character ca1 = new Character('a');
 		Integer i1 = Integer.valueOf(1);
 		Double d1 = Double.valueOf(1);
 		dkm.addToListFor(i1, d1, ca);
@@ -488,6 +487,7 @@ public class DoubleKeyMapToListTest extends TestCase
 		dkm.addToListFor(i3, d2, cb);
 		dkm.addToListFor(i3, d2, cc);
 		assertTrue(dkm.containsInList(i1, d1, ca));
+		Character ca1 = new Character('a');
 		assertTrue(dkm.containsInList(i1, d1, ca1));
 		assertTrue(dkm.removeFromListFor(i1, d1, ca1));
 		assertFalse(dkm.containsInList(i1, d1, ca));

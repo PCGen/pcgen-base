@@ -75,13 +75,13 @@ public class GraphChangeSupportTest extends TestCase
 	{
 		assertEquals(0, support.getGraphChangeListeners().length);
 		GraphChangeListener listener = new TransparentGCL();
-		GraphChangeListener alt = new TransparentGCL();
 		support.addGraphChangeListener(listener);
 		assertEquals(1, support.getGraphChangeListeners().length);
 		assertEquals(listener, support.getGraphChangeListeners()[0]);
 		support.removeGraphChangeListener(null);
 		assertEquals(1, support.getGraphChangeListeners().length);
 		assertEquals(listener, support.getGraphChangeListeners()[0]);
+		GraphChangeListener alt = new TransparentGCL();
 		support.removeGraphChangeListener(alt);
 		assertEquals(1, support.getGraphChangeListeners().length);
 		assertEquals(listener, support.getGraphChangeListeners()[0]);

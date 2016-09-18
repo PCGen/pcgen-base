@@ -148,9 +148,9 @@ public class FixedStringListTest extends TestCase
 		{
 			//Yep
 		}
-		FixedStringList empty = new FixedStringList(0);
 		try
 		{
+			FixedStringList empty = new FixedStringList(0);
 			empty.remove(0);
 			fail();
 		}
@@ -178,14 +178,14 @@ public class FixedStringListTest extends TestCase
 		assertTrue(list1u.addAll(1, Arrays.asList("Hi", "There", "People!")));
 		FixedStringList list2 = new FixedStringList(3);
 		assertTrue(list2.addAll(Arrays.asList("Hi", "There", "People!")));
-		FixedStringList list3u = new FixedStringList("Hi", "There", "People!");
-		FixedStringList list3l = new FixedStringList("Hi", "there", "People!");
 		//self
 		assertTrue(list1u.equals(list1u));
 		//equal content
+		FixedStringList list3u = new FixedStringList("Hi", "There", "People!");
 		assertTrue(list2.equals(list3u));
 		assertTrue(list3u.equals(list2));
 		//case sensitive
+		FixedStringList list3l = new FixedStringList("Hi", "there", "People!");
 		assertFalse(list2.equals(list3l));
 		assertFalse(list3l.equals(list2));
 		//length sensitive
@@ -204,14 +204,14 @@ public class FixedStringListTest extends TestCase
 		assertTrue(list1f.addAll(1, Arrays.asList("hi", "there", "people!", "Suffix")));
 		FixedStringList list2 = new FixedStringList(3);
 		assertTrue(list2.addAll(Arrays.asList("Hi", "There", "People!")));
-		FixedStringList list3u = new FixedStringList("Hi", "There", "People!");
-		FixedStringList list3l = new FixedStringList("Hi", "there", "People!");
 		//self
 		assertTrue(list1u.equalsIgnoreCase(list1u));
 		//equal content
+		FixedStringList list3u = new FixedStringList("Hi", "There", "People!");
 		assertTrue(list2.equalsIgnoreCase(list3u));
 		assertTrue(list3u.equalsIgnoreCase(list2));
 		//case insensitive
+		FixedStringList list3l = new FixedStringList("Hi", "there", "People!");
 		assertTrue(list2.equalsIgnoreCase(list3l));
 		assertTrue(list3l.equalsIgnoreCase(list2));
 		//case insensitive but null resistant
@@ -236,17 +236,17 @@ public class FixedStringListTest extends TestCase
 		assertTrue(list1f.addAll(1, Arrays.asList("hi", "there", "people!", "Suffix")));
 		FixedStringList list2 = new FixedStringList(3);
 		assertTrue(list2.addAll(Arrays.asList("Hi", "There", "People!")));
-		FixedStringList list3u = new FixedStringList("Hi", "There", "People!");
-		FixedStringList list3l = new FixedStringList("Hi", "there", "People!");
 		//self
 		assertTrue(FixedStringList.compare(list1u, list1u, StringUtil.CASE_SENSITIVE_ORDER) == 0);
 		assertTrue(FixedStringList.compare(list1u, list1u, String.CASE_INSENSITIVE_ORDER) == 0);
 		//equal content
+		FixedStringList list3u = new FixedStringList("Hi", "There", "People!");
 		assertTrue(FixedStringList.compare(list2, list3u, StringUtil.CASE_SENSITIVE_ORDER) == 0);
 		assertTrue(FixedStringList.compare(list2, list3u, String.CASE_INSENSITIVE_ORDER) == 0);
 		assertTrue(FixedStringList.compare(list3u, list2, StringUtil.CASE_SENSITIVE_ORDER) == 0);
 		assertTrue(FixedStringList.compare(list3u, list2, String.CASE_INSENSITIVE_ORDER) == 0);
 		//case difference
+		FixedStringList list3l = new FixedStringList("Hi", "there", "People!");
 		assertTrue(FixedStringList.compare(list2, list3l, StringUtil.CASE_SENSITIVE_ORDER) < 0);
 		assertTrue(FixedStringList.compare(list2, list3l, String.CASE_INSENSITIVE_ORDER) == 0);
 		assertTrue(FixedStringList.compare(list3l, list2, StringUtil.CASE_SENSITIVE_ORDER) > 0);

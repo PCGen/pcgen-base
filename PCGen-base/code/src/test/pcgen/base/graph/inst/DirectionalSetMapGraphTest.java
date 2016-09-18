@@ -193,7 +193,6 @@ public class DirectionalSetMapGraphTest extends
 
 	public void testHasInwardEdgeList()
 	{
-		Integer node0 = new Integer(0);
 		Integer node1 = new Integer(1);
 		Integer node2 = new Integer(2);
 		Integer node3 = new Integer(3);
@@ -233,6 +232,7 @@ public class DirectionalSetMapGraphTest extends
 		assertFalse(strategy.hasInwardEdge(node5));
 		assertTrue(strategy.hasInwardEdge(node6));
 		// not in graph
+		Integer node0 = new Integer(0);
 		assertFalse(strategy.hasInwardEdge(node0));
 		// special case
 		assertFalse(strategy.hasInwardEdge(null));
@@ -240,7 +240,6 @@ public class DirectionalSetMapGraphTest extends
 
 	public void testHasOutwardEdgeList()
 	{
-		Integer node0 = new Integer(0);
 		Integer node1 = new Integer(1);
 		Integer node2 = new Integer(2);
 		Integer node3 = new Integer(3);
@@ -280,6 +279,7 @@ public class DirectionalSetMapGraphTest extends
 		assertTrue(strategy.hasOutwardEdge(node5));
 		assertFalse(strategy.hasOutwardEdge(node6));
 		// not in graph
+		Integer node0 = new Integer(0);
 		assertFalse(strategy.hasOutwardEdge(node0));
 		// special case
 		assertFalse(strategy.hasOutwardEdge(null));
@@ -294,11 +294,11 @@ public class DirectionalSetMapGraphTest extends
 	public void testGetInternalizedNode()
 	{
 		Integer node = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer falseNode1 = new Integer(1); // MUST NOT BE
-												// Integer.valueOf(1)!!!!!
+		// Integer.valueOf(1)!!!!!
 		assertFalse(strategy.containsNode(node));
+		Integer node2 = new Integer(2);
 		assertFalse(strategy.containsNode(node2));
+		Integer falseNode1 = new Integer(1); // MUST NOT BE
 		assertFalse(strategy.containsNode(falseNode1));
 		assertEquals(0, strategy.getNodeList().size());
 		// No nodes are in the graph, so response is null

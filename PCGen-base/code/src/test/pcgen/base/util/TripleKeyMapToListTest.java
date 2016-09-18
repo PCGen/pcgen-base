@@ -299,13 +299,13 @@ public class TripleKeyMapToListTest extends TestCase
 	@Test
 	public void testAddAllToListFor()
 	{
-		Integer i1 = I1;
-		Double d1 = D1;
 		List<Character> l = new ArrayList<>();
 		l.add(CONST_A);
 		l.add(null);
 		l.add(CONST_A);
 		l.add(CONST_B);
+		Double d1 = D1;
+		Integer i1 = I1;
 		dkm.addAllToListFor(i1, d1, L1, l);
 		assertTrue(dkm.containsListFor(i1, d1, L1));
 		assertEquals(4, dkm.getListFor(i1, d1, L1).size());

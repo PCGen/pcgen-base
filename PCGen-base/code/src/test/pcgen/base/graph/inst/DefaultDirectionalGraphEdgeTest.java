@@ -157,8 +157,7 @@ public class DefaultDirectionalGraphEdgeTest extends TestCase
 
 	public void testGetSourceNode()
 	{
-		List l;
-		l = edge1.getSourceNodes();
+		List l = edge1.getSourceNodes();
 		assertEquals(1, l.size());
 		assertTrue(l.contains(node1));
 		l = edge2.getSourceNodes();
@@ -177,8 +176,7 @@ public class DefaultDirectionalGraphEdgeTest extends TestCase
 
 	public void testGetSinkNode()
 	{
-		List l;
-		l = edge1.getSinkNodes();
+		List l = edge1.getSinkNodes();
 		assertEquals(1, l.size());
 		assertTrue(l.contains(node2));
 		l = edge2.getSinkNodes();

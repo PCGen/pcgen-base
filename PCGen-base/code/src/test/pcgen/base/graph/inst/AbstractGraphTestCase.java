@@ -45,12 +45,11 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 	public void testAddNode()
 	{
 		getStrategy().addGraphChangeListener(listener);
-		Integer node = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer node3 = new Integer(3);
 		assertEquals(0, getStrategy().getNodeCount());
 		assertTrue(getStrategy().isEmpty());
+		Integer node = new Integer(1);
 		assertFalse(getStrategy().containsNode(node));
+		Integer node2 = new Integer(2);
 		assertFalse(getStrategy().containsNode(node2));
 		assertNull(listener.lastAddNode);
 		// don't allow a null
@@ -86,6 +85,7 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 		assertEquals(2, getStrategy().getNodeCount());
 		assertEquals(node2, listener.lastAddNode);
 		//
+		Integer node3 = new Integer(3);
 		assertTrue(getStrategy().addNode(node3));
 		assertTrue(getStrategy().containsNode(node3));
 		assertEquals(3, getStrategy().getNodeList().size());
@@ -98,8 +98,6 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 		Integer node1 = new Integer(1);
 		Integer node2 = new Integer(2);
 		Integer node3 = new Integer(3);
-		Integer node4 = new Integer(4);
-		Integer node5 = new Integer(5);
 		T edge = getLegalEdge(node1, node2);
 		T edge2 = getLegalEdge(node1, node3);
 		getStrategy().addGraphChangeListener(listener);
@@ -139,6 +137,7 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 		assertFalse(getStrategy().containsEdge(null));
 		assertEquals(2, getStrategy().getEdgeList().size());
 		assertEquals(edge2, listener.lastAddEdge);
+		Integer node4 = new Integer(4);
 		assertFalse(getStrategy().containsNode(node4));
 		T he1 = getLegalHyperEdge(new Integer[]{node4});
 		assertFalse(getStrategy().containsEdge(he1));
@@ -146,6 +145,7 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 		assertTrue(getStrategy().containsEdge(he1));
 		assertEquals(he1, listener.lastAddEdge);
 		assertTrue(getStrategy().containsNode(node4));
+		Integer node5 = new Integer(5);
 		assertFalse(getStrategy().containsNode(node5));
 		T he3 = getLegalHyperEdge(new Integer[]{node3, node4, node5});
 		assertFalse(getStrategy().containsEdge(he3));
@@ -194,8 +194,8 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 	public void testContainsNode()
 	{
 		Integer node = new Integer(1);
-		Integer node2 = new Integer(2);
 		assertFalse(getStrategy().containsNode(node));
+		Integer node2 = new Integer(2);
 		assertFalse(getStrategy().containsNode(node2));
 		getStrategy().addNode(node);
 		assertTrue(getStrategy().containsNode(node));
@@ -222,8 +222,8 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 
 	public void testGetNodeList()
 	{
-		Integer node = new Integer(1);
 		assertTrue(getStrategy().getNodeList().isEmpty());
+		Integer node = new Integer(1);
 		getStrategy().addNode(node);
 		assertEquals(1, getStrategy().getNodeList().size());
 		assertEquals(node, getStrategy().getNodeList().get(0));
@@ -257,10 +257,10 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 	public void testRemoveNode()
 	{
 		getStrategy().addGraphChangeListener(listener);
-		Integer node = new Integer(1);
 		Integer node2 = new Integer(2);
 		// not in there!
 		listener.lastRemoveNode = node2;
+		Integer node = new Integer(1);
 		assertFalse(getStrategy().removeNode(node));
 		assertEquals(node2, listener.lastRemoveNode);
 		assertTrue(getStrategy().addNode(node));
@@ -456,7 +456,6 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 	public void testEquals()
 	{
 		Integer node1 = new Integer(1);
-		Integer node2 = new Integer(2);
 		Integer node3 = new Integer(3);
 		Integer node4 = new Integer(4);
 		T edge1 = getLegalEdge(node1, node3);
@@ -511,6 +510,7 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 		assertTrue(master.addEdge(edge2));
 		assertTrue(testGraph.equals(master));
 		assertEquals(testGraph.hashCode(), master.hashCode());
+		Integer node2 = new Integer(2);
 		assertTrue(testGraph.addNode(node2));
 		assertFalse(testGraph.equals(master));
 		// Yes, NEW, not valueOf

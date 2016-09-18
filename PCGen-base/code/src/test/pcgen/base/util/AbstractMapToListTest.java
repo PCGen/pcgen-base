@@ -393,7 +393,6 @@ public abstract class AbstractMapToListTest extends TestCase
 		Character ca = Character.valueOf('a');
 		Character cb = Character.valueOf('b');
 		Character cc = Character.valueOf('c');
-		Character ca1 = new Character('a');
 		Integer i1 = Integer.valueOf(1);
 		dkm.addToListFor(i1, ca);
 		dkm.addToListFor(i1, cb);
@@ -405,6 +404,7 @@ public abstract class AbstractMapToListTest extends TestCase
 		dkm.addToListFor(i3, cb);
 		dkm.addToListFor(i3, cc);
 		assertTrue(dkm.containsInList(i1, ca));
+		Character ca1 = new Character('a');
 		assertTrue(dkm.containsInList(i1, ca1));
 		assertTrue(dkm.removeFromListFor(i1, ca1));
 		assertFalse(dkm.containsInList(i1, ca));

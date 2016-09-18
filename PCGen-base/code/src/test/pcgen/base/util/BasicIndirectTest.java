@@ -100,11 +100,11 @@ public class BasicIndirectTest extends TestCase
 	{
 		BasicIndirect<Number> indirectInt = new BasicIndirect<>(new NumberManager(), Integer.valueOf(4));
 		BasicIndirect<Number> indirectDoubleToo = new BasicIndirect<>(new NumberManager(), new Double(4.0));
-		BasicIndirect<String> indirectStringHi = new BasicIndirect<>(new StringManager(), "Hi!");
 		assertTrue(indirectDouble.equals(indirectDoubleToo));
 		assertTrue(indirectDoubleToo.equals(indirectDouble));
 		assertFalse(indirectDouble.equals(indirectInt));
 		assertFalse(indirectDouble.equals(indirectString));
+		BasicIndirect<String> indirectStringHi = new BasicIndirect<>(new StringManager(), "Hi!");
 		assertFalse(indirectString.equals(indirectStringHi));
 		assertFalse(indirectStringHi.equals(indirectString));
 	}

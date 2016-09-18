@@ -65,10 +65,10 @@ public class SimpleListMapGraphTest extends
 	public void testGetInternalizedNode()
 	{
 		Integer node = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer falseNode1 = new Integer(1); //MUST NOT BE Integer.valueOf(1)!!!!!
 		assertFalse(strategy.containsNode(node));
+		Integer node2 = new Integer(2);
 		assertFalse(strategy.containsNode(node2));
+		Integer falseNode1 = new Integer(1); //MUST NOT BE Integer.valueOf(1)!!!!!
 		assertFalse(strategy.containsNode(falseNode1));
 		assertEquals(0, strategy.getNodeList().size());
 		// No nodes are in the graph, so response is null
