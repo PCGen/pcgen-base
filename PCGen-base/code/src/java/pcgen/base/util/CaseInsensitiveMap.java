@@ -75,13 +75,13 @@ public class CaseInsensitiveMap<V> extends HashMap<Object, V>
 	@Override
 	public boolean containsKey(Object key)
 	{
-		return super.containsKey(resolveObject(key));
+		return super.containsKey(CaseInsensitiveMap.resolveObject(key));
 	}
 
 	@Override
 	public V get(Object key)
 	{
-		return super.get(resolveObject(key));
+		return super.get(CaseInsensitiveMap.resolveObject(key));
 	}
 
 	/**
@@ -99,12 +99,12 @@ public class CaseInsensitiveMap<V> extends HashMap<Object, V>
 	@Override
 	public V put(Object key, V value)
 	{
-		return super.put(resolveObject(key), value);
+		return super.put(CaseInsensitiveMap.resolveObject(key), value);
 	}
 
 	@Override
 	public V remove(Object key)
 	{
-		return super.remove(resolveObject(key));
+		return super.remove(CaseInsensitiveMap.resolveObject(key));
 	}
 }

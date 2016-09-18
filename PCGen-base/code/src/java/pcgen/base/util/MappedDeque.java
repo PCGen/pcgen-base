@@ -62,7 +62,7 @@ public class MappedDeque
 		{
 			throw new IllegalArgumentException("Key cannot be null");
 		}
-		getDeque(key).push(wrap(value));
+		getDeque(key).push(MappedDeque.wrap(value));
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class MappedDeque
 		{
 			return key.getDefaultValue();
 		}
-		return key.cast(unwrap(dq.pop()));
+		return key.cast(MappedDeque.unwrap(dq.pop()));
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class MappedDeque
 		}
 		else
 		{
-			value = key.cast(unwrap(dq.peek()));
+			value = key.cast(MappedDeque.unwrap(dq.peek()));
 		}
 		return value;
 	}
@@ -153,7 +153,7 @@ public class MappedDeque
 		{
 			dq.pop();
 		}
-		dq.push(wrap(value));
+		dq.push(MappedDeque.wrap(value));
 	}
 
 	/**

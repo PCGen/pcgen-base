@@ -44,7 +44,7 @@ public class ArrayFormatFactory implements FormatManagerFactory
 			throw new IllegalArgumentException(
 				"Array Format cannot be built from no instructions");
 		}
-		if (ARRAY_PATTERN.matcher(subFormatName).find())
+		if (ArrayFormatFactory.ARRAY_PATTERN.matcher(subFormatName).find())
 		{
 			/*
 			 * This is currently prohibited because - among other things -
