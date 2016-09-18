@@ -211,7 +211,7 @@ public class ParsingSeparator implements Iterator<String>
 			return "";
 		}
 		StringBuilder compilation = new StringBuilder(baseString.length());
-		Deque<String> expected = new ArrayDeque<String>();
+		Deque<String> expected = new ArrayDeque<>();
 		while (baseTokenizer.hasMoreTokens())
 		{
 			String currentToken = baseTokenizer.nextToken();

@@ -366,7 +366,7 @@ public abstract class AbstractMapToListTest extends TestCase
 	public void testAddAll()
 	{
 		AbstractMapToList<Integer, Character> dkm = getMapToList();
-		List<Character> l = new ArrayList<Character>();
+		List<Character> l = new ArrayList<>();
 		l.add(CONST_A);
 		l.add(null);
 		l.add(CONST_A);

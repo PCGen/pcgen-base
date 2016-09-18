@@ -75,8 +75,7 @@ public class TripleKeyMapToList<K1, K2, K3, V>
 	public TripleKeyMapToList()
 	{
 		thirdClass = HashMap.class;
-		map = new DoubleKeyMap<K1, K2, MapToList<K3, V>>(HashMap.class,
-				HashMap.class);
+		map = new DoubleKeyMap<>(HashMap.class, HashMap.class);
 	}
 
 	/**
@@ -103,7 +102,7 @@ public class TripleKeyMapToList<K1, K2, K3, V>
 	public TripleKeyMapToList(Class<? extends Map> cl1,
 		Class<? extends Map> cl2, Class<? extends Map> cl3)
 	{
-		map = new DoubleKeyMap<K1, K2, MapToList<K3, V>>(cl1, cl2);
+		map = new DoubleKeyMap<>(cl1, cl2);
 		if (cl3 == null)
 		{
 			throw new IllegalArgumentException(

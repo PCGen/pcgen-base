@@ -321,7 +321,7 @@ public class GenericMapToListTest_IdentityHash extends TestCase
 	@Test
 	public void testAddAll()
 	{
-		List<Character> l = new ArrayList<Character>();
+		List<Character> l = new ArrayList<>();
 		l.add(CONST_A);
 		l.add(null);
 		l.add(CONST_A);
@@ -376,7 +376,7 @@ public class GenericMapToListTest_IdentityHash extends TestCase
 	@Test
 	public void testAddAllLists()
 	{
-		HashMapToList<Integer, Character> dkm2 = new HashMapToList<Integer, Character>();
+		HashMapToList<Integer, Character> dkm2 = new HashMapToList<>();
 		populate();
 		dkm2.addAllLists(dkm);
 		assertTrue(dkm.removeFromListFor(CONST_1B, CONST_C));

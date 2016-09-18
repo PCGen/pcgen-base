@@ -116,10 +116,10 @@ public abstract class AbstractListMapGraph<N, ET extends Edge<N>> implements
 	 */
 	protected AbstractListMapGraph()
 	{
-		edgeList = new ArrayList<ET>();
-		nodeList = new ArrayList<N>();
-		gcs = new GraphChangeSupport<N, ET>(this);
-		nodeEdgeMap = new HashMap<N, Set<ET>>();
+		edgeList = new ArrayList<>();
+		nodeList = new ArrayList<>();
+		gcs = new GraphChangeSupport<>(this);
+		nodeEdgeMap = new HashMap<>();
 	}
 
 	/**
@@ -243,7 +243,7 @@ public abstract class AbstractListMapGraph<N, ET extends Edge<N>> implements
 	@Override
 	public List<N> getNodeList()
 	{
-		return new ArrayList<N>(nodeList);
+		return new ArrayList<>(nodeList);
 	}
 
 	/**
@@ -258,7 +258,7 @@ public abstract class AbstractListMapGraph<N, ET extends Edge<N>> implements
 	@Override
 	public List<ET> getEdgeList()
 	{
-		return new ArrayList<ET>(edgeList);
+		return new ArrayList<>(edgeList);
 	}
 
 	/**
@@ -354,7 +354,7 @@ public abstract class AbstractListMapGraph<N, ET extends Edge<N>> implements
 	{
 		// implicitly returns null if gn is not in the nodeEdgeMap
 		Set<ET> adjacentEdges = nodeEdgeMap.get(node);
-		return (adjacentEdges == null) ? null : new HashSet<ET>(adjacentEdges);
+		return (adjacentEdges == null) ? null : new HashSet<>(adjacentEdges);
 	}
 
 	/**
@@ -419,7 +419,7 @@ public abstract class AbstractListMapGraph<N, ET extends Edge<N>> implements
 			return false;
 		}
 		// (potentially wasteful, but defensive copy)
-		otherNodeList = new ArrayList<N>(otherNodeList);
+		otherNodeList = new ArrayList<>(otherNodeList);
 		if (otherNodeList.retainAll(nodeList))
 		{
 			// Some nodes are not identical
@@ -437,7 +437,7 @@ public abstract class AbstractListMapGraph<N, ET extends Edge<N>> implements
 			return false;
 		}
 		// (potentially wasteful, but defensive copy)
-		otherEdgeList = new ArrayList<ET>(otherEdgeList);
+		otherEdgeList = new ArrayList<>(otherEdgeList);
 		return !otherEdgeList.retainAll(edgeList);
 	}
 

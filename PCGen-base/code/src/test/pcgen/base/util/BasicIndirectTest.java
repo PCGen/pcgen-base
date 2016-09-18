@@ -27,10 +27,8 @@ import pcgen.base.format.StringManager;
 public class BasicIndirectTest extends TestCase
 {
 
-	private BasicIndirect<Number> indirectDouble = new BasicIndirect<Number>(
-		new NumberManager(), Double.valueOf(4));
-	private BasicIndirect<String> indirectString = new BasicIndirect<String>(
-		new StringManager(), "Hello!");
+	private BasicIndirect<Number> indirectDouble = new BasicIndirect<>(new NumberManager(), Double.valueOf(4));
+	private BasicIndirect<String> indirectString = new BasicIndirect<>(new StringManager(), "Hello!");
 
 	@Test
 	public void testConstructor()
@@ -38,7 +36,7 @@ public class BasicIndirectTest extends TestCase
 		try
 		{
 			//Using .equals to prove a point if this is changed to legal :)
-			new BasicIndirect<String>(new StringManager(), null).equals(indirectDouble);
+			new BasicIndirect<>(new StringManager(), null).equals(indirectDouble);
 			fail();
 		}
 		catch (IllegalArgumentException e)
@@ -47,7 +45,7 @@ public class BasicIndirectTest extends TestCase
 		}
 		try
 		{
-			new BasicIndirect<String>(null, "Hello!");
+			new BasicIndirect<>(null, "Hello!");
 			fail();
 		}
 		catch (IllegalArgumentException e)
@@ -100,14 +98,9 @@ public class BasicIndirectTest extends TestCase
 	@Test
 	public void testEquals()
 	{
-		BasicIndirect<Number> indirectInt =
-				new BasicIndirect<Number>(new NumberManager(),
-					Integer.valueOf(4));
-		BasicIndirect<Number> indirectDoubleToo =
-				new BasicIndirect<Number>(new NumberManager(),
-					new Double(4.0));
-		BasicIndirect<String> indirectStringHi =
-				new BasicIndirect<String>(new StringManager(), "Hi!");
+		BasicIndirect<Number> indirectInt = new BasicIndirect<>(new NumberManager(), Integer.valueOf(4));
+		BasicIndirect<Number> indirectDoubleToo = new BasicIndirect<>(new NumberManager(), new Double(4.0));
+		BasicIndirect<String> indirectStringHi = new BasicIndirect<>(new StringManager(), "Hi!");
 		assertTrue(indirectDouble.equals(indirectDoubleToo));
 		assertTrue(indirectDoubleToo.equals(indirectDouble));
 		assertFalse(indirectDouble.equals(indirectInt));

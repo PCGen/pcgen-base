@@ -52,7 +52,7 @@ public class StringManager implements FormatManager<String>
 		{
 			throw new IllegalArgumentException("String cannot be null");
 		}
-		return new BasicIndirect<String>(this, s);
+		return new BasicIndirect<>(this, s);
 	}
 
 	/**

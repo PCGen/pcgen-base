@@ -89,7 +89,7 @@ public class DoubleKeyMapToList<K1, K2, V> implements Cloneable
 	{
 		firstClass = HashMap.class;
 		secondClass = firstClass;
-		mtmtl = new HashMap<K1, MapToList<K2, V>>();
+		mtmtl = new HashMap<>();
 	}
 
 	/**
@@ -379,7 +379,7 @@ public class DoubleKeyMapToList<K1, K2, V> implements Cloneable
 	{
 		// Need to 'clone' the Set, since Map returns a set that is still
 		// associated with the Map
-		return new WrappedMapSet<K1>(firstClass, mtmtl.keySet());
+		return new WrappedMapSet<>(firstClass, mtmtl.keySet());
 	}
 
 	/**
@@ -473,12 +473,10 @@ public class DoubleKeyMapToList<K1, K2, V> implements Cloneable
 		DoubleKeyMapToList<K1, K2, V> dkm =
 				(DoubleKeyMapToList<K1, K2, V>) super.clone();
 		dkm.mtmtl = createGlobalMap();
-		for (Iterator<K1> it = mtmtl.keySet().iterator(); it.hasNext();)
+		for (K1 key : mtmtl.keySet())
 		{
-			K1 key = it.next();
 			MapToList<K2, V> currentMTL = mtmtl.get(key);
-			MapToList<K2, V> newMTL =
-					GenericMapToList.getMapToList(secondClass);
+			MapToList<K2, V> newMTL = GenericMapToList.getMapToList(secondClass);
 			newMTL.addAllLists(currentMTL);
 			dkm.mtmtl.put(key, newMTL);
 		}

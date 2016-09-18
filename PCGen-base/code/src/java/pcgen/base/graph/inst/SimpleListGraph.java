@@ -86,9 +86,9 @@ public class SimpleListGraph<N, ET extends Edge<N>> implements Graph<N, ET>
 	 */
 	public SimpleListGraph()
 	{
-		edgeList = new ArrayList<ET>();
-		nodeList = new ArrayList<N>();
-		gcs = new GraphChangeSupport<N, ET>(this);
+		edgeList = new ArrayList<>();
+		nodeList = new ArrayList<>();
+		gcs = new GraphChangeSupport<>(this);
 	}
 
 	/**
@@ -161,7 +161,7 @@ public class SimpleListGraph<N, ET extends Edge<N>> implements Graph<N, ET>
 	@Override
 	public List<N> getNodeList()
 	{
-		return new ArrayList<N>(nodeList);
+		return new ArrayList<>(nodeList);
 	}
 
 	/**
@@ -176,7 +176,7 @@ public class SimpleListGraph<N, ET extends Edge<N>> implements Graph<N, ET>
 	@Override
 	public List<ET> getEdgeList()
 	{
-		return new ArrayList<ET>(edgeList);
+		return new ArrayList<>(edgeList);
 	}
 
 	/**
@@ -244,7 +244,7 @@ public class SimpleListGraph<N, ET extends Edge<N>> implements Graph<N, ET>
 		{
 			return null;
 		}
-		Set<ET> adjacentEdgeList = new HashSet<ET>();
+		Set<ET> adjacentEdgeList = new HashSet<>();
 		EDGEITER: for (ET ge : edgeList)
 		{
 			List<N> graphNodes = ge.getAdjacentNodes();
@@ -321,7 +321,7 @@ public class SimpleListGraph<N, ET extends Edge<N>> implements Graph<N, ET>
 			return false;
 		}
 		// (potentially wasteful, but defensive copy)
-		otherNodeList = new ArrayList<N>(otherNodeList);
+		otherNodeList = new ArrayList<>(otherNodeList);
 		if (otherNodeList.retainAll(nodeList))
 		{
 			// Other Graph contains extra nodes
@@ -335,7 +335,7 @@ public class SimpleListGraph<N, ET extends Edge<N>> implements Graph<N, ET>
 			return false;
 		}
 		// (potentially wasteful, but defensive copy)
-		otherEdgeList = new ArrayList<ET>(otherEdgeList);
+		otherEdgeList = new ArrayList<>(otherEdgeList);
 		// possible that the Other Graph contains extra edges
 		return !otherEdgeList.retainAll(edgeList);
 	}

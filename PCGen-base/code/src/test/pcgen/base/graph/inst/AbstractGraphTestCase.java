@@ -31,7 +31,7 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 		TestCase
 {
 
-	private SimpleListGraph<Integer, T> master = new SimpleListGraph<Integer, T>();
+	private SimpleListGraph<Integer, T> master = new SimpleListGraph<>();
 
 	private TestGraphChangeListener<Integer, T> listener;
 
@@ -39,7 +39,7 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 	protected void setUp() throws Exception
 	{
 		super.setUp();
-		listener = new TestGraphChangeListener<Integer, T>();
+		listener = new TestGraphChangeListener<>();
 	}
 
 	public void testAddNode()
@@ -422,8 +422,7 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 		getStrategy().addGraphChangeListener(listener);
 		assertEquals(1, getStrategy().getGraphChangeListeners().length);
 		assertEquals(listener, getStrategy().getGraphChangeListeners()[0]);
-		TestGraphChangeListener<Integer, T> listener2 =
-				new TestGraphChangeListener<Integer, T>();
+		TestGraphChangeListener<Integer, T> listener2 = new TestGraphChangeListener<>();
 		getStrategy().addGraphChangeListener(listener2);
 		assertEquals(2, getStrategy().getGraphChangeListeners().length);
 		// order is not significant!
@@ -439,8 +438,7 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 		assertEquals(1, getStrategy().getGraphChangeListeners().length);
 		assertEquals(listener, getStrategy().getGraphChangeListeners()[0]);
 		// ignore non-entry
-		TestGraphChangeListener<Integer, T> listener2 =
-				new TestGraphChangeListener<Integer, T>();
+		TestGraphChangeListener<Integer, T> listener2 = new TestGraphChangeListener<>();
 		getStrategy().removeGraphChangeListener(listener2);
 		assertEquals(1, getStrategy().getGraphChangeListeners().length);
 		assertEquals(listener, getStrategy().getGraphChangeListeners()[0]);

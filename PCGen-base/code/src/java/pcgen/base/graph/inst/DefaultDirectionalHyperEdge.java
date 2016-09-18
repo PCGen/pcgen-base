@@ -111,7 +111,7 @@ public class DefaultDirectionalHyperEdge<N> implements DirectionalHyperEdge<N>
 		/*
 		 * Copy before content check for thread safety
 		 */
-		List<N> returnList = new ArrayList<N>(nodes.size());
+		List<N> returnList = new ArrayList<>(nodes.size());
 		returnList.addAll(nodes);
 		for (N node : returnList)
 		{
@@ -154,7 +154,7 @@ public class DefaultDirectionalHyperEdge<N> implements DirectionalHyperEdge<N>
 	@Override
 	public List<N> getAdjacentNodes()
 	{
-		ArrayList<N> returnList = new ArrayList<N>(getAdjacentNodeCount());
+		ArrayList<N> returnList = new ArrayList<>(getAdjacentNodeCount());
 		if (sourceNodes != null)
 		{
 			returnList.addAll(sourceNodes);
@@ -249,7 +249,7 @@ public class DefaultDirectionalHyperEdge<N> implements DirectionalHyperEdge<N>
 	@Override
 	public List<N> getSinkNodes()
 	{
-		return (sinkNodes == null) ? null : new ArrayList<N>(sinkNodes);
+		return (sinkNodes == null) ? null : new ArrayList<>(sinkNodes);
 	}
 
 	/**
@@ -265,7 +265,7 @@ public class DefaultDirectionalHyperEdge<N> implements DirectionalHyperEdge<N>
 	@Override
 	public List<N> getSourceNodes()
 	{
-		return (sourceNodes == null) ? null : new ArrayList<N>(sourceNodes);
+		return (sourceNodes == null) ? null : new ArrayList<>(sourceNodes);
 	}
 
 	/**
@@ -289,6 +289,6 @@ public class DefaultDirectionalHyperEdge<N> implements DirectionalHyperEdge<N>
 			throw new IllegalArgumentException(
 				"Outgoing Collection to createReplacementEdge in DefaultGraphEdge cannot be null");
 		}
-		return new DefaultDirectionalHyperEdge<N>(newSourceNodes, newSinkNodes);
+		return new DefaultDirectionalHyperEdge<>(newSourceNodes, newSinkNodes);
 	}
 }

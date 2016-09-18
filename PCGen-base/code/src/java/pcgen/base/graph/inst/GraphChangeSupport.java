@@ -144,7 +144,7 @@ public class GraphChangeSupport<N, ET extends Edge<N>>
 			// Lazily create event
 			if (ccEvent == null)
 			{
-				ccEvent = new EdgeChangeEvent<N, ET>(source, edge, id);
+				ccEvent = new EdgeChangeEvent<>(source, edge, id);
 			}
 			switch (ccEvent.getID())
 			{
@@ -188,7 +188,7 @@ public class GraphChangeSupport<N, ET extends Edge<N>>
 			// Lazily create event
 			if (ccEvent == null)
 			{
-				ccEvent = new NodeChangeEvent<N>(source, node, id);
+				ccEvent = new NodeChangeEvent<>(source, node, id);
 			}
 			switch (ccEvent.getID())
 			{

@@ -73,7 +73,7 @@ public class HashMapToInstanceList<K, V> extends AbstractMapToList<K, V>
 	@Override
 	protected Set<K> getEmptySet()
 	{
-		return new HashSet<K>();
+		return new HashSet<>();
 	}
 
 	/**
