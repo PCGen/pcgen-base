@@ -21,7 +21,6 @@ import java.util.AbstractSet;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * A WrappedMapSet allows the conversion of an arbitrary Map into a Set
@@ -45,7 +44,7 @@ import java.util.Set;
  * @param <T>
  *            The type of object stored in this WrappedMapSet
  */
-public class WrappedMapSet<T> extends AbstractSet<T> implements Set<T>
+public class WrappedMapSet<T> extends AbstractSet<T>
 {
 	/**
 	 * The object used to indicate that a given Key in the underlying Map is
@@ -168,13 +167,13 @@ public class WrappedMapSet<T> extends AbstractSet<T> implements Set<T>
 	@Override
 	public boolean add(T item)
 	{
-		return map.put(item, PRESENCE) == null;
+		return map.put(item, WrappedMapSet.PRESENCE) == null;
 	}
 
 	@Override
 	public boolean remove(Object item)
 	{
-		return map.remove(item) == PRESENCE;
+		return map.remove(item) == WrappedMapSet.PRESENCE;
 	}
 
 	@Override

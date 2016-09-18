@@ -37,13 +37,9 @@ public class NumberUtilitiesTest extends TestCase
 			NumberUtilities.getNumber(null);
 			fail();
 		}
-		catch (IllegalArgumentException e)
+		catch (IllegalArgumentException | NullPointerException e)
 		{
 			//We expect this
-		}
-		catch (NullPointerException e)
-		{
-			//Acceptable as well
 		}
 	}
 
@@ -54,13 +50,9 @@ public class NumberUtilitiesTest extends TestCase
 			NumberUtilities.getNumber("1..5");
 			fail();
 		}
-		catch (IllegalArgumentException e)
+		catch (IllegalArgumentException | NullPointerException e)
 		{
 			//We expect this
-		}
-		catch (NullPointerException e)
-		{
-			//Acceptable as well
 		}
 	}
 
@@ -71,13 +63,9 @@ public class NumberUtilitiesTest extends TestCase
 			NumberUtilities.getPreciseNumber(null);
 			fail();
 		}
-		catch (IllegalArgumentException e)
+		catch (IllegalArgumentException | NullPointerException e)
 		{
 			//We expect this
-		}
-		catch (NullPointerException e)
-		{
-			//Acceptable as well
 		}
 	}
 
@@ -103,7 +91,7 @@ public class NumberUtilitiesTest extends TestCase
 
 	public void testPreciseDouble()
 	{
-		assertEquals(new BigDecimal(1.5), NumberUtilities.getPreciseNumber("1.5"));
+		assertEquals(new BigDecimal("1.5"), NumberUtilities.getPreciseNumber("1.5"));
 	}
 
 	public void testPreciseLargeInteger()

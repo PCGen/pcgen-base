@@ -25,10 +25,6 @@ import java.util.List;
 
 import pcgen.base.graph.base.DirectionalEdge;
 import pcgen.base.graph.base.Graph;
-import pcgen.base.graph.base.GraphEdge;
-import pcgen.base.graph.inst.DefaultDirectionalHyperEdge;
-import pcgen.base.graph.inst.DefaultGraphEdge;
-import pcgen.base.graph.inst.DirectionalSetMapGraph;
 
 public class DirectionalSetMapGraphTest extends
 		AbstractGraphTestCase<DirectionalEdge<Integer>>
@@ -42,12 +38,11 @@ public class DirectionalSetMapGraphTest extends
 	protected void setUp() throws Exception
 	{
 		super.setUp();
-		strategy =
-				new DirectionalSetMapGraph<Integer, DirectionalEdge<Integer>>();
+		strategy = new DirectionalSetMapGraph<>();
 	}
 
-	public class TestDirectionalGraphEdge extends DefaultGraphEdge<Integer>
-			implements DirectionalEdge<Integer>, GraphEdge<Integer>
+	public static class TestDirectionalGraphEdge extends DefaultGraphEdge<Integer>
+			implements DirectionalEdge<Integer>
 	{
 		public TestDirectionalGraphEdge(Integer v1, Integer v2)
 		{
@@ -93,10 +88,9 @@ public class DirectionalSetMapGraphTest extends
 	@Override
 	protected DirectionalEdge<Integer> getLegalHyperEdge(Integer[] gna2)
 	{
-		List<Integer> l = new ArrayList<Integer>(Arrays.asList(gna2));
+		List<Integer> l = new ArrayList<>(Arrays.asList(gna2));
 		l.remove(0);
-		return new DefaultDirectionalHyperEdge<Integer>(
-			Collections.singletonList(gna2[0]), l);
+		return new DefaultDirectionalHyperEdge<>(Collections.singletonList(gna2[0]), l);
 	}
 
 	@Override
@@ -126,9 +120,9 @@ public class DirectionalSetMapGraphTest extends
 
 	public void testGetInwardEdgeList()
 	{
-		Integer node1 = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer node3 = new Integer(3);
+		Integer node1 = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
+		Integer node3 = Integer.valueOf(3);
 		DirectionalEdge<Integer> edge1 = getLegalEdge(node1, node2);
 		DirectionalEdge<Integer> edge2 = getLegalEdge(node2, node3);
 		DirectionalEdge<Integer> edge3 = getLegalEdge(node3, node1);
@@ -162,9 +156,9 @@ public class DirectionalSetMapGraphTest extends
 
 	public void testGetOutwardEdgeList()
 	{
-		Integer node1 = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer node3 = new Integer(3);
+		Integer node1 = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
+		Integer node3 = Integer.valueOf(3);
 		DirectionalEdge<Integer> edge1 = getLegalEdge(node1, node2);
 		DirectionalEdge<Integer> edge2 = getLegalEdge(node2, node3);
 		DirectionalEdge<Integer> edge3 = getLegalEdge(node3, node1);
@@ -198,29 +192,24 @@ public class DirectionalSetMapGraphTest extends
 
 	public void testHasInwardEdgeList()
 	{
-		Integer node0 = new Integer(0);
-		Integer node1 = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer node3 = new Integer(3);
-		Integer node4 = new Integer(4);
-		Integer node5 = new Integer(5);
-		Integer node6 = new Integer(6);
+		Integer node1 = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
+		Integer node3 = Integer.valueOf(3);
+		Integer node4 = Integer.valueOf(4);
+		Integer node5 = Integer.valueOf(5);
+		Integer node6 = Integer.valueOf(6);
 		DirectionalEdge<Integer> edge1 = getLegalEdge(node1, node2);
 		DirectionalEdge<Integer> edge2 = getLegalEdge(node2, node3);
 		DirectionalEdge<Integer> edge3 = getLegalEdge(node3, node1);
 		DirectionalEdge<Integer> edge4 = getLegalEdge(node1, node3);
 		DirectionalEdge<Integer> edge5 =
-				new DefaultDirectionalHyperEdge<Integer>(
-					Collections.singletonList(node4), new ArrayList<Integer>());
+				new DefaultDirectionalHyperEdge<>(Collections.singletonList(node4), new ArrayList<Integer>());
 		DirectionalEdge<Integer> edge6 =
-				new DefaultDirectionalHyperEdge<Integer>(
-					new ArrayList<Integer>(), Collections.singletonList(node4));
+				new DefaultDirectionalHyperEdge<>(new ArrayList<Integer>(), Collections.singletonList(node4));
 		DirectionalEdge<Integer> edge7 =
-				new DefaultDirectionalHyperEdge<Integer>(Arrays.asList(node3,
-					node5), new ArrayList<Integer>());
+				new DefaultDirectionalHyperEdge<>(Arrays.asList(node3, node5), new ArrayList<Integer>());
 		DirectionalEdge<Integer> edge8 =
-				new DefaultDirectionalHyperEdge<Integer>(
-					new ArrayList<Integer>(), Arrays.asList(node3, node6));
+				new DefaultDirectionalHyperEdge<>(new ArrayList<Integer>(), Arrays.asList(node3, node6));
 		assertTrue(strategy.addNode(node1));
 		assertTrue(strategy.addNode(node2));
 		assertTrue(strategy.addNode(node3));
@@ -242,6 +231,7 @@ public class DirectionalSetMapGraphTest extends
 		assertFalse(strategy.hasInwardEdge(node5));
 		assertTrue(strategy.hasInwardEdge(node6));
 		// not in graph
+		Integer node0 = new Integer(0);
 		assertFalse(strategy.hasInwardEdge(node0));
 		// special case
 		assertFalse(strategy.hasInwardEdge(null));
@@ -249,29 +239,24 @@ public class DirectionalSetMapGraphTest extends
 
 	public void testHasOutwardEdgeList()
 	{
-		Integer node0 = new Integer(0);
-		Integer node1 = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer node3 = new Integer(3);
-		Integer node4 = new Integer(4);
-		Integer node5 = new Integer(5);
-		Integer node6 = new Integer(6);
+		Integer node1 = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
+		Integer node3 = Integer.valueOf(3);
+		Integer node4 = Integer.valueOf(4);
+		Integer node5 = Integer.valueOf(5);
+		Integer node6 = Integer.valueOf(6);
 		DirectionalEdge<Integer> edge1 = getLegalEdge(node1, node2);
 		DirectionalEdge<Integer> edge2 = getLegalEdge(node2, node3);
 		DirectionalEdge<Integer> edge3 = getLegalEdge(node3, node1);
 		DirectionalEdge<Integer> edge4 = getLegalEdge(node1, node3);
 		DirectionalEdge<Integer> edge5 =
-				new DefaultDirectionalHyperEdge<Integer>(
-					Collections.singletonList(node4), new ArrayList<Integer>());
+				new DefaultDirectionalHyperEdge<>(Collections.singletonList(node4), new ArrayList<Integer>());
 		DirectionalEdge<Integer> edge6 =
-				new DefaultDirectionalHyperEdge<Integer>(
-					new ArrayList<Integer>(), Collections.singletonList(node4));
+				new DefaultDirectionalHyperEdge<>(new ArrayList<Integer>(), Collections.singletonList(node4));
 		DirectionalEdge<Integer> edge7 =
-				new DefaultDirectionalHyperEdge<Integer>(Arrays.asList(node3,
-					node5), new ArrayList<Integer>());
+				new DefaultDirectionalHyperEdge<>(Arrays.asList(node3, node5), new ArrayList<Integer>());
 		DirectionalEdge<Integer> edge8 =
-				new DefaultDirectionalHyperEdge<Integer>(
-					new ArrayList<Integer>(), Arrays.asList(node3, node6));
+				new DefaultDirectionalHyperEdge<>(new ArrayList<Integer>(), Arrays.asList(node3, node6));
 		assertTrue(strategy.addNode(node1));
 		assertTrue(strategy.addNode(node2));
 		assertTrue(strategy.addNode(node3));
@@ -293,6 +278,7 @@ public class DirectionalSetMapGraphTest extends
 		assertTrue(strategy.hasOutwardEdge(node5));
 		assertFalse(strategy.hasOutwardEdge(node6));
 		// not in graph
+		Integer node0 = new Integer(0);
 		assertFalse(strategy.hasOutwardEdge(node0));
 		// special case
 		assertFalse(strategy.hasOutwardEdge(null));
@@ -306,12 +292,12 @@ public class DirectionalSetMapGraphTest extends
 
 	public void testGetInternalizedNode()
 	{
-		Integer node = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer falseNode1 = new Integer(1); // MUST NOT BE
-												// Integer.valueOf(1)!!!!!
+		Integer node = Integer.valueOf(1);
+		// Integer.valueOf(1)!!!!!
 		assertFalse(strategy.containsNode(node));
+		Integer node2 = new Integer(2);
 		assertFalse(strategy.containsNode(node2));
+		Integer falseNode1 = new Integer(1); // MUST NOT BE
 		assertFalse(strategy.containsNode(falseNode1));
 		assertEquals(0, strategy.getNodeList().size());
 		// No nodes are in the graph, so response is null
@@ -328,7 +314,7 @@ public class DirectionalSetMapGraphTest extends
 		// But that an instance test will fail
 		for (Integer i : strategy.getNodeList())
 		{
-			assertTrue(i == node || i == node2);
+			assertTrue((i == node) || (i == node2));
 			assertTrue(i != falseNode1);
 		}
 		assertTrue(node == strategy.getInternalizedNode(node));

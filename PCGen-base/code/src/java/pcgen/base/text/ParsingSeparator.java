@@ -153,8 +153,7 @@ public class ParsingSeparator implements Iterator<String>
 		String oldEnd = groupingPairs.get(startString);
 		String oldStart = groupingPairs.getKeyFor(endString);
 		//Can't use characters twice
-		if ((oldStart != null) && !oldStart.equals(startString)
-			|| (oldEnd != null) && !oldEnd.equals(endString))
+		if (((oldStart != null) && !oldStart.equals(startString)) || ((oldEnd != null) && !oldEnd.equals(endString)))
 		{
 			throw new IllegalStateException(
 				"Cannot add grouping pairs to the ParsingSeparator "
@@ -212,7 +211,7 @@ public class ParsingSeparator implements Iterator<String>
 			return "";
 		}
 		StringBuilder compilation = new StringBuilder(baseString.length());
-		Deque<String> expected = new ArrayDeque<String>();
+		Deque<String> expected = new ArrayDeque<>();
 		while (baseTokenizer.hasMoreTokens())
 		{
 			String currentToken = baseTokenizer.nextToken();
@@ -246,7 +245,7 @@ public class ParsingSeparator implements Iterator<String>
 				{
 					throw new GroupingMismatchException(baseString
 						+ " did not have " + matchedOpening + "before "
-						+ currentToken + ": " + compilation.toString());
+						+ currentToken + ": " + compilation);
 				}
 				String closeWanted = expected.pop();
 				if (!currentToken.equals(closeWanted))
@@ -254,7 +253,7 @@ public class ParsingSeparator implements Iterator<String>
 					throw new GroupingMismatchException(
 						baseString + " did not have " + closeWanted
 							+ " but instead encountered " + currentToken
-							+ " in: " + compilation.toString());
+							+ " in: " + compilation);
 				}
 			}
 		}

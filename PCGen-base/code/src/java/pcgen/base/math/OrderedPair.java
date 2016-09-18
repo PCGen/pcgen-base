@@ -134,7 +134,7 @@ public class OrderedPair
 				"OrderedPair should not start with a comma.  "
 					+ "Must be of the form: <num>,<num>");
 		}
-		if (commaLoc == value.length() - 1)
+		if (commaLoc == (value.length() - 1))
 		{
 			throw new IllegalArgumentException(
 				"OrderedPair should not end with a comma.  "
@@ -182,7 +182,7 @@ public class OrderedPair
 	@Override
 	public String toString()
 	{
-		return x.toString() + "," + y.toString();
+		return x + "," + y;
 	}
 
 	@Override

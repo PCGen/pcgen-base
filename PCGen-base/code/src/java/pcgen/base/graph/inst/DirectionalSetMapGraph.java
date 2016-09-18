@@ -88,12 +88,12 @@ public class DirectionalSetMapGraph<N, ET extends DirectionalEdge<N>> extends
 	@Override
 	public List<ET> getInwardEdgeList(N node)
 	{
-		Set<ET> adjacentEdgeList = super.getAdjacentEdges(node);
+		Set<ET> adjacentEdgeList = getAdjacentEdges(node);
 		if (adjacentEdgeList == null)
 		{
 			return null;
 		}
-		List<ET> inwardEdgeList = new LinkedList<ET>();
+		List<ET> inwardEdgeList = new LinkedList<>();
 		for (ET edge : adjacentEdgeList)
 		{
 			if ((edge.getNodeInterfaceType(node) & DirectionalEdge.SINK) != 0)
@@ -116,12 +116,12 @@ public class DirectionalSetMapGraph<N, ET extends DirectionalEdge<N>> extends
 	@Override
 	public List<ET> getOutwardEdgeList(N node)
 	{
-		Set<ET> adjacentEdgeList = super.getAdjacentEdges(node);
+		Set<ET> adjacentEdgeList = getAdjacentEdges(node);
 		if (adjacentEdgeList == null)
 		{
 			return null;
 		}
-		List<ET> outwardEdgeList = new ArrayList<ET>();
+		List<ET> outwardEdgeList = new ArrayList<>();
 		for (ET edge : adjacentEdgeList)
 		{
 			if ((edge.getNodeInterfaceType(node) & DirectionalEdge.SOURCE) != 0)
@@ -138,7 +138,7 @@ public class DirectionalSetMapGraph<N, ET extends DirectionalEdge<N>> extends
 	@Override
 	public boolean hasInwardEdge(N node)
 	{
-		Set<ET> adjacentEdgeList = super.getAdjacentEdges(node);
+		Set<ET> adjacentEdgeList = getAdjacentEdges(node);
 		if (adjacentEdgeList == null)
 		{
 			return false;
@@ -160,7 +160,7 @@ public class DirectionalSetMapGraph<N, ET extends DirectionalEdge<N>> extends
 	@Override
 	public boolean hasOutwardEdge(N node)
 	{
-		Set<ET> adjacentEdgeList = super.getAdjacentEdges(node);
+		Set<ET> adjacentEdgeList = getAdjacentEdges(node);
 		if (adjacentEdgeList == null)
 		{
 			return false;

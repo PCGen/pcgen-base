@@ -99,6 +99,6 @@ public class TreeMapToList<K, V> extends AbstractMapToList<K, V>
 	@Override
 	protected Set<K> getEmptySet()
 	{
-		return new TreeSet<K>(comparator);
+		return new TreeSet<>(comparator);
 	}
 }

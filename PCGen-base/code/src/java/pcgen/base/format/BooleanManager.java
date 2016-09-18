@@ -54,7 +54,7 @@ public class BooleanManager implements FormatManager<Boolean>
 	@Override
 	public Indirect<Boolean> convertIndirect(String s)
 	{
-		return new BasicIndirect<Boolean>(this, convert(s));
+		return new BasicIndirect<>(this, convert(s));
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class BooleanManager implements FormatManager<Boolean>
 	@Override
 	public boolean equals(Object o)
 	{
-		return o == this || o instanceof BooleanManager;
+		return (o == this) || (o instanceof BooleanManager);
 	}
 
 	/**

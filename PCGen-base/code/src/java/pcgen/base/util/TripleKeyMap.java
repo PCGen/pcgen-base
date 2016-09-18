@@ -80,9 +80,7 @@ public class TripleKeyMap<K1, K2, K3, V> implements Cloneable
 	public TripleKeyMap()
 	{
 		thirdClass = HashMap.class;
-		map =
-				new DoubleKeyMap<K1, K2, Map<K3, V>>(HashMap.class,
-					HashMap.class);
+		map = new DoubleKeyMap<>(HashMap.class, HashMap.class);
 	}
 
 	/**
@@ -109,8 +107,7 @@ public class TripleKeyMap<K1, K2, K3, V> implements Cloneable
 	public TripleKeyMap(Class<? extends Map> cl1, Class<? extends Map> cl2,
 		Class<? extends Map> cl3)
 	{
-		super();
-		map = new DoubleKeyMap<K1, K2, Map<K3, V>>(cl1, cl2);
+		map = new DoubleKeyMap<>(cl1, cl2);
 		if (cl3 == null)
 		{
 			throw new IllegalArgumentException(
@@ -307,7 +304,7 @@ public class TripleKeyMap<K1, K2, K3, V> implements Cloneable
 		{
 			return Collections.emptySet();
 		}
-		return new HashSet<K3>(localMap.keySet());
+		return new HashSet<>(localMap.keySet());
 	}
 
 	/**
@@ -370,7 +367,7 @@ public class TripleKeyMap<K1, K2, K3, V> implements Cloneable
 		 * Note the key and value objects are not cloned, so this is not truly a
 		 * deep clone, but is deep enough to protect the internal structure.
 		 */
-		tkm.map = new DoubleKeyMap<K1, K2, Map<K3, V>>();
+		tkm.map = new DoubleKeyMap<>();
 		for (K1 key1 : map.getKeySet())
 		{
 			for (K2 key2 : map.getSecondaryKeySet(key1))
@@ -407,7 +404,7 @@ public class TripleKeyMap<K1, K2, K3, V> implements Cloneable
 		{
 			return Collections.emptySet();
 		}
-		return new HashSet<V>(localMap.values());
+		return new HashSet<>(localMap.values());
 	}
 
 	/**
@@ -427,8 +424,7 @@ public class TripleKeyMap<K1, K2, K3, V> implements Cloneable
 	@Override
 	public boolean equals(Object obj)
 	{
-		return obj instanceof TripleKeyMap
-			&& map.equals(((TripleKeyMap<?, ?, ?, ?>) obj).map);
+		return (obj instanceof TripleKeyMap) && map.equals(((TripleKeyMap<?, ?, ?, ?>) obj).map);
 	}
 
 	/**

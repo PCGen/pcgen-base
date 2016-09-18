@@ -17,6 +17,7 @@
  */
 package pcgen.base.util;
 
+import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -38,15 +39,13 @@ public class IdentityList<T> implements List<T>
 	/**
 	 * The underlying map providing storage of Identity structures.
 	 */
-	private final List<Identity<T>> embeddedList =
-			new LinkedList<Identity<T>>();
+	private final List<Identity<T>> embeddedList = new LinkedList<>();
 
 	/**
 	 * Creates a new (empty) IdentityList.
 	 */
 	public IdentityList()
 	{
-		super();
 	}
 
 	/**
@@ -72,21 +71,21 @@ public class IdentityList<T> implements List<T>
 	 *            The value for which the identity is being returned
 	 * @return The Identity object for the given parameter
 	 */
-	private <V> Identity<V> getIdentity(V value)
+	private static <V> Identity<V> getIdentity(V value)
 	{
-		return new Identity<V>(value);
+		return new Identity<>(value);
 	}
 
 	@Override
 	public void add(int index, T element)
 	{
-		embeddedList.add(index, getIdentity(element));
+		embeddedList.add(index, IdentityList.getIdentity(element));
 	}
 
 	@Override
 	public final boolean add(T element)
 	{
-		return embeddedList.add(getIdentity(element));
+		return embeddedList.add(IdentityList.getIdentity(element));
 	}
 
 	@Override
@@ -119,7 +118,7 @@ public class IdentityList<T> implements List<T>
 	@Override
 	public boolean contains(Object element)
 	{
-		return embeddedList.contains(getIdentity(element));
+		return embeddedList.contains(IdentityList.getIdentity(element));
 	}
 
 	@Override
@@ -127,7 +126,7 @@ public class IdentityList<T> implements List<T>
 	{
 		for (Object element : collection)
 		{
-			if (!embeddedList.contains(getIdentity(element)))
+			if (!embeddedList.contains(IdentityList.getIdentity(element)))
 			{
 				return false;
 			}
@@ -138,8 +137,7 @@ public class IdentityList<T> implements List<T>
 	@Override
 	public boolean equals(Object obj)
 	{
-		return obj instanceof IdentityList
-			&& embeddedList.equals(((IdentityList<?>) obj).embeddedList);
+		return (obj instanceof IdentityList) && embeddedList.equals(((IdentityList<?>) obj).embeddedList);
 	}
 
 	@Override
@@ -157,7 +155,7 @@ public class IdentityList<T> implements List<T>
 	@Override
 	public int indexOf(Object element)
 	{
-		return embeddedList.indexOf(getIdentity(element));
+		return embeddedList.indexOf(IdentityList.getIdentity(element));
 	}
 
 	@Override
@@ -169,25 +167,25 @@ public class IdentityList<T> implements List<T>
 	@Override
 	public Iterator<T> iterator()
 	{
-		return new IdentityIterator<T>(embeddedList.listIterator());
+		return new IdentityIterator<>(embeddedList.listIterator());
 	}
 
 	@Override
 	public int lastIndexOf(Object element)
 	{
-		return embeddedList.lastIndexOf(getIdentity(element));
+		return embeddedList.lastIndexOf(IdentityList.getIdentity(element));
 	}
 
 	@Override
 	public ListIterator<T> listIterator()
 	{
-		return new IdentityIterator<T>(embeddedList.listIterator());
+		return new IdentityIterator<>(embeddedList.listIterator());
 	}
 
 	@Override
 	public ListIterator<T> listIterator(int index)
 	{
-		return new IdentityIterator<T>(embeddedList.listIterator(index));
+		return new IdentityIterator<>(embeddedList.listIterator(index));
 	}
 
 	@Override
@@ -199,7 +197,7 @@ public class IdentityList<T> implements List<T>
 	@Override
 	public boolean remove(Object element)
 	{
-		return embeddedList.remove(getIdentity(element));
+		return embeddedList.remove(IdentityList.getIdentity(element));
 	}
 
 	@Override
@@ -222,7 +220,7 @@ public class IdentityList<T> implements List<T>
 	@Override
 	public T set(int index, T element)
 	{
-		return embeddedList.set(index, getIdentity(element)).getUnderlying();
+		return embeddedList.set(index, IdentityList.getIdentity(element)).getUnderlying();
 	}
 
 	@Override
@@ -241,7 +239,7 @@ public class IdentityList<T> implements List<T>
 	public Object[] toArray()
 	{
 		Object[] array = embeddedList.toArray();
-		putIntoArray(array, array);
+		IdentityList.putIntoArray(array, array);
 		return array;
 	}
 
@@ -256,7 +254,7 @@ public class IdentityList<T> implements List<T>
 	 * @param target
 	 *            The target array which will be loaded
 	 */
-	private <V> void putIntoArray(Object[] source, V[] target)
+	private static <V> void putIntoArray(Object[] source, V[] target)
 	{
 		for (int i = 0; i < source.length; i++)
 		{
@@ -277,10 +275,10 @@ public class IdentityList<T> implements List<T>
 		if (newArray.length < size)
 		{
 			returnArray =
-					(V[]) java.lang.reflect.Array.newInstance(newArray
+					(V[]) Array.newInstance(newArray
 						.getClass().getComponentType(), size);
 		}
-		putIntoArray(array, returnArray);
+		IdentityList.putIntoArray(array, returnArray);
 		return returnArray;
 	}
 
@@ -305,7 +303,7 @@ public class IdentityList<T> implements List<T>
 		 * @param item
 		 *            The underlying item for this Identity
 		 */
-		public Identity(T item)
+		private Identity(T item)
 		{
 			underlying = item;
 		}
@@ -313,8 +311,7 @@ public class IdentityList<T> implements List<T>
 		@Override
 		public boolean equals(Object obj)
 		{
-			return obj instanceof Identity
-				&& ((Identity<?>) obj).underlying == underlying;
+			return (obj instanceof Identity) && (((Identity<?>) obj).underlying == underlying);
 		}
 
 		@Override
@@ -356,7 +353,7 @@ public class IdentityList<T> implements List<T>
 		 * @param iterator
 		 *            The ListIterator underlying this IdentityIterator
 		 */
-		public IdentityIterator(ListIterator<Identity<I>> iterator)
+		private IdentityIterator(ListIterator<Identity<I>> iterator)
 		{
 			iter = iterator;
 		}
@@ -364,7 +361,7 @@ public class IdentityList<T> implements List<T>
 		@Override
 		public void add(I item)
 		{
-			iter.add(getIdentity(item));
+			iter.add(IdentityList.getIdentity(item));
 		}
 
 		@Override
@@ -412,7 +409,7 @@ public class IdentityList<T> implements List<T>
 		@Override
 		public void set(I item)
 		{
-			iter.set(getIdentity(item));
+			iter.set(IdentityList.getIdentity(item));
 		}
 
 	}

@@ -23,8 +23,12 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * Support class for running Junit tests
  */
-public class TestSupport
+public final class TestSupport
 {
+
+	private TestSupport()
+	{
+	}
 
 	/**
 	 * Utility method for Unit tests to invoke private constructors
@@ -51,7 +55,7 @@ public class TestSupport
 		{
 			instance = constructor.newInstance();
 		}
-		catch (InvocationTargetException ite)
+		catch (InvocationTargetException | InstantiationException ite)
 		{
 			System.err.println("Instance creation failed with [" + ite.getCause() + "]");
 		}
@@ -59,11 +63,7 @@ public class TestSupport
 		{
 			System.err.println("Instance creation failed due to access violation.");
 		}
-		catch (InstantiationException ie)
-		{
-			System.err.println("Instance creation failed with [" + ie.getCause() + "]");
-		}
-		
+
 		return instance;
 	}
 }

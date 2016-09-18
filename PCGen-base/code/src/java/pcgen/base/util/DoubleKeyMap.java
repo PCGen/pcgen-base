@@ -22,7 +22,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.Map.Entry;
 
 /**
  * Represents a map where the objects are stored using two keys rather than the
@@ -106,10 +105,9 @@ public class DoubleKeyMap<K1, K2, V> implements Cloneable
 	@SuppressWarnings("PMD.LooseCoupling")
 	public DoubleKeyMap()
 	{
-		super();
 		firstClass = HashMap.class;
 		secondClass = firstClass;
-		map = new HashMap<K1, Map<K2, V>>();
+		map = new HashMap<>();
 	}
 
 	/**
@@ -128,7 +126,6 @@ public class DoubleKeyMap<K1, K2, V> implements Cloneable
 	@SuppressWarnings("rawtypes")
 	public DoubleKeyMap(Class<? extends Map> cl1, Class<? extends Map> cl2)
 	{
-		super();
 		if (cl1 == null)
 		{
 			throw new IllegalArgumentException(
@@ -221,7 +218,7 @@ public class DoubleKeyMap<K1, K2, V> implements Cloneable
 	 */
 	public final void putAll(DoubleKeyMap<K1, K2, V> dkm)
 	{
-		for (Entry<K1, Map<K2, V>> me : dkm.map.entrySet())
+		for (Map.Entry<K1, Map<K2, V>> me : dkm.map.entrySet())
 		{
 			Map<K2, V> localMap = map.get(me.getKey());
 			if (localMap == null)
@@ -377,7 +374,7 @@ public class DoubleKeyMap<K1, K2, V> implements Cloneable
 	 */
 	public Set<K1> getKeySet()
 	{
-		return new WrappedMapSet<K1>(firstClass, map.keySet());
+		return new WrappedMapSet<>(firstClass, map.keySet());
 	}
 
 	/**
@@ -401,7 +398,7 @@ public class DoubleKeyMap<K1, K2, V> implements Cloneable
 		{
 			return Collections.emptySet();
 		}
-		return new WrappedMapSet<K2>(secondClass, localMap.keySet());
+		return new WrappedMapSet<>(secondClass, localMap.keySet());
 	}
 
 	/**
@@ -436,7 +433,7 @@ public class DoubleKeyMap<K1, K2, V> implements Cloneable
 		{
 			return Collections.emptySet();
 		}
-		return new HashSet<V>(localMap.values());
+		return new HashSet<>(localMap.values());
 	}
 
 	/**
@@ -493,7 +490,7 @@ public class DoubleKeyMap<K1, K2, V> implements Cloneable
 			 */
 			if (!me.getValue().isEmpty())
 			{
-				dkm.map.put(me.getKey(), new HashMap<K2, V>(me.getValue()));
+				dkm.map.put(me.getKey(), new HashMap<>(me.getValue()));
 			}
 		}
 		//Nothing can be connected (see above)
@@ -541,8 +538,7 @@ public class DoubleKeyMap<K1, K2, V> implements Cloneable
 	@Override
 	public boolean equals(Object obj)
 	{
-		return obj instanceof DoubleKeyMap
-			&& map.equals(((DoubleKeyMap<?, ?, ?>) obj).map);
+		return (obj instanceof DoubleKeyMap) && map.equals(((DoubleKeyMap<?, ?, ?>) obj).map);
 	}
 
 	/**

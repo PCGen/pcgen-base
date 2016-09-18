@@ -66,22 +66,21 @@ public class CaseInsensitiveMap<V> extends HashMap<Object, V>
 	 *            The key to be resolved, if necessary
 	 * @return The key used for storing objects in the HashMap
 	 */
-	private Object resolveObject(Object key)
+	private static Object resolveObject(Object key)
 	{
-		return key instanceof String ? new CaseInsensitiveString((String) key)
-			: key;
+		return (key instanceof String) ? new CaseInsensitiveString((String) key) : key;
 	}
 
 	@Override
 	public boolean containsKey(Object key)
 	{
-		return super.containsKey(resolveObject(key));
+		return super.containsKey(CaseInsensitiveMap.resolveObject(key));
 	}
 
 	@Override
 	public V get(Object key)
 	{
-		return super.get(resolveObject(key));
+		return super.get(CaseInsensitiveMap.resolveObject(key));
 	}
 
 	/**
@@ -99,12 +98,12 @@ public class CaseInsensitiveMap<V> extends HashMap<Object, V>
 	@Override
 	public V put(Object key, V value)
 	{
-		return super.put(resolveObject(key), value);
+		return super.put(CaseInsensitiveMap.resolveObject(key), value);
 	}
 
 	@Override
 	public V remove(Object key)
 	{
-		return super.remove(resolveObject(key));
+		return super.remove(CaseInsensitiveMap.resolveObject(key));
 	}
 }

@@ -32,16 +32,16 @@ public class IdentityListTest extends TestCase
 {
 
 	private IdentityList<Integer> ls;
-	private Integer a1 = new Integer(1);
-	private Integer a2 = new Integer(2);
-	private Integer b1 = new Integer(1);
-	private Integer b2 = new Integer(2);
+	private Integer a1 = Integer.valueOf(1);
+	private Integer a2 = Integer.valueOf(2);
+	private Integer b1 = Integer.valueOf(1);
+	private Integer b2 = Integer.valueOf(2);
 
 	@Override
 	@Before
 	public void setUp()
 	{
-		ls = new IdentityList<Integer>();
+		ls = new IdentityList<>();
 	}
 
 	@Test
@@ -283,24 +283,24 @@ public class IdentityListTest extends TestCase
 	{
 		try
 		{
-			ls = new IdentityList<Integer>(null);
+			ls = new IdentityList<>(null);
 			fail();
 		}
 		catch (NullPointerException e)
 		{
 			//:)
 		}
-		ls = new IdentityList<Integer>(Arrays.asList(new Integer[]{}));
+		ls = new IdentityList<>(Arrays.asList(new Integer[]{}));
 		assertFalse(ls.contains(a1));
 		assertFalse(ls.contains(b1));
 		assertTrue(ls.isEmpty());
 		assertEquals(0, ls.size());
-		ls = new IdentityList<Integer>(Arrays.asList(new Integer[]{a1}));
+		ls = new IdentityList<>(Arrays.asList(a1));
 		assertTrue(ls.contains(a1));
 		assertFalse(ls.contains(b1));
 		assertFalse(ls.isEmpty());
 		assertEquals(1, ls.size());
-		ls = new IdentityList<Integer>(Arrays.asList(new Integer[]{a1, a1}));
+		ls = new IdentityList<>(Arrays.asList(a1, a1));
 		assertTrue(ls.contains(a1));
 		assertFalse(ls.contains(b1));
 		assertEquals(2, ls.size());
@@ -310,10 +310,10 @@ public class IdentityListTest extends TestCase
 		assertFalse(ls.contains(b1));
 		assertTrue(ls.isEmpty());
 		assertEquals(0, ls.size());
-		List<Integer> list = new ArrayList<Integer>();
+		List<Integer> list = new ArrayList<>();
 		list.add(a1);
 		list.add(b1);
-		ls = new IdentityList<Integer>(list);
+		ls = new IdentityList<>(list);
 		assertTrue(ls.contains(a1));
 		assertTrue(ls.contains(b1));
 		assertEquals(2, ls.size());

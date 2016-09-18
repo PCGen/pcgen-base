@@ -49,7 +49,7 @@ public class ArrayFormatManager<T> implements FormatManager<T[]>
 	/**
 	 * The class showing the class of array managed by this ArrayFormatManager.
 	 */
-	private final transient Class<T[]> formatClass;
+	private final Class<T[]> formatClass;
 
 	/**
 	 * Constructs a new ArrayFormatManager with the given underlying component
@@ -114,7 +114,7 @@ public class ArrayFormatManager<T> implements FormatManager<T[]>
 		//assume not empty due to checks on instructions
 		return (value.charAt(0) != separator)
 			&& (value.charAt(value.length() - 1) != separator)
-			&& (value.indexOf(String.valueOf(new char[]{separator, separator})) == -1);
+			&& (!value.contains(String.valueOf(new char[]{separator, separator})));
 	}
 
 	/**
@@ -257,19 +257,16 @@ public class ArrayFormatManager<T> implements FormatManager<T[]>
 		 *            The underlying ObjectContainer with the objects contained
 		 *            in this ArrayObjectContainer
 		 */
-		public ArrayIndirect(Indirect<T>[] toSet)
+		private ArrayIndirect(Indirect<T>[] toSet)
 		{
 			array = toSet;
 		}
 
-		/**
-		 * {@inheritDoc}
-		 */
 		@Override
 		public T[] get()
 		{
 			Class<T> arrayClass = componentManager.getManagedClass();
-			List<T> returnList = new ArrayList<T>(array.length * 5);
+			List<T> returnList = new ArrayList<>(array.length * 5);
 			for (Indirect<T> indirect : array)
 			{
 				returnList.add(indirect.get());

@@ -44,7 +44,7 @@ public class DoubleKeyMapTest extends TestCase
 	@Before
 	public void setUp()
 	{
-		dkm = new DoubleKeyMap<Integer, Double, Character>();
+		dkm = new DoubleKeyMap<>();
 	}
 
 	public void populate()
@@ -406,8 +406,7 @@ public class DoubleKeyMapTest extends TestCase
 	public void testDKMconstructorOneClear()
 	{
 		populate();
-		DoubleKeyMap<Integer, Double, Character> dkm2;
-		dkm2 = new DoubleKeyMap<Integer, Double, Character>(dkm);
+		DoubleKeyMap<Integer, Double, Character> dkm2 = new DoubleKeyMap<>(dkm);
 		// Ensure 1 clear is innocent
 		dkm.clear();
 		assertFalse(dkm2.isEmpty());
@@ -421,8 +420,7 @@ public class DoubleKeyMapTest extends TestCase
 	public void testDKMconstructorTwoClear()
 	{
 		populate();
-		DoubleKeyMap<Integer, Double, Character> dkm2;
-		dkm2 = new DoubleKeyMap<Integer, Double, Character>(dkm);
+		DoubleKeyMap<Integer, Double, Character> dkm2 = new DoubleKeyMap<>(dkm);
 		// Ensure 2 clear is innocent
 		dkm2.clear();
 		assertFalse(dkm.isEmpty());
@@ -436,8 +434,7 @@ public class DoubleKeyMapTest extends TestCase
 	public void testDKMconstructorOneChange()
 	{
 		populate();
-		DoubleKeyMap<Integer, Double, Character> dkm2;
-		dkm2 = new DoubleKeyMap<Integer, Double, Character>(dkm);
+		DoubleKeyMap<Integer, Double, Character> dkm2 = new DoubleKeyMap<>(dkm);
 		// Ensure 1 change is innocent
 		dkm.put(Integer.valueOf(1), Double.valueOf(1), 'Z');
 		assertEquals(Character.valueOf('Z'), dkm.get(Integer.valueOf(1), Double
@@ -450,8 +447,7 @@ public class DoubleKeyMapTest extends TestCase
 	public void testDKMconstructorTwoChange()
 	{
 		populate();
-		DoubleKeyMap<Integer, Double, Character> dkm2;
-		dkm2 = new DoubleKeyMap<Integer, Double, Character>(dkm);
+		DoubleKeyMap<Integer, Double, Character> dkm2 = new DoubleKeyMap<>(dkm);
 		// Ensure 2 change is innocent
 		dkm2.put(Integer.valueOf(1), Double.valueOf(1), 'Z');
 		assertEquals(Character.valueOf('A'), dkm.get(Integer.valueOf(1), Double
@@ -464,8 +460,7 @@ public class DoubleKeyMapTest extends TestCase
 	public void testDKMconstructorOneRemoveAll()
 	{
 		populate();
-		DoubleKeyMap<Integer, Double, Character> dkm2;
-		dkm2 = new DoubleKeyMap<Integer, Double, Character>(dkm);
+		DoubleKeyMap<Integer, Double, Character> dkm2 = new DoubleKeyMap<>(dkm);
 		// Ensure 1 remove is innocent
 		dkm.removeAll(Integer.valueOf(1));
 		assertEquals(null, dkm.get(Integer.valueOf(1), Double.valueOf(1)));
@@ -477,8 +472,7 @@ public class DoubleKeyMapTest extends TestCase
 	public void testDKMconstructorTwoRemoveAll()
 	{
 		populate();
-		DoubleKeyMap<Integer, Double, Character> dkm2;
-		dkm2 = new DoubleKeyMap<Integer, Double, Character>(dkm);
+		DoubleKeyMap<Integer, Double, Character> dkm2 = new DoubleKeyMap<>(dkm);
 		// Ensure 2 remove is innocent
 		dkm2.removeAll(Integer.valueOf(1));
 		assertEquals(null, dkm2.get(Integer.valueOf(1), Double.valueOf(1)));
@@ -490,8 +484,7 @@ public class DoubleKeyMapTest extends TestCase
 	public void testDKMputAllOneClear()
 	{
 		populate();
-		DoubleKeyMap<Integer, Double, Character> dkm2 =
-				new DoubleKeyMap<Integer, Double, Character>();
+		DoubleKeyMap<Integer, Double, Character> dkm2 = new DoubleKeyMap<>();
 		dkm2.putAll(dkm);
 		// Ensure 1 clear is innocent
 		dkm.clear();
@@ -506,8 +499,7 @@ public class DoubleKeyMapTest extends TestCase
 	public void testDKMputAllTwoClear()
 	{
 		populate();
-		DoubleKeyMap<Integer, Double, Character> dkm2 =
-				new DoubleKeyMap<Integer, Double, Character>();
+		DoubleKeyMap<Integer, Double, Character> dkm2 = new DoubleKeyMap<>();
 		dkm2.putAll(dkm);
 		// Ensure 2 clear is innocent
 		dkm2.clear();
@@ -522,8 +514,7 @@ public class DoubleKeyMapTest extends TestCase
 	public void testDKMputAllOneChange()
 	{
 		populate();
-		DoubleKeyMap<Integer, Double, Character> dkm2 =
-				new DoubleKeyMap<Integer, Double, Character>();
+		DoubleKeyMap<Integer, Double, Character> dkm2 = new DoubleKeyMap<>();
 		dkm2.putAll(dkm);
 		// Ensure 1 change is innocent
 		dkm.put(Integer.valueOf(1), Double.valueOf(1), 'Z');
@@ -537,8 +528,7 @@ public class DoubleKeyMapTest extends TestCase
 	public void testDKMputAllTwoChange()
 	{
 		populate();
-		DoubleKeyMap<Integer, Double, Character> dkm2 =
-				new DoubleKeyMap<Integer, Double, Character>();
+		DoubleKeyMap<Integer, Double, Character> dkm2 = new DoubleKeyMap<>();
 		dkm2.putAll(dkm);
 		// Ensure 2 change is innocent
 		dkm2.put(Integer.valueOf(1), Double.valueOf(1), 'Z');
@@ -552,8 +542,7 @@ public class DoubleKeyMapTest extends TestCase
 	public void testDKMputAllOneRemoveAll()
 	{
 		populate();
-		DoubleKeyMap<Integer, Double, Character> dkm2 =
-				new DoubleKeyMap<Integer, Double, Character>();
+		DoubleKeyMap<Integer, Double, Character> dkm2 = new DoubleKeyMap<>();
 		dkm2.putAll(dkm);
 		// Ensure 1 remove is innocent
 		dkm.removeAll(Integer.valueOf(1));
@@ -566,8 +555,7 @@ public class DoubleKeyMapTest extends TestCase
 	public void testDKMputAllTwoRemoveAll()
 	{
 		populate();
-		DoubleKeyMap<Integer, Double, Character> dkm2 =
-				new DoubleKeyMap<Integer, Double, Character>();
+		DoubleKeyMap<Integer, Double, Character> dkm2 = new DoubleKeyMap<>();
 		dkm2.putAll(dkm);
 		// Ensure 2 remove is innocent
 		dkm2.removeAll(Integer.valueOf(1));
@@ -584,11 +572,7 @@ public class DoubleKeyMapTest extends TestCase
 			dkm.putAll(null);
 			fail();
 		}
-		catch (NullPointerException e)
-		{
-			// OK
-		}
-		catch (IllegalArgumentException e)
+		catch (NullPointerException | IllegalArgumentException e)
 		{
 			// OK
 		}
@@ -641,7 +625,7 @@ public class DoubleKeyMapTest extends TestCase
 	@Test
 	public void testClone()
 	{
-		dkm = new DoubleKeyMap<Integer, Double, Character>();
+		dkm = new DoubleKeyMap<>();
 		populate();
 		DoubleKeyMap<Integer, Double, Character> copy;
 		try

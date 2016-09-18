@@ -56,7 +56,6 @@ public class DefaultHyperEdge<N> implements NonDirectionalEdge<N>
 	 */
 	public DefaultHyperEdge(Collection<N> nodes)
 	{
-		super();
 		if (nodes == null)
 		{
 			throw new IllegalArgumentException(
@@ -65,7 +64,7 @@ public class DefaultHyperEdge<N> implements NonDirectionalEdge<N>
 		/*
 		 * Copy before length check for thread safety
 		 */
-		this.nodes = new ArrayList<N>(nodes.size());
+		this.nodes = new ArrayList<>(nodes.size());
 		this.nodes.addAll(nodes);
 		if (this.nodes.isEmpty())
 		{
@@ -102,7 +101,7 @@ public class DefaultHyperEdge<N> implements NonDirectionalEdge<N>
 	@Override
 	public List<N> getAdjacentNodes()
 	{
-		return new ArrayList<N>(nodes);
+		return new ArrayList<>(nodes);
 	}
 
 	/**
@@ -137,6 +136,6 @@ public class DefaultHyperEdge<N> implements NonDirectionalEdge<N>
 	@Override
 	public DefaultHyperEdge<N> createReplacementEdge(Collection<N> newNodes)
 	{
-		return new DefaultHyperEdge<N>(newNodes);
+		return new DefaultHyperEdge<>(newNodes);
 	}
 }

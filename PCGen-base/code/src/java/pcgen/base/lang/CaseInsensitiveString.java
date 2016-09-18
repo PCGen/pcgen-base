@@ -77,7 +77,7 @@ public class CaseInsensitiveString
 		if (obj instanceof CaseInsensitiveString)
 		{
 			CaseInsensitiveString cis = (CaseInsensitiveString) obj;
-			return string == cis.string || string.equalsIgnoreCase(cis.string);
+			return (string == cis.string) || string.equalsIgnoreCase(cis.string);
 		}
 		return false;
 	}
@@ -90,7 +90,7 @@ public class CaseInsensitiveString
 			int length = string.length();
 			for (int i = 0; i < length; i++)
 			{
-				hash = hash * 29 + Character.toUpperCase(string.charAt(i));
+				hash = (hash * 29) + Character.toUpperCase(string.charAt(i));
 			}
 		}
 		return hash;

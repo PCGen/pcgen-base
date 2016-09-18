@@ -47,7 +47,7 @@ public class TreeMapToListTest extends TestCase
 	@Before
 	public void setUp()
 	{
-		dkm = new TreeMapToList<Integer, Character>();
+		dkm = new TreeMapToList<>();
 	}
 
 	public void populate()
@@ -64,7 +64,7 @@ public class TreeMapToListTest extends TestCase
 	@Test
 	public void testConstructor()
 	{
-		dkm = new TreeMapToList<Integer, Character>(null);
+		dkm = new TreeMapToList<>(null);
 		testPutGet();
 	}
 
@@ -76,11 +76,7 @@ public class TreeMapToListTest extends TestCase
 			dkm.addToListFor(null, CONST_F);
 			fail();
 		}
-		catch (NullPointerException e)
-		{
-			// OK
-		}
-		catch (IllegalArgumentException e)
+		catch (NullPointerException | IllegalArgumentException e)
 		{
 			// OK
 		}
@@ -168,7 +164,7 @@ public class TreeMapToListTest extends TestCase
 		populate();
 		assertTrue(dkm.containsListFor(Integer.valueOf(1)));
 		// Keys are .equals items, not instance
-		assertTrue(dkm.containsListFor(new Integer(1)));
+		assertTrue(dkm.containsListFor(Integer.valueOf(1)));
 		assertTrue(dkm.containsListFor(Integer.valueOf(2)));
 		assertTrue(dkm.containsListFor(Integer.valueOf(5)));
 		assertFalse(dkm.containsListFor(Integer.valueOf(-4)));
@@ -201,7 +197,7 @@ public class TreeMapToListTest extends TestCase
 		assertTrue(dkm.removeFromListFor(Integer.valueOf(1), CONST_A));
 		assertTrue(dkm.containsListFor(Integer.valueOf(1)));
 		// Keys are .equals items, not instance
-		assertTrue(dkm.containsListFor(new Integer(1)));
+		assertTrue(dkm.containsListFor(Integer.valueOf(1)));
 		assertEquals(2, dkm.sizeOfListFor(Integer.valueOf(1)));
 		assertFalse(dkm.removeFromListFor(Integer.valueOf(1), CONST_A));
 		assertTrue(dkm.removeFromListFor(Integer.valueOf(1), CONST_B));
@@ -239,7 +235,7 @@ public class TreeMapToListTest extends TestCase
 		populate();
 		assertTrue(dkm.containsInList(Integer.valueOf(1), CONST_A));
 		// Keys are .equals items, not instance
-		assertTrue(dkm.containsInList(new Integer(1), CONST_A));
+		assertTrue(dkm.containsInList(Integer.valueOf(1), CONST_A));
 		assertTrue(dkm.containsInList(Integer.valueOf(1), CONST_B));
 		assertTrue(dkm.containsInList(Integer.valueOf(1), CONST_C));
 		assertFalse(dkm.containsInList(Integer.valueOf(1), CONST_D));
@@ -311,7 +307,7 @@ public class TreeMapToListTest extends TestCase
 	@Test
 	public void testAddAll()
 	{
-		List<Character> l = new ArrayList<Character>();
+		List<Character> l = new ArrayList<>();
 		l.add(CONST_A);
 		l.add(null);
 		l.add(CONST_A);
@@ -337,7 +333,6 @@ public class TreeMapToListTest extends TestCase
 		Character ca = Character.valueOf('a');
 		Character cb = Character.valueOf('b');
 		Character cc = Character.valueOf('c');
-		Character ca1 = new Character('a');
 		Integer i1 = Integer.valueOf(1);
 		dkm.addToListFor(i1, ca);
 		dkm.addToListFor(i1, cb);
@@ -349,6 +344,7 @@ public class TreeMapToListTest extends TestCase
 		dkm.addToListFor(i3, cb);
 		dkm.addToListFor(i3, cc);
 		assertTrue(dkm.containsInList(i1, ca));
+		Character ca1 = new Character('a');
 		assertTrue(dkm.containsInList(i1, ca1));
 		assertTrue(dkm.removeFromListFor(i1, ca1));
 		assertFalse(dkm.containsInList(i1, ca));
@@ -366,8 +362,8 @@ public class TreeMapToListTest extends TestCase
 	@Test
 	public void testAddAllLists()
 	{
-		HashMapToList<Integer, Character> dkm2 = new HashMapToList<Integer, Character>();
 		populate();
+		HashMapToList<Integer, Character> dkm2 = new HashMapToList<>();
 		dkm2.addAllLists(dkm);
 		assertTrue(dkm.removeFromListFor(Integer.valueOf(1), CONST_A));
 		assertTrue(dkm2.containsInList(Integer.valueOf(1), CONST_A));

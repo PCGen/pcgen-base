@@ -102,7 +102,7 @@ public final class NumberUtilities
 	 */
 	public static Number add(Number a, Number b)
 	{
-		if (a instanceof Integer && b instanceof Integer)
+		if ((a instanceof Integer) && (b instanceof Integer))
 		{
 			return Integer.valueOf(a.intValue() + b.intValue());
 		}
@@ -121,11 +121,11 @@ public final class NumberUtilities
 	 */
 	public static Number divide(Number numerator, Number divisor)
 	{
-		if (numerator instanceof Integer && divisor instanceof Integer)
+		if ((numerator instanceof Integer) && (divisor instanceof Integer))
 		{
 			int num = numerator.intValue();
 			int div = divisor.intValue();
-			if ((div != 0) && (num % div == 0))
+			if ((div != 0) && ((num % div) == 0))
 			{
 				return Integer.valueOf(num / div);
 			}
@@ -173,7 +173,7 @@ public final class NumberUtilities
 	 */
 	public static Number multiply(Number a, Number b)
 	{
-		if (a instanceof Integer && b instanceof Integer)
+		if ((a instanceof Integer) && (b instanceof Integer))
 		{
 			return Integer.valueOf(a.intValue() * b.intValue());
 		}

@@ -29,7 +29,6 @@ import pcgen.base.graph.base.NodeChangeEvent;
 public class GraphChangeSupportTest extends TestCase
 {
 
-	private Graph source;
 	private GraphChangeSupport support;
 
 	/**
@@ -41,7 +40,7 @@ public class GraphChangeSupportTest extends TestCase
 	@Override
 	protected void setUp() throws Exception
 	{
-		source = new SimpleListGraph();
+		Graph source = new SimpleListGraph();
 		support = new GraphChangeSupport(source);
 	}
 
@@ -76,13 +75,13 @@ public class GraphChangeSupportTest extends TestCase
 	{
 		assertEquals(0, support.getGraphChangeListeners().length);
 		GraphChangeListener listener = new TransparentGCL();
-		GraphChangeListener alt = new TransparentGCL();
 		support.addGraphChangeListener(listener);
 		assertEquals(1, support.getGraphChangeListeners().length);
 		assertEquals(listener, support.getGraphChangeListeners()[0]);
 		support.removeGraphChangeListener(null);
 		assertEquals(1, support.getGraphChangeListeners().length);
 		assertEquals(listener, support.getGraphChangeListeners()[0]);
+		GraphChangeListener alt = new TransparentGCL();
 		support.removeGraphChangeListener(alt);
 		assertEquals(1, support.getGraphChangeListeners().length);
 		assertEquals(listener, support.getGraphChangeListeners()[0]);
@@ -108,7 +107,7 @@ public class GraphChangeSupportTest extends TestCase
 		assertEquals(a, listener.nAdded.get(0));
 	}
 
-	private final class TransparentGCL implements GraphChangeListener
+	private static final class TransparentGCL implements GraphChangeListener
 	{
 		public List nAdded = new ArrayList<>();
 		public List nRemoved = new ArrayList<>();

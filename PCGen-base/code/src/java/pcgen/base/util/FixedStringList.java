@@ -21,7 +21,6 @@ import java.util.AbstractList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.List;
 import java.util.RandomAccess;
 
 import pcgen.base.lang.StringUtil;
@@ -34,8 +33,7 @@ import pcgen.base.lang.StringUtil;
  * A FixedStringList will always report the size defined at construction and
  * will always iterate over the null values.
  */
-public class FixedStringList extends AbstractList<String> implements
-		List<String>, RandomAccess
+public class FixedStringList extends AbstractList<String> implements RandomAccess
 {
 
 	/**
@@ -261,7 +259,7 @@ public class FixedStringList extends AbstractList<String> implements
 		{
 			return 0;
 		}
-		return array.length + 29 * (array[0] == null ? 0 : array[0].hashCode());
+		return array.length + (29 * ((array[0] == null) ? 0 : array[0].hashCode()));
 	}
 
 	/**

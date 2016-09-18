@@ -52,7 +52,7 @@ public class StringManager implements FormatManager<String>
 		{
 			throw new IllegalArgumentException("String cannot be null");
 		}
-		return new BasicIndirect<String>(this, s);
+		return new BasicIndirect<>(this, s);
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class StringManager implements FormatManager<String>
 	@Override
 	public boolean equals(Object o)
 	{
-		return o == this || o instanceof StringManager;
+		return (o == this) || (o instanceof StringManager);
 	}
 
 	/**

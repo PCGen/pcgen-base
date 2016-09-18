@@ -21,9 +21,6 @@ import java.util.Arrays;
 
 import pcgen.base.graph.base.Edge;
 import pcgen.base.graph.base.Graph;
-import pcgen.base.graph.inst.DefaultGraphEdge;
-import pcgen.base.graph.inst.DefaultHyperEdge;
-import pcgen.base.graph.inst.SimpleListMapGraph;
 
 public class SimpleListMapGraphTest extends
 		AbstractGraphTestCase<Edge<Integer>>
@@ -34,13 +31,13 @@ public class SimpleListMapGraphTest extends
 	@Override
 	protected DefaultHyperEdge<Integer> getLegalHyperEdge(Integer[] gna2)
 	{
-		return new DefaultHyperEdge<Integer>(Arrays.asList(gna2));
+		return new DefaultHyperEdge<>(Arrays.asList(gna2));
 	}
 
 	@Override
 	protected Edge<Integer> getLegalEdge(Integer node1, Integer node2)
 	{
-		return new DefaultGraphEdge<Integer>(node1, node2);
+		return new DefaultGraphEdge<>(node1, node2);
 	}
 
 	/**
@@ -53,7 +50,7 @@ public class SimpleListMapGraphTest extends
 	protected void setUp() throws Exception
 	{
 		super.setUp();
-		strategy = new SimpleListMapGraph<Integer, Edge<Integer>>();
+		strategy = new SimpleListMapGraph<>();
 	}
 
 	/**
@@ -67,11 +64,11 @@ public class SimpleListMapGraphTest extends
 
 	public void testGetInternalizedNode()
 	{
-		Integer node = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer falseNode1 = new Integer(1); //MUST NOT BE Integer.valueOf(1)!!!!!
+		Integer node = Integer.valueOf(1);
 		assertFalse(strategy.containsNode(node));
+		Integer node2 = new Integer(2);
 		assertFalse(strategy.containsNode(node2));
+		Integer falseNode1 = new Integer(1); //MUST NOT BE Integer.valueOf(1)!!!!!
 		assertFalse(strategy.containsNode(falseNode1));
 		assertEquals(0, strategy.getNodeList().size());
 		// No nodes are in the graph, so response is null
@@ -88,7 +85,7 @@ public class SimpleListMapGraphTest extends
 		//But that an instance test will fail
 		for (Integer i : strategy.getNodeList())
 		{
-			assertTrue(i == node || i == node2);
+			assertTrue((i == node) || (i == node2));
 			assertTrue(i != falseNode1);
 		}
 		assertTrue(node == strategy.getInternalizedNode(node));

@@ -36,8 +36,7 @@ public class MappedDeque
 	/**
 	 * The underlying map for this MappedDeque that contains the Deque objects.
 	 */
-	private final Map<TypedKey<?>, Deque<Object>> map =
-			new HashMap<TypedKey<?>, Deque<Object>>();
+	private final Map<TypedKey<?>, Deque<Object>> map = new HashMap<>();
 
 	/**
 	 * The object used to represent the null value in the Deque objects. (Deque
@@ -62,7 +61,7 @@ public class MappedDeque
 		{
 			throw new IllegalArgumentException("Key cannot be null");
 		}
-		getDeque(key).push(wrap(value));
+		getDeque(key).push(MappedDeque.wrap(value));
 	}
 
 	/**
@@ -90,7 +89,7 @@ public class MappedDeque
 		{
 			return key.getDefaultValue();
 		}
-		return key.cast(unwrap(dq.pop()));
+		return key.cast(MappedDeque.unwrap(dq.pop()));
 	}
 
 	/**
@@ -121,7 +120,7 @@ public class MappedDeque
 		}
 		else
 		{
-			value = key.cast(unwrap(dq.peek()));
+			value = key.cast(MappedDeque.unwrap(dq.peek()));
 		}
 		return value;
 	}
@@ -153,7 +152,7 @@ public class MappedDeque
 		{
 			dq.pop();
 		}
-		dq.push(wrap(value));
+		dq.push(MappedDeque.wrap(value));
 	}
 
 	/**
@@ -174,7 +173,7 @@ public class MappedDeque
 	/**
 	 * Unwraps the null object, since Deque does not support null values
 	 */
-	private Object unwrap(Object o)
+	private static Object unwrap(Object o)
 	{
 		return (NULL == o) ? null : o;
 	}
@@ -182,7 +181,7 @@ public class MappedDeque
 	/**
 	 * Wraps the null object, since Deque does not support null values
 	 */
-	private Object wrap(Object o)
+	private static Object wrap(Object o)
 	{
 		return (o == null) ? NULL : o;
 	}

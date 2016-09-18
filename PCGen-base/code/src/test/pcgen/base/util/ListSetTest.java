@@ -63,10 +63,10 @@ public class ListSetTest extends TestCase
 	@Before
 	public void setUp()
 	{
-		ls = new ListSet<Integer>();
-		ls2 = new ListSet<Integer>(15);
-		ls3 = new ListSet<Integer>(c);
-		ls4 = new ListSet<Integer>(14, c);
+		ls = new ListSet<>();
+		ls2 = new ListSet<>(15);
+		ls3 = new ListSet<>(c);
+		ls4 = new ListSet<>(14, c);
 	}
 
 	@Test
@@ -86,7 +86,7 @@ public class ListSetTest extends TestCase
 		testSetSize(ls4);
 	}
 
-	public void testSetSize(ListSet<Integer> set)
+	public static void testSetSize(ListSet<Integer> set)
 	{
 		assertTrue(set.isEmpty());
 		assertEquals(0, set.size());
@@ -119,11 +119,11 @@ public class ListSetTest extends TestCase
 		testIdentitySet(ls4);
 	}
 
-	public void testBasicSet(ListSet<Integer> set)
+	public static void testBasicSet(ListSet<Integer> set)
 	{
 		assertTrue(set.isEmpty());
 		assertFalse(set.remove(Integer.valueOf(1)));
-		assertFalse(set.contains(new Integer(1)));
+		assertFalse(set.contains(Integer.valueOf(1)));
 		assertFalse(set.contains(Integer.valueOf(1)));
 		assertEquals(0, set.size());
 		assertEquals(0, set.size());
@@ -132,7 +132,7 @@ public class ListSetTest extends TestCase
 		set.add(Integer.valueOf(1));
 		assertEquals(1, set.size());
 		assertTrue(set.contains(Integer.valueOf(1)));
-		assertTrue(set.contains(new Integer(1)));
+		assertTrue(set.contains(Integer.valueOf(1)));
 		assertFalse(set.contains(Integer.valueOf(2)));
 		assertFalse(set.isEmpty());
 		assertTrue(set.remove(Integer.valueOf(1)));
@@ -146,28 +146,28 @@ public class ListSetTest extends TestCase
 		set.add(Integer.valueOf(1));
 		assertEquals(1, set.size());
 		assertTrue(set.contains(Integer.valueOf(1)));
-		assertTrue(set.contains(new Integer(1)));
+		assertTrue(set.contains(Integer.valueOf(1)));
 		assertFalse(set.isEmpty());
 		set.add(Integer.valueOf(1));
 		assertEquals(1, set.size());
-		set.add(new Integer(1)); // Keep NEW (instance identity part of
+		set.add(Integer.valueOf(1)); // Keep NEW (instance identity part of
 		// test!)
 		assertEquals(1, set.size());
 		set.add(Integer.valueOf(2));
 		assertEquals(2, set.size());
 		assertTrue(set.contains(Integer.valueOf(2)));
-		set.add(new Integer(1)); // Keep NEW (instance identity part of
+		set.add(Integer.valueOf(1)); // Keep NEW (instance identity part of
 		// test!)
 		assertEquals(2, set.size());
-		set.add(new Integer(2)); // Keep NEW (instance identity part of
+		set.add(Integer.valueOf(2)); // Keep NEW (instance identity part of
 		// test!)
 		assertEquals(2, set.size());
 		set.ensureCapacity(16);
-		set.add(new Integer(2)); // Keep NEW (instance identity part of
+		set.add(Integer.valueOf(2)); // Keep NEW (instance identity part of
 		// test!)
 		assertEquals(2, set.size());
 		assertTrue(set.contains(Integer.valueOf(1)));
-		assertTrue(set.contains(new Integer(1)));
+		assertTrue(set.contains(Integer.valueOf(1)));
 		assertTrue(set.remove(Integer.valueOf(1)));
 		assertEquals(1, set.size());
 		set.add(Integer.valueOf(3));
@@ -177,34 +177,34 @@ public class ListSetTest extends TestCase
 		set.add(Integer.valueOf(5));
 		assertEquals(4, set.size());
 		assertFalse(set.isEmpty());
-		assertTrue(set.remove(new Integer(2))); // Keep NEW (instance identity
+		assertTrue(set.remove(Integer.valueOf(2))); // Keep NEW (instance identity
 		// part of test!)
 		assertEquals(3, set.size());
-		assertTrue(set.remove(new Integer(4))); // Keep NEW (instance identity
+		assertTrue(set.remove(Integer.valueOf(4))); // Keep NEW (instance identity
 		// part of test!)
 		assertEquals(2, set.size());
 		assertTrue(set.contains(Integer.valueOf(5)));
-		assertTrue(set.contains(new Integer(5)));
+		assertTrue(set.contains(Integer.valueOf(5)));
 	}
 
-	public void testIdentitySet(ListSet<Integer> set)
+	public static void testIdentitySet(ListSet<Integer> set)
 	{
 		assertTrue(set.isEmpty());
 		assertFalse(set.remove(Integer.valueOf(1)));
 		assertFalse(set.contains(Integer.valueOf(1)));
-		assertFalse(set.contains(new Integer(1)));
+		assertFalse(set.contains(Integer.valueOf(1)));
 		assertEquals(0, set.size());
 		assertEquals(0, set.size());
 		set.add(Integer.valueOf(1));
 		assertEquals(1, set.size());
 		assertTrue(set.contains(Integer.valueOf(1)));
-		assertFalse(set.contains(new Integer(1)));
+		assertFalse(set.contains(Integer.valueOf(1)));
 		assertFalse(set.isEmpty());
 		assertTrue(set.remove(Integer.valueOf(1)));
 		assertEquals(0, set.size());
 		assertTrue(set.isEmpty());
 		assertFalse(set.contains(Integer.valueOf(1)));
-		assertFalse(set.contains(new Integer(1)));
+		assertFalse(set.contains(Integer.valueOf(1)));
 		assertFalse(set.remove(Integer.valueOf(1)));
 		assertEquals(0, set.size());
 		assertTrue(set.isEmpty());
@@ -212,26 +212,26 @@ public class ListSetTest extends TestCase
 		assertEquals(1, set.size());
 		set.add(Integer.valueOf(1));
 		assertEquals(1, set.size());
-		set.add(new Integer(1)); // Keep NEW (instance identity part of
+		set.add(Integer.valueOf(1)); // Keep NEW (instance identity part of
 		// test!)
 		assertTrue(set.contains(Integer.valueOf(1)));
-		assertFalse(set.contains(new Integer(1)));
+		assertFalse(set.contains(Integer.valueOf(1)));
 		assertEquals(2, set.size());
 		set.add(Integer.valueOf(2));
 		assertEquals(3, set.size());
-		set.add(new Integer(1)); // Keep NEW (instance identity part of
+		set.add(Integer.valueOf(1)); // Keep NEW (instance identity part of
 		// test!)
 		assertEquals(4, set.size());
-		set.add(new Integer(2)); // Keep NEW (instance identity part of
+		set.add(Integer.valueOf(2)); // Keep NEW (instance identity part of
 		// test!)
 		assertEquals(5, set.size());
 		set.ensureCapacity(16);
-		set.add(new Integer(2)); // Keep NEW (instance identity part of
+		set.add(Integer.valueOf(2)); // Keep NEW (instance identity part of
 		// test!)
 		assertEquals(6, set.size());
 		assertTrue(set.remove(Integer.valueOf(1)));
 		assertFalse(set.contains(Integer.valueOf(1)));
-		assertFalse(set.contains(new Integer(1)));
+		assertFalse(set.contains(Integer.valueOf(1)));
 		assertEquals(5, set.size());
 		set.add(Integer.valueOf(3));
 		assertEquals(6, set.size());
@@ -239,16 +239,16 @@ public class ListSetTest extends TestCase
 		assertEquals(7, set.size());
 		set.add(Integer.valueOf(5));
 		assertEquals(8, set.size());
-		assertFalse(set.remove(new Integer(2))); // Keep NEW (instance
+		assertFalse(set.remove(Integer.valueOf(2))); // Keep NEW (instance
 		// identity part of
 		// test!)
 		assertEquals(8, set.size());
-		assertFalse(set.remove(new Integer(4))); // Keep NEW (instance
+		assertFalse(set.remove(Integer.valueOf(4))); // Keep NEW (instance
 		// identity part of
 		// test!)
 		assertEquals(8, set.size());
 		assertTrue(set.contains(Integer.valueOf(5)));
-		assertFalse(set.contains(new Integer(1)));
+		assertFalse(set.contains(Integer.valueOf(1)));
 		Integer nine = Integer.valueOf(9);
 		set.add(nine);
 		assertEquals(9, set.size());
@@ -268,7 +268,7 @@ public class ListSetTest extends TestCase
 		testIterator(ls4);
 	}
 
-	public void testIterator(ListSet<Integer> set)
+	public static void testIterator(ListSet<Integer> set)
 	{
 		Iterator<Integer> it = set.iterator();
 		assertNotNull(it);
@@ -288,7 +288,7 @@ public class ListSetTest extends TestCase
 		set.add(three);
 		Integer one = Integer.valueOf(1);
 		set.add(one);
-		List<Integer> total = new ArrayList<Integer>();
+		List<Integer> total = new ArrayList<>();
 		total.add(one);
 		total.add(three);
 		total.add(five);
@@ -296,15 +296,15 @@ public class ListSetTest extends TestCase
 		assertNotNull(iter);
 		assertTrue(iter.hasNext());
 		Object o1 = iter.next();
-		assertTrue(o1 == one || o1 == three || o1 == five);
+		assertTrue((o1 == one) || (o1 == three) || (o1 == five));
 		assertTrue(total.remove(o1));
 		assertTrue(iter.hasNext());
 		Object o2 = iter.next();
-		assertTrue(o2 == one || o2 == three || o2 == five);
+		assertTrue((o2 == one) || (o2 == three) || (o2 == five));
 		assertTrue(total.remove(o2));
 		assertTrue(iter.hasNext());
 		Object o3 = iter.next();
-		assertTrue(o3 == one || o3 == three || o3 == five);
+		assertTrue((o3 == one) || (o3 == three) || (o3 == five));
 		assertTrue(total.remove(o3));
 		assertTrue(total.isEmpty());
 		assertFalse(iter.hasNext());
@@ -328,7 +328,7 @@ public class ListSetTest extends TestCase
 		testIteratorRemove(ls4);
 	}
 
-	public void testIteratorRemove(ListSet<Integer> set)
+	public static void testIteratorRemove(ListSet<Integer> set)
 	{
 		Iterator<Integer> it = set.iterator();
 		assertNotNull(it);
@@ -348,7 +348,7 @@ public class ListSetTest extends TestCase
 		set.add(three);
 		Integer one = Integer.valueOf(1);
 		set.add(one);
-		List<Integer> total = new ArrayList<Integer>();
+		List<Integer> total = new ArrayList<>();
 		total.add(one);
 		total.add(three);
 		total.add(five);
@@ -356,17 +356,17 @@ public class ListSetTest extends TestCase
 		assertNotNull(iter);
 		assertTrue(iter.hasNext());
 		Object o1 = iter.next();
-		assertTrue(o1 == one || o1 == three || o1 == five);
+		assertTrue((o1 == one) || (o1 == three) || (o1 == five));
 		assertTrue(total.remove(o1));
 		assertTrue(iter.hasNext());
 		Object o2 = iter.next();
-		assertTrue(o2 == one || o2 == three || o2 == five);
+		assertTrue((o2 == one) || (o2 == three) || (o2 == five));
 		assertTrue(total.remove(o2));
 		iter.remove();
 		assertFalse(set.contains(o2));
 		assertTrue(iter.hasNext());
 		Object o3 = iter.next();
-		assertTrue(o3 == one || o3 == three || o3 == five);
+		assertTrue((o3 == one) || (o3 == three) || (o3 == five));
 		assertTrue(total.remove(o3));
 		assertTrue(total.isEmpty());
 		assertFalse(iter.hasNext());
@@ -378,24 +378,24 @@ public class ListSetTest extends TestCase
 		try
 		{
 			Collection<Integer> nc = null;
-			ls = new ListSet<Integer>(nc);
+			ls = new ListSet<>(nc);
 			fail();
 		}
 		catch (NullPointerException e)
 		{
 			//:)
 		}
-		ls = new ListSet<Integer>(Arrays.asList(new Integer[]{}));
+		ls = new ListSet<>(Arrays.asList(new Integer[]{}));
 		assertFalse(ls.contains(Integer.valueOf(1)));
 		assertFalse(ls.contains(Integer.valueOf(2)));
 		assertTrue(ls.isEmpty());
 		assertEquals(0, ls.size());
-		ls = new ListSet<Integer>(Arrays.asList(new Integer[]{Integer.valueOf(1)}));
+		ls = new ListSet<>(Arrays.asList(new Integer[]{Integer.valueOf(1)}));
 		assertTrue(ls.contains(Integer.valueOf(1)));
 		assertFalse(ls.contains(Integer.valueOf(2)));
 		assertFalse(ls.isEmpty());
 		assertEquals(1, ls.size());
-		ls = new ListSet<Integer>(Arrays.asList(new Integer[]{Integer.valueOf(1), Integer.valueOf(1)}));
+		ls = new ListSet<>(Arrays.asList(new Integer[]{Integer.valueOf(1), Integer.valueOf(1)}));
 		assertTrue(ls.contains(Integer.valueOf(1)));
 		assertFalse(ls.contains(Integer.valueOf(2)));
 		assertEquals(2, ls.size());
@@ -405,10 +405,10 @@ public class ListSetTest extends TestCase
 		assertFalse(ls.contains(Integer.valueOf(2)));
 		assertTrue(ls.isEmpty());
 		assertEquals(0, ls.size());
-		List<Integer> list = new ArrayList<Integer>();
+		List<Integer> list = new ArrayList<>();
 		list.add(Integer.valueOf(1));
 		list.add(Integer.valueOf(2));
-		ls = new ListSet<Integer>(list);
+		ls = new ListSet<>(list);
 		assertTrue(ls.contains(Integer.valueOf(1)));
 		assertTrue(ls.contains(Integer.valueOf(2)));
 		assertEquals(2, ls.size());

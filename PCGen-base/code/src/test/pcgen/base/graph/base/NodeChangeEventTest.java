@@ -17,8 +17,6 @@
  */
 package pcgen.base.graph.base;
 
-import pcgen.base.graph.base.Edge;
-import pcgen.base.graph.base.NodeChangeEvent;
 import pcgen.base.graph.inst.SimpleListMapGraph;
 import junit.framework.TestCase;
 
@@ -41,8 +39,7 @@ public class NodeChangeEventTest extends TestCase
 	{
 		try
 		{
-			new NodeChangeEvent<Object>(null, new Object(),
-				NodeChangeEvent.NODE_ADDED);
+			new NodeChangeEvent<>(null, new Object(), NodeChangeEvent.NODE_ADDED);
 			fail();
 		}
 		catch (IllegalArgumentException e)
@@ -51,9 +48,7 @@ public class NodeChangeEventTest extends TestCase
 		}
 		try
 		{
-			new NodeChangeEvent<Object>(
-				new SimpleListMapGraph<Object, Edge<Object>>(), null,
-				NodeChangeEvent.NODE_ADDED);
+			new NodeChangeEvent<>(new SimpleListMapGraph<>(), null, NodeChangeEvent.NODE_ADDED);
 			fail();
 		}
 		catch (IllegalArgumentException e)

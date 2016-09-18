@@ -35,9 +35,6 @@ public class ArrayFormatFactory implements FormatManagerFactory
 	private static final Pattern ARRAY_PATTERN = Pattern.compile(
 		Pattern.quote("ARRAY["), Pattern.CASE_INSENSITIVE);
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public FormatManager<?> build(String subFormatName,
 		FormatManagerLibrary library)
@@ -47,7 +44,7 @@ public class ArrayFormatFactory implements FormatManagerFactory
 			throw new IllegalArgumentException(
 				"Array Format cannot be built from no instructions");
 		}
-		if (ARRAY_PATTERN.matcher(subFormatName).find())
+		if (ArrayFormatFactory.ARRAY_PATTERN.matcher(subFormatName).find())
 		{
 			/*
 			 * This is currently prohibited because - among other things -
@@ -62,9 +59,6 @@ public class ArrayFormatFactory implements FormatManagerFactory
 			library.getFormatManager(subFormatName), ',');
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public String getBuilderBaseFormat()
 	{

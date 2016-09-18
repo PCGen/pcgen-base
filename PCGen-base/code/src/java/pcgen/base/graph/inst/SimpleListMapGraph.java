@@ -20,7 +20,6 @@
 package pcgen.base.graph.inst;
 
 import pcgen.base.graph.base.Edge;
-import pcgen.base.graph.base.Graph;
 
 /**
  * This Graph uses redundant storage to improve query speed for certain methods.
@@ -64,7 +63,7 @@ import pcgen.base.graph.base.Graph;
  *            The type of Edge stored in this Graph
  */
 public class SimpleListMapGraph<N, ET extends Edge<N>> extends
-		AbstractListMapGraph<N, ET> implements Graph<N, ET>
+		AbstractListMapGraph<N, ET>
 {
 	/*
 	 * Note to programmers: While it may be tempting to assimilate this

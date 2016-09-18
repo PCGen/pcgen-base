@@ -22,11 +22,9 @@ package pcgen.base.util;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Map.Entry;
 
 /**
  * Represents a DoubleKeyMap of objects to Lists. List management is done
@@ -88,10 +86,9 @@ public class DoubleKeyMapToList<K1, K2, V> implements Cloneable
 	@SuppressWarnings("PMD.LooseCoupling")
 	public DoubleKeyMapToList()
 	{
-		super();
 		firstClass = HashMap.class;
 		secondClass = firstClass;
-		mtmtl = new HashMap<K1, MapToList<K2, V>>();
+		mtmtl = new HashMap<>();
 	}
 
 	/**
@@ -110,7 +107,6 @@ public class DoubleKeyMapToList<K1, K2, V> implements Cloneable
 	@SuppressWarnings("rawtypes")
 	public DoubleKeyMapToList(Class<? extends Map> cl1, Class<? extends Map> cl2)
 	{
-		super();
 		if (cl1 == null)
 		{
 			throw new IllegalArgumentException(
@@ -201,7 +197,7 @@ public class DoubleKeyMapToList<K1, K2, V> implements Cloneable
 	 */
 	public void addAll(DoubleKeyMapToList<K1, K2, V> dkmtl)
 	{
-		for (Entry<K1, MapToList<K2, V>> me : dkmtl.mtmtl.entrySet())
+		for (Map.Entry<K1, MapToList<K2, V>> me : dkmtl.mtmtl.entrySet())
 		{
 			MapToList<K2, V> localMap = getMapToListFor(me.getKey());
 			localMap.addAllLists(me.getValue());
@@ -382,7 +378,7 @@ public class DoubleKeyMapToList<K1, K2, V> implements Cloneable
 	{
 		// Need to 'clone' the Set, since Map returns a set that is still
 		// associated with the Map
-		return new WrappedMapSet<K1>(firstClass, mtmtl.keySet());
+		return new WrappedMapSet<>(firstClass, mtmtl.keySet());
 	}
 
 	/**
@@ -476,12 +472,10 @@ public class DoubleKeyMapToList<K1, K2, V> implements Cloneable
 		DoubleKeyMapToList<K1, K2, V> dkm =
 				(DoubleKeyMapToList<K1, K2, V>) super.clone();
 		dkm.mtmtl = createGlobalMap();
-		for (Iterator<K1> it = mtmtl.keySet().iterator(); it.hasNext();)
+		for (K1 key : mtmtl.keySet())
 		{
-			K1 key = it.next();
 			MapToList<K2, V> currentMTL = mtmtl.get(key);
-			MapToList<K2, V> newMTL =
-					GenericMapToList.getMapToList(secondClass);
+			MapToList<K2, V> newMTL = GenericMapToList.getMapToList(secondClass);
 			newMTL.addAllLists(currentMTL);
 			dkm.mtmtl.put(key, newMTL);
 		}
@@ -528,7 +522,7 @@ public class DoubleKeyMapToList<K1, K2, V> implements Cloneable
 	public int sizeOfListFor(K1 key1, K2 key2)
 	{
 		MapToList<K2, V> localMap = mtmtl.get(key1);
-		return localMap == null ? 0 : localMap.sizeOfListFor(key2);
+		return (localMap == null) ? 0 : localMap.sizeOfListFor(key2);
 	}
 
 	/**
@@ -548,8 +542,7 @@ public class DoubleKeyMapToList<K1, K2, V> implements Cloneable
 	@Override
 	public boolean equals(Object obj)
 	{
-		return obj instanceof DoubleKeyMapToList
-			&& mtmtl.equals(((DoubleKeyMapToList<?, ?, ?>) obj).mtmtl);
+		return (obj instanceof DoubleKeyMapToList) && mtmtl.equals(((DoubleKeyMapToList<?, ?, ?>) obj).mtmtl);
 	}
 
 	/**

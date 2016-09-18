@@ -21,7 +21,7 @@ import java.util.List;
 
 import pcgen.base.graph.base.DirectionalEdge;
 import pcgen.base.graph.base.GraphEdge;
-import pcgen.base.graph.inst.DefaultDirectionalGraphEdge;
+
 import junit.framework.TestCase;
 
 public class DefaultDirectionalGraphEdgeTest extends TestCase
@@ -44,18 +44,18 @@ public class DefaultDirectionalGraphEdgeTest extends TestCase
 		node2 = new Double(2);
 		node3 = new Double(5);
 		node4 = new Double(16);
-		edge1 = new DefaultDirectionalGraphEdge<Double>(node1, node2);
-		edge2 = new DefaultDirectionalGraphEdge<Double>(node2, node1);
-		edge3 = new DefaultDirectionalGraphEdge<Double>(node1, node3);
-		edge4 = new DefaultDirectionalGraphEdge<Double>(node1, node3);
-		edge5 = new DefaultDirectionalGraphEdge<Double>(node4, node4);
+		edge1 = new DefaultDirectionalGraphEdge<>(node1, node2);
+		edge2 = new DefaultDirectionalGraphEdge<>(node2, node1);
+		edge3 = new DefaultDirectionalGraphEdge<>(node1, node3);
+		edge4 = new DefaultDirectionalGraphEdge<>(node1, node3);
+		edge5 = new DefaultDirectionalGraphEdge<>(node4, node4);
 	}
 
 	public void testDefaultGraphEdge()
 	{
 		try
 		{
-			new DefaultDirectionalGraphEdge<Double>(node1, null);
+			new DefaultDirectionalGraphEdge<>(node1, null);
 			fail();
 		}
 		catch (IllegalArgumentException e)
@@ -64,7 +64,7 @@ public class DefaultDirectionalGraphEdgeTest extends TestCase
 		}
 		try
 		{
-			new DefaultDirectionalGraphEdge<Double>(null, node3);
+			new DefaultDirectionalGraphEdge<>(null, node3);
 			fail();
 		}
 		catch (IllegalArgumentException e)
@@ -157,8 +157,7 @@ public class DefaultDirectionalGraphEdgeTest extends TestCase
 
 	public void testGetSourceNode()
 	{
-		List l;
-		l = edge1.getSourceNodes();
+		List l = edge1.getSourceNodes();
 		assertEquals(1, l.size());
 		assertTrue(l.contains(node1));
 		l = edge2.getSourceNodes();
@@ -177,8 +176,7 @@ public class DefaultDirectionalGraphEdgeTest extends TestCase
 
 	public void testGetSinkNode()
 	{
-		List l;
-		l = edge1.getSinkNodes();
+		List l = edge1.getSinkNodes();
 		assertEquals(1, l.size());
 		assertTrue(l.contains(node2));
 		l = edge2.getSinkNodes();

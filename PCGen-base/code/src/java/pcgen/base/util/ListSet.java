@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.Set;
 
 /**
  * ListSet is an implementation of the Set Interface that uses a List (rather
@@ -35,7 +34,7 @@ import java.util.Set;
  * @param <T>
  *            The type of object stored in this ListSet
  */
-public class ListSet<T> extends AbstractSet<T> implements Set<T>
+public class ListSet<T> extends AbstractSet<T>
 {
 
 	/**
@@ -99,7 +98,7 @@ public class ListSet<T> extends AbstractSet<T> implements Set<T>
 	 */
 	public ListSet(int size, Comparator<T> comp)
 	{
-		list = new ArrayList<T>(size);
+		list = new ArrayList<>(size);
 		comparator = comp;
 	}
 
@@ -123,7 +122,7 @@ public class ListSet<T> extends AbstractSet<T> implements Set<T>
 	 */
 	public ListSet(Collection<T> otherSet)
 	{
-		list = new ArrayList<T>(otherSet);
+		list = new ArrayList<>(otherSet);
 		comparator = null;
 	}
 
@@ -165,9 +164,9 @@ public class ListSet<T> extends AbstractSet<T> implements Set<T>
 		}
 		else
 		{
-			for (Iterator<T> it = list.iterator(); it.hasNext();)
+			for (T aList : list)
 			{
-				if (comparator.compare(it.next(), element) == 0)
+				if (comparator.compare(aList, element) == 0)
 				{
 					contains = true;
 					break;
@@ -228,9 +227,9 @@ public class ListSet<T> extends AbstractSet<T> implements Set<T>
 		}
 		@SuppressWarnings("unchecked")
 		T comp = (T) element;
-		for (Iterator<T> it = list.iterator(); it.hasNext();)
+		for (T aList : list)
 		{
-			if (comparator.compare(comp, it.next()) == 0)
+			if (comparator.compare(comp, aList) == 0)
 			{
 				return true;
 			}
