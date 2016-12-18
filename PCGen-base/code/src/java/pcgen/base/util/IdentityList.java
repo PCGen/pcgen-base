@@ -139,8 +139,7 @@ public class IdentityList<T> implements List<T>
 	@Override
 	public boolean equals(Object obj)
 	{
-		return obj instanceof IdentityList
-			&& embeddedList.equals(((IdentityList<?>) obj).embeddedList);
+		return (obj instanceof IdentityList) && embeddedList.equals(((IdentityList<?>) obj).embeddedList);
 	}
 
 	@Override
@@ -314,8 +313,7 @@ public class IdentityList<T> implements List<T>
 		@Override
 		public boolean equals(Object obj)
 		{
-			return obj instanceof Identity
-				&& ((Identity<?>) obj).underlying == underlying;
+			return (obj instanceof Identity) && (((Identity<?>) obj).underlying == underlying);
 		}
 
 		@Override

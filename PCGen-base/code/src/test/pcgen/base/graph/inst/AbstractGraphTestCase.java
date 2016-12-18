@@ -300,8 +300,7 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 		assertEquals(node, listener.lastRemoveNode);
 		assertEquals(1, listener.nodeCount);
 		assertEquals(2, listener.edgeCount);
-		assertTrue(listener.lastRemoveEdge == tempEdge1
-			|| listener.lastRemoveEdge == tempEdge2);
+		assertTrue((listener.lastRemoveEdge == tempEdge1) || (listener.lastRemoveEdge == tempEdge2));
 		// ASSUME the notification of edges works correctly (doesn't check
 		// precisely (just that there were two)!)
 		assertEquals(1, getStrategy().getNodeList().size());

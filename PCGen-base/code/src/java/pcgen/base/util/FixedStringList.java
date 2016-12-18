@@ -259,7 +259,7 @@ public class FixedStringList extends AbstractList<String> implements RandomAcces
 		{
 			return 0;
 		}
-		return array.length + 29 * (array[0] == null ? 0 : array[0].hashCode());
+		return array.length + (29 * ((array[0] == null) ? 0 : array[0].hashCode()));
 	}
 
 	/**
