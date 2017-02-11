@@ -158,7 +158,7 @@ public class GenericMapToListTest_Tree extends TestCase
 		populate();
 		assertTrue(dkm.containsListFor(Integer.valueOf(1)));
 		// Keys are .equals items, not instance
-		assertTrue(dkm.containsListFor(new Integer(1)));
+		assertTrue(dkm.containsListFor(Integer.valueOf(1)));
 		assertTrue(dkm.containsListFor(Integer.valueOf(2)));
 		assertTrue(dkm.containsListFor(Integer.valueOf(5)));
 		assertFalse(dkm.containsListFor(Integer.valueOf(-4)));
@@ -191,7 +191,7 @@ public class GenericMapToListTest_Tree extends TestCase
 		assertTrue(dkm.removeFromListFor(Integer.valueOf(1), CONST_A));
 		assertTrue(dkm.containsListFor(Integer.valueOf(1)));
 		// Keys are .equals items, not instance
-		assertTrue(dkm.containsListFor(new Integer(1)));
+		assertTrue(dkm.containsListFor(Integer.valueOf(1)));
 		assertEquals(2, dkm.sizeOfListFor(Integer.valueOf(1)));
 		assertFalse(dkm.removeFromListFor(Integer.valueOf(1), CONST_A));
 		assertTrue(dkm.removeFromListFor(Integer.valueOf(1), CONST_B));
@@ -229,7 +229,7 @@ public class GenericMapToListTest_Tree extends TestCase
 		populate();
 		assertTrue(dkm.containsInList(Integer.valueOf(1), CONST_A));
 		// Keys are .equals items, not instance
-		assertTrue(dkm.containsInList(new Integer(1), CONST_A));
+		assertTrue(dkm.containsInList(Integer.valueOf(1), CONST_A));
 		assertTrue(dkm.containsInList(Integer.valueOf(1), CONST_B));
 		assertTrue(dkm.containsInList(Integer.valueOf(1), CONST_C));
 		assertFalse(dkm.containsInList(Integer.valueOf(1), CONST_D));

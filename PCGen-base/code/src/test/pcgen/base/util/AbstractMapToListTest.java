@@ -148,7 +148,7 @@ public abstract class AbstractMapToListTest extends TestCase
 		populate(dkm);
 		assertTrue(dkm.containsListFor(Integer.valueOf(1)));
 		// Keys are .equals items, not instance
-		assertTrue(dkm.containsListFor(new Integer(1)));
+		assertTrue(dkm.containsListFor(Integer.valueOf(1)));
 		assertTrue(dkm.containsListFor(Integer.valueOf(2)));
 		assertTrue(dkm.containsListFor(Integer.valueOf(5)));
 		assertFalse(dkm.containsListFor(Integer.valueOf(-4)));
@@ -188,7 +188,7 @@ public abstract class AbstractMapToListTest extends TestCase
 		assertTrue(dkm.removeFromListFor(Integer.valueOf(1), CONST_A));
 		assertTrue(dkm.containsListFor(Integer.valueOf(1)));
 		// Keys are .equals items, not instance
-		assertTrue(dkm.containsListFor(new Integer(1)));
+		assertTrue(dkm.containsListFor(Integer.valueOf(1)));
 		assertEquals(2, dkm.sizeOfListFor(Integer.valueOf(1)));
 		assertFalse(dkm.removeFromListFor(Integer.valueOf(1), CONST_A));
 		assertTrue(dkm.removeFromListFor(Integer.valueOf(1), CONST_B));
@@ -236,7 +236,7 @@ public abstract class AbstractMapToListTest extends TestCase
 		populate(dkm);
 		assertTrue(dkm.containsInList(Integer.valueOf(1), CONST_A));
 		// Keys are .equals items, not instance
-		assertTrue(dkm.containsInList(new Integer(1), CONST_A));
+		assertTrue(dkm.containsInList(Integer.valueOf(1), CONST_A));
 		assertTrue(dkm.containsInList(Integer.valueOf(1), CONST_B));
 		assertTrue(dkm.containsInList(Integer.valueOf(1), CONST_C));
 		assertFalse(dkm.containsInList(Integer.valueOf(1), CONST_D));
@@ -262,7 +262,8 @@ public abstract class AbstractMapToListTest extends TestCase
 		assertTrue(dkm.containsAnyInList(Integer.valueOf(1),
 			Collections.singletonList(CONST_A)));
 		// Keys are .equals items, not instance
-		assertTrue(dkm.containsAnyInList(new Integer(1),
+		assertTrue(dkm.containsAnyInList(
+				Integer.valueOf(1),
 			Arrays.asList(new Character[]{CONST_A, CONST_D})));
 		assertTrue(dkm.containsAnyInList(Integer.valueOf(1),
 			Arrays.asList(new Character[]{CONST_D, CONST_B})));

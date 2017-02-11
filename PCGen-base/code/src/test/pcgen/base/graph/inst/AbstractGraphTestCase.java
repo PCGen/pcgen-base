@@ -21,11 +21,12 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import junit.framework.TestCase;
 import pcgen.base.graph.base.Edge;
 import pcgen.base.graph.base.Graph;
 import pcgen.base.graph.base.GraphChangeListener;
 import pcgen.base.graph.testsupport.TestGraphChangeListener;
+
+import junit.framework.TestCase;
 
 public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 		TestCase
@@ -45,9 +46,9 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 	public void testAddNode()
 	{
 		getStrategy().addGraphChangeListener(listener);
-		Integer node = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer node3 = new Integer(3);
+		Integer node = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
+		Integer node3 = Integer.valueOf(3);
 		assertEquals(0, getStrategy().getNodeCount());
 		assertTrue(getStrategy().isEmpty());
 		assertFalse(getStrategy().containsNode(node));
@@ -95,11 +96,11 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 
 	public void testAddEdge()
 	{
-		Integer node1 = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer node3 = new Integer(3);
-		Integer node4 = new Integer(4);
-		Integer node5 = new Integer(5);
+		Integer node1 = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
+		Integer node3 = Integer.valueOf(3);
+		Integer node4 = Integer.valueOf(4);
+		Integer node5 = Integer.valueOf(5);
 		T edge = getLegalEdge(node1, node2);
 		T edge2 = getLegalEdge(node1, node3);
 		getStrategy().addGraphChangeListener(listener);
@@ -157,8 +158,8 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 
 	public void testClear()
 	{
-		Integer node1 = new Integer(1);
-		Integer node2 = new Integer(2);
+		Integer node1 = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
 		T edge = getLegalEdge(node1, node2);
 		getStrategy().addGraphChangeListener(listener);
 		assertFalse(getStrategy().containsEdge(edge));
@@ -193,8 +194,8 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 
 	public void testContainsNode()
 	{
-		Integer node = new Integer(1);
-		Integer node2 = new Integer(2);
+		Integer node = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
 		assertFalse(getStrategy().containsNode(node));
 		assertFalse(getStrategy().containsNode(node2));
 		getStrategy().addNode(node);
@@ -206,10 +207,10 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 
 	public void testContainsEdge()
 	{
-		Integer node1 = new Integer(1);
-		Integer node2 = new Integer(2);
+		Integer node1 = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
 		T edge = getLegalEdge(node1, node2);
-		Integer node3 = new Integer(3);
+		Integer node3 = Integer.valueOf(3);
 		T edge2 = getLegalEdge(node1, node3);
 		assertFalse(getStrategy().containsEdge(edge));
 		assertFalse(getStrategy().containsEdge(edge2));
@@ -222,7 +223,7 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 
 	public void testGetNodeList()
 	{
-		Integer node = new Integer(1);
+		Integer node = Integer.valueOf(1);
 		assertTrue(getStrategy().getNodeList().isEmpty());
 		getStrategy().addNode(node);
 		assertEquals(1, getStrategy().getNodeList().size());
@@ -230,15 +231,15 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 		// transfer ownership: ensure I can modify without messing with
 		// strategy's list or vice versa
 		List<Integer> myList = getStrategy().getNodeList();
-		myList.add(new Integer(4));
+		myList.add(Integer.valueOf(4));
 		assertEquals(1, getStrategy().getNodeList().size());
 		assertEquals(2, myList.size());
 	}
 
 	public void testGetEdgeList()
 	{
-		Integer node1 = new Integer(1);
-		Integer node2 = new Integer(2);
+		Integer node1 = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
 		T edge = getLegalEdge(node1, node2);
 		getStrategy().addNode(node1);
 		getStrategy().addNode(node2);
@@ -249,7 +250,7 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 		// transfer ownership: ensure I can modify without messing with
 		// strategy's list or vice versa
 		List<T> myList = getStrategy().getEdgeList();
-		myList.add(getLegalEdge(node1, new Integer(4)));
+		myList.add(getLegalEdge(node1, Integer.valueOf(4)));
 		assertEquals(1, getStrategy().getEdgeList().size());
 		assertEquals(2, myList.size());
 	}
@@ -257,8 +258,8 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 	public void testRemoveNode()
 	{
 		getStrategy().addGraphChangeListener(listener);
-		Integer node = new Integer(1);
-		Integer node2 = new Integer(2);
+		Integer node = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
 		// not in there!
 		listener.lastRemoveNode = node2;
 		assertFalse(getStrategy().removeNode(node));
@@ -317,9 +318,9 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 	public void testRemoveEdge()
 	{
 		getStrategy().addGraphChangeListener(listener);
-		Integer node1 = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer node3 = new Integer(3);
+		Integer node1 = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
+		Integer node3 = Integer.valueOf(3);
 		T edge = getLegalEdge(node1, node2);
 		T edge2 = getLegalEdge(node2, node3);
 		T edge3 = getLegalEdge(node1, node3);
@@ -369,9 +370,9 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 
 	public void testGetAdjacentEdgeList()
 	{
-		Integer node1 = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer node3 = new Integer(3);
+		Integer node1 = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
+		Integer node3 = Integer.valueOf(3);
 		T edge1 = getLegalEdge(node1, node2);
 		T edge2 = getLegalEdge(node2, node3);
 		T edge3 = getLegalEdge(node3, node1);
@@ -458,10 +459,10 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 
 	public void testEquals()
 	{
-		Integer node1 = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer node3 = new Integer(3);
-		Integer node4 = new Integer(4);
+		Integer node1 = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
+		Integer node3 = Integer.valueOf(3);
+		Integer node4 = Integer.valueOf(4);
 		T edge1 = getLegalEdge(node1, node3);
 		T edge2 = getLegalEdge(node3, node4);
 		Graph<Integer, T> testGraph = getStrategy();
@@ -517,7 +518,7 @@ public abstract class AbstractGraphTestCase<T extends Edge<Integer>> extends
 		assertTrue(testGraph.addNode(node2));
 		assertFalse(testGraph.equals(master));
 		// Yes, NEW, not valueOf
-		assertTrue(master.addNode(new Integer(2)));
+		assertTrue(master.addNode(Integer.valueOf(2)));
 		// Test for .equals of the nodes
 		assertTrue(testGraph.equals(master));
 		assertEquals(testGraph.hashCode(), master.hashCode());

@@ -35,9 +35,9 @@ public class WrappedMapSetTest extends TestCase
 {
 
 	private WrappedMapSet<Integer> ls;
-	private Integer a1 = new Integer(1);
-	private Integer a2 = new Integer(2);
-	private Integer b1 = new Integer(1);
+	private Integer a1 = Integer.valueOf(1);
+	private Integer a2 = Integer.valueOf(2);
+	private Integer b1 = Integer.valueOf(1);
 
 	@Override
 	@Before
