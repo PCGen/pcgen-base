@@ -270,6 +270,7 @@ public class ParsingSeparator implements Iterator<String>
 		}
 		else
 		{
+
 			StringBuilder sb =
 					StringUtil.joinToStringBuilder(groupingPairs.keySet(), "");
 			sb.append(

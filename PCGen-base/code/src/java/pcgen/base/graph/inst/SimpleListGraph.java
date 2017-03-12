@@ -20,6 +20,7 @@
 package pcgen.base.graph.inst;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -126,13 +127,7 @@ public class SimpleListGraph<N, ET extends Edge<N>> implements Graph<N, ET>
 			return false;
 		}
 		List<N> graphNodes = e.getAdjacentNodes();
-		for (N node : graphNodes)
-		{
-			if (!nodeList.contains(node))
-			{
-				addNode(node);
-			}
-		}
+		graphNodes.stream().filter(node -> !nodeList.contains(node)).forEach(this::addNode);
 		edgeList.add(e);
 		gcs.fireGraphEdgeChangeEvent(e, EdgeChangeEvent.EDGE_ADDED);
 		return true;
@@ -235,18 +230,10 @@ public class SimpleListGraph<N, ET extends Edge<N>> implements Graph<N, ET>
 		{
 			return false;
 		}
-		for (ET ge : edgeList)
-		{
-			List<N> graphNodes = ge.getAdjacentNodes();
-			for (N node : graphNodes)
-			{
-				if (node.equals(gn))
-				{
-					return true;
-				}
-			}
-		}
-		return false;
+		return edgeList.stream()
+		               .map(Edge::getAdjacentNodes)
+		               .flatMap(Collection::stream)
+		               .anyMatch(node -> node.equals(gn));
 	}
 
 	/**

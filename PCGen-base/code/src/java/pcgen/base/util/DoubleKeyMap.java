@@ -474,18 +474,15 @@ public class DoubleKeyMap<K1, K2, V> implements Cloneable
 		@SuppressWarnings("unchecked")
 		DoubleKeyMap<K1, K2, V> dkm = (DoubleKeyMap<K1, K2, V>) super.clone();
 		dkm.map = createGlobalMap();
-		for (Map.Entry<K1, Map<K2, V>> me : map.entrySet())
-		{
-			/*
-			 * Can be empty if a read-only view was previously captured, but we
-			 * don't need to keep those around since nothing is attached to the
-			 * copy
-			 */
-			if (!me.getValue().isEmpty())
-			{
-				dkm.map.put(me.getKey(), new HashMap<K2, V>(me.getValue()));
-			}
-		}
+		/*
+		 * Can be empty if a read-only view was previously captured, but we
+		 * don't need to keep those around since nothing is attached to the
+		 * copy
+		 */
+		map.entrySet()
+		   .stream()
+		   .filter(me -> !me.getValue().isEmpty())
+		   .forEach(me -> dkm.map.put(me.getKey(), new HashMap<K2, V>(me.getValue())));
 		//Nothing can be connected (see above)
 		dkm.cleanup = true;
 		return dkm;

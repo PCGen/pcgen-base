@@ -293,13 +293,7 @@ public abstract class AbstractMapToList<K, V> implements MapToList<K, V>
 		List<V> list = mapToList.get(key);
 		if (list != null)
 		{
-			for (V v : values)
-			{
-				if (list.contains(v))
-				{
-					return true;
-				}
-			}
+			return values.stream().anyMatch(list::contains);
 		}
 		return false;
 	}

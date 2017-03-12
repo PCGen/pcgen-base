@@ -100,14 +100,7 @@ public class HashMapToInstanceList<K, V> extends AbstractMapToList<K, V>
 		{
 			return false;
 		}
-		for (V o : getListFor(key))
-		{
-			if (o == valueElement)
-			{
-				return true;
-			}
-		}
-		return false;
+		return getListFor(key).stream().anyMatch(o -> o == valueElement);
 	}
 
 	/**

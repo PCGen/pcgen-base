@@ -19,10 +19,13 @@ package pcgen.base.format;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import pcgen.base.util.FormatManager;
 import pcgen.base.util.Indirect;
+import pcgen.base.util.Reference;
 
 /**
  * An ArrayFormatManager wraps an underlying FormatManager to produce arrays of
@@ -261,11 +264,9 @@ public class ArrayFormatManager<T> implements FormatManager<T[]>
 		public T[] get()
 		{
 			Class<T> arrayClass = componentManager.getManagedClass();
-			List<T> returnList = new ArrayList<T>(array.length * 5);
-			for (Indirect<T> indirect : array)
-			{
-				returnList.add(indirect.get());
-			}
+			List<T> returnList = Arrays.stream(array)
+			                           .map(Reference::get)
+			                           .collect(Collectors.toCollection(() -> new ArrayList<>(array.length * 5)));
 			@SuppressWarnings("unchecked")
 			T[] toReturn =
 					(T[]) Array.newInstance(arrayClass, returnList.size());

@@ -93,10 +93,7 @@ public class IdentityList<T> implements List<T>
 	@Override
 	public final boolean addAll(Collection<? extends T> collection)
 	{
-		for (T element : collection)
-		{
-			add(element);
-		}
+		collection.forEach(this::add);
 		return true;
 	}
 
@@ -126,14 +123,7 @@ public class IdentityList<T> implements List<T>
 	@Override
 	public boolean containsAll(Collection<?> collection)
 	{
-		for (Object element : collection)
-		{
-			if (!embeddedList.contains(getIdentity(element)))
-			{
-				return false;
-			}
-		}
-		return true;
+		return collection.stream().allMatch(element -> embeddedList.contains(getIdentity(element)));
 	}
 
 	@Override
