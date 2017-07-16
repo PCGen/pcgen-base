@@ -214,13 +214,7 @@ public class DefaultDirectionalHyperEdge<N> implements DirectionalHyperEdge<N>
 		}
 		// Neither is null
 		int size = sourceNodes.size();
-		for (N node : sinkNodes)
-		{
-			if (!sourceNodes.contains(node))
-			{
-				size++;
-			}
-		}
+		size += sinkNodes.stream().filter(node -> !sourceNodes.contains(node)).count();
 		return size;
 	}
 

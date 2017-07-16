@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import pcgen.base.graph.base.DirectionalEdge;
 import pcgen.base.graph.base.DirectionalGraph;
@@ -93,14 +94,11 @@ public class DirectionalSetMapGraph<N, ET extends DirectionalEdge<N>> extends
 		{
 			return null;
 		}
-		List<ET> inwardEdgeList = new LinkedList<ET>();
-		for (ET edge : adjacentEdgeList)
-		{
-			if ((edge.getNodeInterfaceType(node) & DirectionalEdge.SINK) != 0)
-			{
-				inwardEdgeList.add(edge);
-			}
-		}
+		List<ET> inwardEdgeList = adjacentEdgeList.stream()
+		                                          .filter(edge ->
+				                                          (edge.getNodeInterfaceType(node) & DirectionalEdge.SINK)
+						                                          != 0)
+		                                          .collect(Collectors.toCollection(LinkedList::new));
 		return inwardEdgeList;
 	}
 
@@ -121,14 +119,11 @@ public class DirectionalSetMapGraph<N, ET extends DirectionalEdge<N>> extends
 		{
 			return null;
 		}
-		List<ET> outwardEdgeList = new ArrayList<ET>();
-		for (ET edge : adjacentEdgeList)
-		{
-			if ((edge.getNodeInterfaceType(node) & DirectionalEdge.SOURCE) != 0)
-			{
-				outwardEdgeList.add(edge);
-			}
-		}
+		List<ET> outwardEdgeList = adjacentEdgeList.stream()
+		                                           .filter(edge ->
+				                                           (edge.getNodeInterfaceType(node) & DirectionalEdge.SOURCE)
+						                                           != 0)
+		                                           .collect(Collectors.toList());
 		return outwardEdgeList;
 	}
 
@@ -143,14 +138,8 @@ public class DirectionalSetMapGraph<N, ET extends DirectionalEdge<N>> extends
 		{
 			return false;
 		}
-		for (ET edge : adjacentEdgeList)
-		{
-			if ((edge.getNodeInterfaceType(node) & DirectionalEdge.SINK) != 0)
-			{
-				return true;
-			}
-		}
-		return false;
+		return adjacentEdgeList.stream()
+		                       .anyMatch(edge -> (edge.getNodeInterfaceType(node) & DirectionalEdge.SINK) != 0);
 	}
 
 	/**
@@ -165,14 +154,8 @@ public class DirectionalSetMapGraph<N, ET extends DirectionalEdge<N>> extends
 		{
 			return false;
 		}
-		for (ET edge : adjacentEdgeList)
-		{
-			if ((edge.getNodeInterfaceType(node) & DirectionalEdge.SOURCE) != 0)
-			{
-				return true;
-			}
-		}
-		return false;
+		return adjacentEdgeList.stream()
+		                       .anyMatch(edge -> (edge.getNodeInterfaceType(node) & DirectionalEdge.SOURCE) != 0);
 	}
 
 }

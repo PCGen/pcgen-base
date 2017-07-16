@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 import pcgen.base.graph.base.Edge;
@@ -281,11 +282,8 @@ public abstract class AbstractSetMapGraph<N, ET extends Edge<N>> implements
 		 * ConcurrentModificationException (since the set for GraphNode gn would
 		 * be modified by removeEdge while inside this Iterator).
 		 */
-		for (ET edge : nodeEdgeMap.remove(node))
-		{
-			// FUTURE Consider Check of return values here to ensure success??
-			removeEdge(edge);
-		}
+		// FUTURE Consider Check of return values here to ensure success??
+		nodeEdgeMap.remove(node).forEach(this::removeEdge);
 		/*
 		 * containsNode test means we don't need to check return value of remove
 		 * we 'know' it is present (barring an internal error!). This remove
@@ -316,15 +314,11 @@ public abstract class AbstractSetMapGraph<N, ET extends Edge<N>> implements
 		 * Must be present in the Graph if we made it to this point
 		 */
 		List<N> graphNodes = edge.getAdjacentNodes();
-		for (N node : graphNodes)
-		{
-			Set<ET> adjacentEdges = nodeEdgeMap.get(node);
-			// Could be null due to side effects
-			if (adjacentEdges != null)
-			{
-				adjacentEdges.remove(edge);
-			}
-		}
+		// Could be null due to side effects
+		graphNodes.stream()
+		          .map(nodeEdgeMap::get)
+		          .filter(Objects::nonNull)
+		          .forEach(adjacentEdges -> adjacentEdges.remove(edge));
 		gcs.fireGraphEdgeChangeEvent(edge, EdgeChangeEvent.EDGE_REMOVED);
 		return true;
 	}

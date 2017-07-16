@@ -24,6 +24,8 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.StringTokenizer;
 
+import com.sun.deploy.util.StringUtils;
+
 /**
  * StringUtil is a utility class designed to provide utility methods when
  * working with java.lang.String Objects.
@@ -37,17 +39,8 @@ public final class StringUtil
 	 * extraneous), it is valuable as it can be used by other objects as a
 	 * counterpart to String.CASE_INSENSITIVE_ORDER
 	 */
-	@SuppressWarnings("PMD.LongVariable")
 	public static final Comparator<String> CASE_SENSITIVE_ORDER =
-			new Comparator<String>()
-			{
-				@Override
-				public int compare(String str1, String str2)
-				{
-					return str1.compareTo(str2);
-				}
-
-			};
+			Comparator.naturalOrder();
 
 	/**
 	 * Private Constructor for Utility Class.
@@ -69,9 +62,9 @@ public final class StringUtil
 	 *            The separating string
 	 * @return A 'separator' separated String
 	 */
-	public static String join(Collection<?> collection, String separator)
+	static String join(Collection<?> collection, String separator)
 	{
-		return joinToStringBuilder(collection, separator).toString();
+		return StringUtils.join(collection, separator);
 	}
 
 	/**
@@ -128,7 +121,7 @@ public final class StringUtil
 	 *            The separating string
 	 * @return A 'separator' separated String
 	 */
-	public static String join(String[] stringArray, String separator)
+	static String join(String[] stringArray, String separator)
 	{
 		if (stringArray == null)
 		{
@@ -169,7 +162,7 @@ public final class StringUtil
 	 *         replace all instances of the String to find with the newStr
 	 *         replacement String
 	 */
-	public static String replaceAll(String original, String find, String replace)
+	static String replaceAll(String original, String find, String replace)
 	{
 		int startindex = original.indexOf(find);
 
@@ -216,7 +209,7 @@ public final class StringUtil
 	 * @return true if the given String has balanced parenthesis; false
 	 *         otherwise
 	 */
-	public static boolean hasBalancedParens(String string)
+	static boolean hasBalancedParens(String string)
 	{
 		int level = 0;
 		StringTokenizer st = new StringTokenizer(string, "()", true);
