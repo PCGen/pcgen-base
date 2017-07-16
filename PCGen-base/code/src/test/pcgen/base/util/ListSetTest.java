@@ -117,7 +117,7 @@ public class ListSetTest extends TestCase
 	{
 		assertTrue(set.isEmpty());
 		assertFalse(set.remove(Integer.valueOf(1)));
-		assertFalse(set.contains(new Integer(1)));
+		assertFalse(set.contains(Integer.valueOf(1)));
 		assertFalse(set.contains(Integer.valueOf(1)));
 		assertEquals(0, set.size());
 		assertEquals(0, set.size());
@@ -126,7 +126,7 @@ public class ListSetTest extends TestCase
 		set.add(Integer.valueOf(1));
 		assertEquals(1, set.size());
 		assertTrue(set.contains(Integer.valueOf(1)));
-		assertTrue(set.contains(new Integer(1)));
+		assertTrue(set.contains(Integer.valueOf(1)));
 		assertFalse(set.contains(Integer.valueOf(2)));
 		assertFalse(set.isEmpty());
 		assertTrue(set.remove(Integer.valueOf(1)));
@@ -140,28 +140,28 @@ public class ListSetTest extends TestCase
 		set.add(Integer.valueOf(1));
 		assertEquals(1, set.size());
 		assertTrue(set.contains(Integer.valueOf(1)));
-		assertTrue(set.contains(new Integer(1)));
+		assertTrue(set.contains(Integer.valueOf(1)));
 		assertFalse(set.isEmpty());
 		set.add(Integer.valueOf(1));
 		assertEquals(1, set.size());
-		set.add(new Integer(1)); // Keep NEW (instance identity part of
+		set.add(Integer.valueOf(1)); // Keep NEW (instance identity part of
 		// test!)
 		assertEquals(1, set.size());
 		set.add(Integer.valueOf(2));
 		assertEquals(2, set.size());
 		assertTrue(set.contains(Integer.valueOf(2)));
-		set.add(new Integer(1)); // Keep NEW (instance identity part of
+		set.add(Integer.valueOf(1)); // Keep NEW (instance identity part of
 		// test!)
 		assertEquals(2, set.size());
-		set.add(new Integer(2)); // Keep NEW (instance identity part of
+		set.add(Integer.valueOf(2)); // Keep NEW (instance identity part of
 		// test!)
 		assertEquals(2, set.size());
 		set.ensureCapacity(16);
-		set.add(new Integer(2)); // Keep NEW (instance identity part of
+		set.add(Integer.valueOf(2)); // Keep NEW (instance identity part of
 		// test!)
 		assertEquals(2, set.size());
 		assertTrue(set.contains(Integer.valueOf(1)));
-		assertTrue(set.contains(new Integer(1)));
+		assertTrue(set.contains(Integer.valueOf(1)));
 		assertTrue(set.remove(Integer.valueOf(1)));
 		assertEquals(1, set.size());
 		set.add(Integer.valueOf(3));
@@ -171,14 +171,14 @@ public class ListSetTest extends TestCase
 		set.add(Integer.valueOf(5));
 		assertEquals(4, set.size());
 		assertFalse(set.isEmpty());
-		assertTrue(set.remove(new Integer(2))); // Keep NEW (instance identity
+		assertTrue(set.remove(Integer.valueOf(2))); // Keep NEW (instance identity
 		// part of test!)
 		assertEquals(3, set.size());
-		assertTrue(set.remove(new Integer(4))); // Keep NEW (instance identity
+		assertTrue(set.remove(Integer.valueOf(4))); // Keep NEW (instance identity
 		// part of test!)
 		assertEquals(2, set.size());
 		assertTrue(set.contains(Integer.valueOf(5)));
-		assertTrue(set.contains(new Integer(5)));
+		assertTrue(set.contains(Integer.valueOf(5)));
 	}
 
 	public void testIdentitySet(ListSet<Integer> set)
@@ -186,19 +186,19 @@ public class ListSetTest extends TestCase
 		assertTrue(set.isEmpty());
 		assertFalse(set.remove(Integer.valueOf(1)));
 		assertFalse(set.contains(Integer.valueOf(1)));
-		assertFalse(set.contains(new Integer(1)));
+		assertFalse(set.contains(Integer.valueOf(1)));
 		assertEquals(0, set.size());
 		assertEquals(0, set.size());
 		set.add(Integer.valueOf(1));
 		assertEquals(1, set.size());
 		assertTrue(set.contains(Integer.valueOf(1)));
-		assertFalse(set.contains(new Integer(1)));
+		assertFalse(set.contains(Integer.valueOf(1)));
 		assertFalse(set.isEmpty());
 		assertTrue(set.remove(Integer.valueOf(1)));
 		assertEquals(0, set.size());
 		assertTrue(set.isEmpty());
 		assertFalse(set.contains(Integer.valueOf(1)));
-		assertFalse(set.contains(new Integer(1)));
+		assertFalse(set.contains(Integer.valueOf(1)));
 		assertFalse(set.remove(Integer.valueOf(1)));
 		assertEquals(0, set.size());
 		assertTrue(set.isEmpty());
@@ -206,26 +206,26 @@ public class ListSetTest extends TestCase
 		assertEquals(1, set.size());
 		set.add(Integer.valueOf(1));
 		assertEquals(1, set.size());
-		set.add(new Integer(1)); // Keep NEW (instance identity part of
+		set.add(Integer.valueOf(1)); // Keep NEW (instance identity part of
 		// test!)
 		assertTrue(set.contains(Integer.valueOf(1)));
-		assertFalse(set.contains(new Integer(1)));
+		assertFalse(set.contains(Integer.valueOf(1)));
 		assertEquals(2, set.size());
 		set.add(Integer.valueOf(2));
 		assertEquals(3, set.size());
-		set.add(new Integer(1)); // Keep NEW (instance identity part of
+		set.add(Integer.valueOf(1)); // Keep NEW (instance identity part of
 		// test!)
 		assertEquals(4, set.size());
-		set.add(new Integer(2)); // Keep NEW (instance identity part of
+		set.add(Integer.valueOf(2)); // Keep NEW (instance identity part of
 		// test!)
 		assertEquals(5, set.size());
 		set.ensureCapacity(16);
-		set.add(new Integer(2)); // Keep NEW (instance identity part of
+		set.add(Integer.valueOf(2)); // Keep NEW (instance identity part of
 		// test!)
 		assertEquals(6, set.size());
 		assertTrue(set.remove(Integer.valueOf(1)));
 		assertFalse(set.contains(Integer.valueOf(1)));
-		assertFalse(set.contains(new Integer(1)));
+		assertFalse(set.contains(Integer.valueOf(1)));
 		assertEquals(5, set.size());
 		set.add(Integer.valueOf(3));
 		assertEquals(6, set.size());
@@ -233,16 +233,16 @@ public class ListSetTest extends TestCase
 		assertEquals(7, set.size());
 		set.add(Integer.valueOf(5));
 		assertEquals(8, set.size());
-		assertFalse(set.remove(new Integer(2))); // Keep NEW (instance
+		assertFalse(set.remove(Integer.valueOf(2))); // Keep NEW (instance
 		// identity part of
 		// test!)
 		assertEquals(8, set.size());
-		assertFalse(set.remove(new Integer(4))); // Keep NEW (instance
+		assertFalse(set.remove(Integer.valueOf(4))); // Keep NEW (instance
 		// identity part of
 		// test!)
 		assertEquals(8, set.size());
 		assertTrue(set.contains(Integer.valueOf(5)));
-		assertFalse(set.contains(new Integer(1)));
+		assertFalse(set.contains(Integer.valueOf(1)));
 		Integer nine = Integer.valueOf(9);
 		set.add(nine);
 		assertEquals(9, set.size());

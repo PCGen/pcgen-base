@@ -64,9 +64,9 @@ public class SimpleListMapGraphTest extends
 
 	public void testGetInternalizedNode()
 	{
-		Integer node = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer falseNode1 = new Integer(1); //MUST NOT BE Integer.valueOf(1)!!!!!
+		Integer node = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
+		Integer falseNode1 = Integer.valueOf(1); //MUST NOT BE Integer.valueOf(1)!!!!!
 		assertFalse(strategy.containsNode(node));
 		assertFalse(strategy.containsNode(node2));
 		assertFalse(strategy.containsNode(falseNode1));

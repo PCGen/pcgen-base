@@ -122,9 +122,9 @@ public class DirectionalSetMapGraphTest extends
 
 	public void testGetInwardEdgeList()
 	{
-		Integer node1 = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer node3 = new Integer(3);
+		Integer node1 = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
+		Integer node3 = Integer.valueOf(3);
 		DirectionalEdge<Integer> edge1 = getLegalEdge(node1, node2);
 		DirectionalEdge<Integer> edge2 = getLegalEdge(node2, node3);
 		DirectionalEdge<Integer> edge3 = getLegalEdge(node3, node1);
@@ -158,9 +158,9 @@ public class DirectionalSetMapGraphTest extends
 
 	public void testGetOutwardEdgeList()
 	{
-		Integer node1 = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer node3 = new Integer(3);
+		Integer node1 = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
+		Integer node3 = Integer.valueOf(3);
 		DirectionalEdge<Integer> edge1 = getLegalEdge(node1, node2);
 		DirectionalEdge<Integer> edge2 = getLegalEdge(node2, node3);
 		DirectionalEdge<Integer> edge3 = getLegalEdge(node3, node1);
@@ -194,13 +194,13 @@ public class DirectionalSetMapGraphTest extends
 
 	public void testHasInwardEdgeList()
 	{
-		Integer node0 = new Integer(0);
-		Integer node1 = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer node3 = new Integer(3);
-		Integer node4 = new Integer(4);
-		Integer node5 = new Integer(5);
-		Integer node6 = new Integer(6);
+		Integer node0 = Integer.valueOf(0);
+		Integer node1 = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
+		Integer node3 = Integer.valueOf(3);
+		Integer node4 = Integer.valueOf(4);
+		Integer node5 = Integer.valueOf(5);
+		Integer node6 = Integer.valueOf(6);
 		DirectionalEdge<Integer> edge1 = getLegalEdge(node1, node2);
 		DirectionalEdge<Integer> edge2 = getLegalEdge(node2, node3);
 		DirectionalEdge<Integer> edge3 = getLegalEdge(node3, node1);
@@ -247,13 +247,13 @@ public class DirectionalSetMapGraphTest extends
 
 	public void testHasOutwardEdgeList()
 	{
-		Integer node0 = new Integer(0);
-		Integer node1 = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer node3 = new Integer(3);
-		Integer node4 = new Integer(4);
-		Integer node5 = new Integer(5);
-		Integer node6 = new Integer(6);
+		Integer node0 = Integer.valueOf(0);
+		Integer node1 = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
+		Integer node3 = Integer.valueOf(3);
+		Integer node4 = Integer.valueOf(4);
+		Integer node5 = Integer.valueOf(5);
+		Integer node6 = Integer.valueOf(6);
 		DirectionalEdge<Integer> edge1 = getLegalEdge(node1, node2);
 		DirectionalEdge<Integer> edge2 = getLegalEdge(node2, node3);
 		DirectionalEdge<Integer> edge3 = getLegalEdge(node3, node1);
@@ -306,9 +306,9 @@ public class DirectionalSetMapGraphTest extends
 
 	public void testGetInternalizedNode()
 	{
-		Integer node = new Integer(1);
-		Integer node2 = new Integer(2);
-		Integer falseNode1 = new Integer(1); // MUST NOT BE
+		Integer node = Integer.valueOf(1);
+		Integer node2 = Integer.valueOf(2);
+		Integer falseNode1 = Integer.valueOf(1); // MUST NOT BE
 												// Integer.valueOf(1)!!!!!
 		assertFalse(strategy.containsNode(node));
 		assertFalse(strategy.containsNode(node2));

@@ -34,9 +34,9 @@ public class GenericMapToListTest_IdentityHash extends TestCase
 
 	private static final Integer CONST_2 = Integer.valueOf(2);
 
-	private static final Integer CONST_1A = new Integer(1);
+	private static final Integer CONST_1A = Integer.valueOf(1);
 
-	private static final Integer CONST_1B = new Integer(1);
+	private static final Integer CONST_1B = Integer.valueOf(1);
 
 	private static final Character CONST_E = 'E';
 
@@ -157,7 +157,7 @@ public class GenericMapToListTest_IdentityHash extends TestCase
 		populate();
 		assertTrue(dkm.containsListFor(CONST_1A));
 		// Keys are .equals items, not instance
-		assertFalse(dkm.containsListFor(new Integer(1)));
+		assertFalse(dkm.containsListFor(Integer.valueOf(1)));
 		assertTrue(dkm.containsListFor(CONST_2));
 		assertTrue(dkm.containsListFor(CONST_5));
 		assertFalse(dkm.containsListFor(Integer.valueOf(-4)));
@@ -193,7 +193,7 @@ public class GenericMapToListTest_IdentityHash extends TestCase
 		assertTrue(dkm.removeFromListFor(CONST_1B, CONST_B));
 		assertTrue(dkm.containsListFor(CONST_1B));
 		// Keys are instance
-		assertFalse(dkm.containsListFor(new Integer(1)));
+		assertFalse(dkm.containsListFor(Integer.valueOf(1)));
 		assertEquals(1, dkm.sizeOfListFor(CONST_1B));
 		assertFalse(dkm.removeFromListFor(CONST_1B, CONST_A));
 		assertTrue(dkm.containsListFor(CONST_1B));
@@ -238,7 +238,7 @@ public class GenericMapToListTest_IdentityHash extends TestCase
 		populate();
 		assertTrue(dkm.containsInList(CONST_1B, CONST_B));
 		// Keys are instance
-		assertFalse(dkm.containsInList(new Integer(1), CONST_B));
+		assertFalse(dkm.containsInList(Integer.valueOf(1), CONST_B));
 		assertTrue(dkm.containsInList(CONST_1B, CONST_B));
 		assertTrue(dkm.containsInList(CONST_1B, CONST_C));
 		assertFalse(dkm.containsInList(CONST_1B, CONST_D));
