@@ -19,6 +19,8 @@
  */
 package pcgen.base.util;
 
+import static pcgen.base.util.ListUtilities.containedBy;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -291,17 +293,7 @@ public abstract class AbstractMapToList<K, V> implements MapToList<K, V>
 	public boolean containsAnyInList(K key, Collection<V> values)
 	{
 		List<V> list = mapToList.get(key);
-		if (list != null)
-		{
-			for (V v : values)
-			{
-				if (list.contains(v))
-				{
-					return true;
-				}
-			}
-		}
-		return false;
+		return (list == null) ? false : values.stream().anyMatch(containedBy(list));
 	}
 
 	/**
@@ -335,11 +327,7 @@ public abstract class AbstractMapToList<K, V> implements MapToList<K, V>
 		 * 24, 2005
 		 */
 		List<V> list = mapToList.get(key);
-		if (list == null)
-		{
-			return 0;
-		}
-		return list.size();
+		return (list == null) ? 0 : list.size();
 	}
 
 	/**
@@ -367,7 +355,7 @@ public abstract class AbstractMapToList<K, V> implements MapToList<K, V>
 	public List<V> getListFor(K key)
 	{
 		List<V> list = mapToList.get(key);
-		return list == null ? null : new ArrayList<>(list);
+		return (list == null) ? null : new ArrayList<>(list);
 	}
 
 	/**
