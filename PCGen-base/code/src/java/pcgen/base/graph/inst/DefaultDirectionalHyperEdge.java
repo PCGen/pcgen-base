@@ -137,8 +137,7 @@ public class DefaultDirectionalHyperEdge<N> implements DirectionalHyperEdge<N>
 		}
 		if (sinkNodes != null)
 		{
-			int sinkIndex =
-					sourceNodes == null ? index : index - sourceNodes.size();
+			int sinkIndex = (sourceNodes == null) ? index : (index - sourceNodes.size());
 			return sinkNodes.get(sinkIndex);
 		}
 		throw new IndexOutOfBoundsException();
@@ -256,7 +255,7 @@ public class DefaultDirectionalHyperEdge<N> implements DirectionalHyperEdge<N>
 	@Override
 	public List<N> getSinkNodes()
 	{
-		return sinkNodes == null ? null : new ArrayList<>(sinkNodes);
+		return (sinkNodes == null) ? null : new ArrayList<>(sinkNodes);
 	}
 
 	/**
