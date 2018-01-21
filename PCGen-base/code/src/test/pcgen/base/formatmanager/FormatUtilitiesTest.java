@@ -38,7 +38,7 @@ public class FormatUtilitiesTest extends TestCase
 		assertEquals(numberManager, FormatUtilities.isValid(numberManager));
 		try
 		{
-			FormatUtilities.isValid(new BadManager1());
+			FormatUtilities.isValid(new BadManagerNoIdentifierType());
 			fail("Should reject a manager without an identifier");
 		}
 		catch (NullPointerException e)
@@ -47,7 +47,7 @@ public class FormatUtilitiesTest extends TestCase
 		}
 		try
 		{
-			FormatUtilities.isValid(new BadManager2());
+			FormatUtilities.isValid(new BadManagerNoManagedClass());
 			fail("Should reject a manager without a managed class");
 		}
 		catch (NullPointerException e)
@@ -56,7 +56,7 @@ public class FormatUtilitiesTest extends TestCase
 		}
 	}
 
-	private class BadManager1 implements FormatManager<String>
+	private class BadManagerNoIdentifierType implements FormatManager<String>
 	{
 
 		@Override
@@ -103,7 +103,7 @@ public class FormatUtilitiesTest extends TestCase
 
 	}
 
-	private class BadManager2 implements FormatManager<String>
+	private class BadManagerNoManagedClass implements FormatManager<String>
 	{
 
 		@Override
