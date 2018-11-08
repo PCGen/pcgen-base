@@ -372,22 +372,19 @@ public class DoubleKeyMapToList<K1, K2, V> implements Cloneable
 	 * Returns a Set of the secondary keys for the given primary key in this
 	 * DoubleKeyMapToList
 	 * 
-	 * NOTE: This method returns all of the secondary keys this
-	 * DoubleKeyMapToList contains for the given primary key. It DOES NOT
-	 * determine whether the Lists defined for the keys are empty. Therefore, it
-	 * is possible that this DoubleKeyMapToList contains one or more keys, and
-	 * all of the lists associated with those keys are empty, yet this method
-	 * will return a non-zero length Set.
+	 * NOTE: This method returns all of the secondary keys this DoubleKeyMapToList
+	 * contains for the given primary key. It DOES NOT determine whether the Lists defined
+	 * for the keys are empty. Therefore, it is possible that this DoubleKeyMapToList
+	 * contains one or more keys, and all of the lists associated with those keys are
+	 * empty, yet this method will return a non-zero length Set.
 	 * 
-	 * Note: Ownership of the Set is transferred to the calling Object;
-	 * therefore, changes to the returned Set will NOT impact the
-	 * DoubleKeyMapToList.
+	 * Note: Ownership of the Set is transferred to the calling Object; therefore, changes
+	 * to the returned Set will NOT impact the DoubleKeyMapToList.
 	 * 
 	 * @param key1
 	 *            The primary key to retrieve keys for.
 	 * 
-	 * @return A <tt>Set</tt> of secondary key objects for the given primary
-	 *         key.
+	 * @return A Set of secondary key objects for the given primary key.
 	 */
 	public Set<K2> getSecondaryKeySet(K1 key1)
 	{

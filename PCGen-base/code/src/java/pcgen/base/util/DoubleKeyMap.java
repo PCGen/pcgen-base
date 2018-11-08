@@ -358,18 +358,16 @@ public class DoubleKeyMap<K1, K2, V> implements Cloneable
 	}
 
 	/**
-	 * Returns a Set of the secondary keys for the given primary key in this
-	 * DoubleKeyMap
+	 * Returns a Set of the secondary keys for the given primary key in this DoubleKeyMap
 	 * 
-	 * Note: This Set is reference-semantic. The ownership of the Set is
-	 * transferred to the calling Object; therefore, changes to the returned Set
-	 * will NOT impact the DoubleKeyMap.
+	 * Note: This Set is reference-semantic. The ownership of the Set is transferred to
+	 * the calling Object; therefore, changes to the returned Set will NOT impact the
+	 * DoubleKeyMap.
 	 * 
 	 * @param key1
 	 *            The primary key to retrieve keys for.
 	 * 
-	 * @return A <tt>Set</tt> of secondary key objects for the given primary
-	 *         key.
+	 * @return A Set of secondary key objects for the given primary key.
 	 */
 	public Set<K2> getSecondaryKeySet(K1 key1)
 	{
