@@ -180,7 +180,9 @@ class StagingProxy<R, W> implements InvocationHandler, Staging<W>
 			if (!writeMethodNames.add(name))
 			{
 				throw new IllegalArgumentException(
-					"Duplicate Write Method Name: " + name);
+					"Duplicate Write Method Name: " + name + " on "
+						+ readInterface.getCanonicalName() + " and "
+						+ writeInterface.getCanonicalName());
 			}
 			for (PropertyProcessor processor : processors)
 			{
@@ -190,7 +192,9 @@ class StagingProxy<R, W> implements InvocationHandler, Staging<W>
 					if (!propertyNames.add(property))
 					{
 						throw new IllegalArgumentException(
-							"Duplicate Property Name: " + property);
+							"Duplicate Property Name: " + property + " on "
+								+ readInterface.getCanonicalName() + " and "
+								+ writeInterface.getCanonicalName());
 					}
 					setMethods.add(name);
 					Method claimed = processor.claimMethod(method, readMethodList);
@@ -207,11 +211,15 @@ class StagingProxy<R, W> implements InvocationHandler, Staging<W>
 		if (!unusedMethodNames.isEmpty())
 		{
 			throw new IllegalArgumentException(
-				"Unable to process method names: " + unusedMethodNames);
+				"Unable to process method names: " + unusedMethodNames + " on "
+					+ readInterface.getCanonicalName() + " and "
+					+ writeInterface.getCanonicalName());
 		}
 		if (!readMethodList.isEmpty())
 		{
-			throw new IllegalArgumentException("Had Leftover Methods: " + readMethodList);
+			throw new IllegalArgumentException("Had Leftover Methods: "
+				+ readMethodList + " on " + readInterface.getCanonicalName()
+				+ " and " + writeInterface.getCanonicalName());
 		}
 		processReadOnlyMethods(readOnlyMethodList, propertyNames);
 	}
@@ -229,7 +237,10 @@ class StagingProxy<R, W> implements InvocationHandler, Staging<W>
 				if (!propertyNames.add(property))
 				{
 					throw new IllegalArgumentException(
-						"Read Only Property Name duplicated read/write name: " + property);
+						"Read Only Property Name duplicated read/write name: "
+							+ property + " on "
+							+ readInterface.getCanonicalName() + " and "
+							+ writeInterface.getCanonicalName());
 				}
 				getProcessors.put(name, ulProcessor);
 			}
