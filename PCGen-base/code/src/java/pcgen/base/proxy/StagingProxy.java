@@ -176,6 +176,10 @@ class StagingProxy<R, W> implements InvocationHandler, Staging<W>
 				Collections.newSetFromMap(new CaseInsensitiveMap<>());
 		METHODS: for (Method method : writeMethods)
 		{
+			if (method.isAnnotationPresent(ReadOnly.class))
+			{
+				continue;
+			}
 			String name = method.getName();
 			if (!writeMethodNames.add(name))
 			{
