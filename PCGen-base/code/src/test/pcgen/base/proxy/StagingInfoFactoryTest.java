@@ -631,7 +631,7 @@ public class StagingInfoFactoryTest
 		@ReadOnly
 		public default Number getReadable()
 		{
-			return 1;
+			throw new UnsupportedOperationException();
 		}
 	}
 
