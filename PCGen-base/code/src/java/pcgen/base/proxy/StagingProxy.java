@@ -207,7 +207,9 @@ class StagingProxy<R, W> implements InvocationHandler, Staging<W>
 				readMethodList.remove(claimed);
 				consumedMethodNames.add(claimed.getName());
 				getProcessors.put(claimed.getName(), processor);
-			} else {
+			}
+			else
+			{
 				unusedMethodNames.add(name);
 			}
 		}
