@@ -25,6 +25,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 import pcgen.base.util.CaseInsensitiveMap;
@@ -188,27 +189,27 @@ class StagingProxy<R, W> implements InvocationHandler, Staging<W>
 						+ readInterface.getCanonicalName() + " and "
 						+ writeInterface.getCanonicalName());
 			}
-			for (PropertyProcessor processor : processors)
+			Optional<PropertyProcessor> activeProcessor = processors.stream()
+				.filter(p -> p.isProcessedWriteMethod(method)).findFirst();
+			if (activeProcessor.isPresent())
 			{
-				if (processor.isProcessedWriteMethod(method))
+				PropertyProcessor processor = activeProcessor.get();
+				String property = processor.getPropertyNameFromWrite(name);
+				if (!propertyNames.add(property))
 				{
-					String property = processor.getPropertyNameFromWrite(name);
-					if (!propertyNames.add(property))
-					{
-						throw new IllegalArgumentException(
-							"Duplicate Property Name: " + property + " on "
-								+ readInterface.getCanonicalName() + " and "
-								+ writeInterface.getCanonicalName());
-					}
-					setMethods.add(name);
-					Method claimed = processor.claimMethod(method, readMethodList);
-					readMethodList.remove(claimed);
-					consumedMethodNames.add(claimed.getName());
-					getProcessors.put(claimed.getName(), processor);
-					continue METHODS;
+					throw new IllegalArgumentException(
+						"Duplicate Property Name: " + property + " on "
+							+ readInterface.getCanonicalName() + " and "
+							+ writeInterface.getCanonicalName());
 				}
+				setMethods.add(name);
+				Method claimed = processor.claimMethod(method, readMethodList);
+				readMethodList.remove(claimed);
+				consumedMethodNames.add(claimed.getName());
+				getProcessors.put(claimed.getName(), processor);
+			} else {
+				unusedMethodNames.add(name);
 			}
-			unusedMethodNames.add(name);
 		}
 		//Write interface allowed to duplicate the reads, so need to clean up
 		unusedMethodNames.removeAll(consumedMethodNames);
