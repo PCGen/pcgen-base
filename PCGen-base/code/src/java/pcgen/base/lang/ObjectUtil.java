@@ -18,6 +18,7 @@
 package pcgen.base.lang;
 
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 /**
  * ObjectUtilities are various utility methods for dealing with all
@@ -50,4 +51,26 @@ public final class ObjectUtil
 		return given -> (given == object);
 	}
 
+	/**
+	 * This is a replacement for Objects.requireNotNull(T, String) that allows a Supplier
+	 * instead of a String to avoid + or other StringBuilder behavior unless the actual
+	 * item is null (in which case the supplier provides the appropriate message).
+	 * 
+	 * @param object
+	 *            The object to be checked if it is null
+	 * @param supplier
+	 *            The Supplier that will provide the message for the NullPointerException
+	 *            if the given object is null
+	 * @return The given object if not null
+	 * @throws NullPointerException
+	 *             if the given object is null
+	 */
+	public static <T> T requireNonNull(T object, Supplier<String> supplier)
+	{
+		if (object == null)
+		{
+			throw new NullPointerException(supplier.get());
+		}
+        return object;
+	}
 }
