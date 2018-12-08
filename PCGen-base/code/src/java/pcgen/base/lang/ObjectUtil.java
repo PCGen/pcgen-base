@@ -64,6 +64,8 @@ public final class ObjectUtil
 	 * @return The given object if not null
 	 * @throws NullPointerException
 	 *             if the given object is null
+	 * @param <T>
+	 *            The type of the Object to be checked for null
 	 */
 	public static <T> T requireNonNull(T object, Supplier<String> supplier)
 	{
