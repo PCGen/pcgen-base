@@ -74,18 +74,18 @@ public class OptionalFormatManager<T> implements FormatManager<Optional<T>>
 	@Override
 	public Indirect<Optional<T>> convertIndirect(String instructions)
 	{
-		Indirect<T> indirect = componentManager.convertIndirect(instructions);
 		if ((instructions == null) || instructions.isEmpty())
 		{
 			return new BasicIndirect<>(this, Optional.empty());
 		}
+		Indirect<T> indirect = componentManager.convertIndirect(instructions);
 		return new OptionalIndirect(indirect);
 	}
 
 	@Override
 	public Optional<FormatManager<?>> getComponentManager()
 	{
-		return Optional.empty();
+		return Optional.of(componentManager);
 	}
 
 	@Override
