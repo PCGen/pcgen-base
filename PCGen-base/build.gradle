@@ -15,8 +15,8 @@ plugins {
     id 'ivy-publish'
     id 'checkstyle'
     id 'pmd'
-    id "com.github.spotbugs" version '4.7.1'
-    id 'com.github.ben-manes.versions' version '0.38.0'
+    id "com.github.spotbugs" version '4.7.5'
+    id 'com.github.ben-manes.versions' version '0.39.0'
 }
 
 group = 'net.sourceforge.pcgen'
@@ -37,11 +37,11 @@ repositories {
 }
 
 dependencies {
-    testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.7.2'
-    testImplementation group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.7.2'
-    testImplementation group: 'org.junit.jupiter', name:  'junit-jupiter-api', version: '5.7.2'
-    testImplementation group: 'org.junit.jupiter', name:  'junit-jupiter-params', version: '5.7.2'
-    testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.7.2'
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.8.0'
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.8.0'
+    testImplementation group: 'org.junit.jupiter', name:  'junit-jupiter-api', version: '5.8.0'
+    testImplementation group: 'org.junit.jupiter', name:  'junit-jupiter-params', version: '5.8.0'
+    testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.8.0'
 }
 
 sourceSets {
